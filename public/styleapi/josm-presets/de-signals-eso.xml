@@ -1,0 +1,2412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+OpenRailwayMap JOSM Presets File
+Edition for German railways (in German)
+
+OpenRailwayMap Copyright (C) 2012-2015 Alexander Matheisen
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+-->
+
+
+<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0" author="OpenRailwayMap" version="1.0" shortdescription="OpenRailwayMap Signale DE ESO" description="Preset to tag German railway signals">
+	<chunk id="sig_ref">
+		<key key="railway"
+			value="signal" />
+		<text key="ref"
+			text="Signal ref"
+			de.text="Signalbezeichnung"
+			/>
+	</chunk>
+	<chunk id="direction_fw_bw">
+		<combo key="railway:signal:direction"
+			text="Direction"
+			de.text="Anzeigerichtung"
+			values="forward,backward"
+			display_values="in direction of OSM way,against direction of OSM way"
+			de.display_values="In Wegrichtung,Entgegen Wegrichtung"
+			/>
+	</chunk>
+	<chunk id="direction_fw_bw_b">
+		<combo key="railway:signal:direction"
+			text="Direction"
+			de.text="Anzeigerichtung"
+			values="forward,backward,both"
+			display_values="in direction of OSM way,against direction of OSM way,both directions"
+			de.display_values="In Wegrichtung,Entgegen Wegrichtung,Beide Richtungen"
+			/>
+	</chunk>
+	<group name="OpenRailwayMap Signals Germany ESO" de.name="OpenRailwayMap Signale DE ESO" icon="signals.png">
+			<group name="Ks Signals" de.name="Ks-Signale" icon="de/ks-combined-32.png">
+				<item name="Ks Distant Signal" de.name="Ks-Vorsignal" icon="de/ks-distant-32.png" type="node">
+					<label text="Ks Distant Signal" de.text="Ks-Vorsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:distant"
+						value="DE-ESO:ks" />
+					<key key="railway:signal:distant:form"
+						value="light" />
+					<combo key="railway:signal:distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:distant:states"
+						default="DE-ESO:ks1;DE-ESO:ks2"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:ks1;DE-ESO:ks2|DE-ESO:ks1;DE-ESO:ks2;DE-ESO:kennlicht|DE-ESO:ks1;DE-ESO:ks2;off|DE-ESO:ks2"
+						de.display_values="Ks 1 und Ks 2|Ks 1, Ks 2 und Kennlicht|Ks 1, Ks 2 und Dunkelschaltung|ausschließlich Ks 2 (gelbes Licht, exotisches Signal)"
+						display_values="Ks 1 and Ks 2|Ks 1, Ks 2 and marker light|Ks 1, Ks 2 and dark|only Ks 2 (yellow light, rarely)" />
+					<check key="railway:signal:distant:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremsweg"
+						/>
+					<check key="railway:signal:distant:repeated"
+						text="Repeated Signal"
+						de.text="Vorsignalwiederholer"
+						/>
+					<space />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+					
+				</item>
+				<item name="Ks Combined Signal" de.name="Ks-Mehrabschnittssignal" icon="de/ks-combined-32.png" type="node">
+					<label text="Ks Combined Signal" de.text="Ks-Mehrabschnittssignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:combined:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:combined"
+						value="DE-ESO:ks" />
+					<key key="railway:signal:combined:form"
+						value="light" />
+					<combo key="railway:signal:combined:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:combined:states"
+						default="DE-ESO:hp0;DE-ESO:ks1;DE-ESO:ks2"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:hp0;DE-ESO:ks1;DE-ESO:ks2|DE-ESO:hp0;DE-ESO:ks1;DE-ESO:ks2;DE-ESO:kennlicht|DE-ESO:hp0;DE-ESO:ks1;DE-ESO:ks2;off|DE-ESO:hp0;DE-ESO:ks2"
+						de.display_values="Hp 0, Ks 1 und Ks 2|Hp 0, Ks 1, Ks 2 und Kennlicht|Hp 0, Ks 1, Ks 2 und Dunkelschaltung|nur Hp 0 (Halt) und Ks 2 (Halt erwarten)"
+						display_values="Hp 0, Ks 1 and Ks 2|Hp 0, Ks 1, Ks 2 and marker light|Hp 0, Ks 1, Ks 2 and dark|only Hp 0 and Ks 2" />
+					<check key="railway:signal:combined:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremsweg"
+						/>
+					<combo key="railway:signal:combined:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:combined:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs7;DE-ESO:db:zs12"
+						display_values="substitute signal (Zs 1);cautioness signal (Zs 7);M Board (Zs 12)"
+						de.display_values="Ersatzsignal (Zs 1);Vorsichtsignal (Zs 7);M-Tafel (Zs 12)"
+						/>
+					<space />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+					<preset_link preset_name="ETCS Stop Marker (Ne 14)" />
+				</item>
+				<item name="Ks Main Signal" de.name="Ks-Hauptsignal" icon="de/ks-main-32.png" type="node">
+					<label text="Ks Main Signal" de.text="Ks-Hauptsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:main:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:main"
+						value="DE-ESO:ks" />
+					<key key="railway:signal:main:form"
+						value="light" />
+					<combo key="railway:signal:main:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:main:states"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:hp0;DE-ESO:ks1|DE-ESO:hp0;DE-ESO:ks1;DE-ESO:kennlicht|DE-ESO:hp0;DE-ESO:ks1;off|DE-ESO:hp0;DE-ESO:kennlicht|DE-ESO:hp0"
+						de.display_values="Hp 0 und Ks 1|Hp 0, Ks 1 und Kennlicht|Hp 0, Ks 1 und Dunkelschaltung|Hp 0, Kennlicht|Hp 0 ausschließlich"
+						display_values="Hp 0 and Ks 1|Hp 0, Ks 1 and marker light|Hp 0, Ks 1 and dark|Hp 0, Kennlicht|Hp 0 only" />
+					<combo key="railway:signal:main:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:main:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs7;DE-ESO:db:zs12"
+						display_values="substitute signal (Zs 1);cautioness signal (Zs 7);M Board (Zs 12)"
+						de.display_values="Ersatzsignal (Zs 1);Vorsichtsignal (Zs 7);M-Tafel (Zs 12)"
+						/>
+					<space />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+					<preset_link preset_name="ETCS Stop Marker (Ne 14)" />
+				</item>
+			</group>
+			<item name="Sv Signal" de.name="Sv-Signal" icon="de/sv-hp0-32.png" type="node">
+				<label text="Sv Signal" de.text="Sv-Signal" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<reference ref="sig_ref" />
+				<check key="railway:signal:combined:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:combined"
+					value="DE-ESO:sv" />
+				<key key="railway:signal:combined:form"
+					value="light" />
+				<combo key="railway:signal:combined:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+				<multiselect key="railway:signal:combined:states"
+					text="Signal states, Hamburg names (multi-selection)"
+					de.text="Signalzustände, Hamburger Kürzel (Mehrfachauswahl)"
+					delimiter=";"
+					values="DE-ESO:hp0;DE-ESO:sv1;DE-ESO:sv2;DE-ESO:sv3;DE-ESO:sv4;DE-ESO:sv5;DE-ESO:sv6;DE-ESO:sv0;DE-ESO:kennlicht"
+					display_values="Hp 0;Sv 1;Sv 2;Sv 3;Sv 4;Sv 5;Sv 6;Sv 0;marker light"
+					de.display_values="Hp 0;Sv 1;Sv 2;Sv 3;Sv 4;Sv 5;Sv 6;Sv 0;Kennlicht"
+					/>
+				<combo key="railway:signal:combined:function"
+					text="Signal function"
+					de.text="Signalaufgabe"
+					values="entry,exit,block,intermediate"
+					display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+					/>
+				<multiselect key="railway:signal:combined:substitute_signal"
+					text="Substitute signal (multi-selection)"
+					de.text="Ersatzsignal (Mehrfachauswahl)"
+					delimiter=";"
+					values="DE-ESO:dr:zs1;DE-ESO:db:zs7;DE-ESO:db:zs12"
+					display_values="substitute signal (Zs 1);cautioness signal (Zs 7);M Board (Zs 12)"
+					de.display_values="Ersatzsignal (Zs 1);Vorsichtsignal (Zs 7);M-Tafel (Zs 12)"
+					/>
+				<check key="railway:signal:distant:shortened"
+					text="Shortened distance"
+					de.text="Verkürzter Bremsweg (Weißer Bremspfeil)"
+					/>
+				<space />
+				<preset_link preset_name="Route Indicator (Zs 2)" />
+				<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+				<preset_link preset_name="Speed Indicator (Zs 3)" />
+				<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+				<preset_link preset_name="Sh 1 Light" />
+				<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+				<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+				<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+				<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+			</item>
+			<group name="Hl Signals" de.name="Hl-Signale" icon="de/hl1-32.png">
+				<item name="Hl Combined Signal" de.name="Hl-Kombinationssignal" icon="de/hl12a-32.png" type="node">
+					<label text="Hl Combined Signal" de.text="Hl-Kombinationssignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:combined:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:combined"
+						value="DE-ESO:hl" />
+					<key key="railway:signal:combined:form"
+						value="light" />
+					<combo key="railway:signal:combined:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:combined:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:hp0;DE-ESO:hl1;DE-ESO:hl2;DE-ESO:hl3a;DE-ESO:hl3b;DE-ESO:hl4;DE-ESO:hl5;DE-ESO:hl6a;DE-ESO:hl6b;DE-ESO:hl7;DE-ESO:hl8;DE-ESO:hl9a;DE-ESO:hl9b;DE-ESO:hl10;DE-ESO:hl11;DE-ESO:hl12a;DE-ESO:hl12b;DE-ESO:kennlicht;?"
+						display_values="Hp 0 (stop);Hl 1 (vmax->vmax);Hl 2 (100 kph -> vmax);Hl 3a (40 kph -> vmax);Hl 3b (60 kph -> vmax);Hl 4 (vmax -> 100 kph);Hl 5 (100 kph -> 100 kph);Hl 6a (40 kph -> 100 kph);Hl 6b (60 kph -> 100 kph);Hl 7 (vmax -> 40 or 60 kph);Hl 8 (100 kph -> 40 or 60 kph);Hl 9a (40 kph -> 40 or 60 kph);Hl 9b (60 kph -> 40 or 60 kph);Hl 10 (vmax -> stop);Hl 11 (100 kph -> stop);Hl 12a (40 kph -> stop);Hl 12b (60 kph -> stop);marker light;unknown"
+						de.display_values="Hp 0 (Halt);Hl 1 (Höchstgeschwindigkeit->Höchstgeschwindigkeit);Hl 2 (100 km/h -> Höchstgeschwindigkeit);Hl 3a (40 km/h -> Höchstgeschwindigkeit);Hl 3b (60 km/h -> Höchstgeschwindigkeit);Hl 4 (Höchstgeschwindigkeit -> 100 km/h);Hl 5 (100 km/h -> 100 km/h);Hl 6a (40 km/h -> 100 km/h);Hl 6b (60 km/h -> 100 km/h);Hl 7 (Höchstgeschwindigkeit -> 40 oder 60 km/h);Hl 8 (100 km/h -> 40 or 60 km/h);Hl 9a (40 km/h -> 40 oder 60 km/h);Hl 9b (60 km/h -> 40 oder 60 km/h);Hl 10 (Höchstgeschwindigkeit -> stop);Hl 11 (100 km/h -> stop);Hl 12a (40 km/h -> stop);Hl 12b (60 km/h -> stop);Kennlicht;unbekannt" />
+					<combo key="railway:signal:combined:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:combined:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs12;no"
+						de.display_values="Ersatzsignal (Zs 1);M-Tafel (Zs 12);kein Ersatzsignal"
+						display_values="substitute signal (Zs 1);M Board (Zs 12);no substitute signal"
+						/>
+					<space />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+				</item>
+				<item name="Hl Main Signal" de.name="Hl-Hauptsignal" icon="de/hl3a-32.png" type="node">
+					<label text="Hl Main Signal" de.text="Hl-Hauptsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:main:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:main"
+						value="DE-ESO:hl" />
+					<key key="railway:signal:main:form"
+						value="light" />
+					<combo key="railway:signal:main:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:main:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:hp0;DE-ESO:hl1;DE-ESO:hl2;DE-ESO:hl3a;DE-ESO:hl3b;DE-ESO:kennlicht;?"
+						display_values="Hp 0 (stop);Hl 1 (vmax);Hl 2 (100 kph);Hl 3a (40 kph);Hl 3b (60 kph);marker light;unknown"
+						de.display_values="Hp 0 (Halt);Hl 1 (Höchstgeschwindigkeit);Hl 2 (100 km/h);Hl 3a (40 km/h);Hl 3b (60 km/h);Kennlicht;unbekannt" />
+					<combo key="railway:signal:main:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:main:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs12"
+						display_values="substitute signal (Zs 1);M Board (Zs 12)"
+						de.display_values="Ersatzsignal (Zs 1);M-Tafel (Zs 12)"
+						/>
+					<space />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+				</item>
+				<item name="Hl Distant Signal" de.name="Hl-Vorsignal" icon="de/hl1-distant-24.png" type="node">
+					<label text="Hl Distant Signal" de.text="Hl-Vorsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:distant"
+						value="DE-ESO:hl" />
+					<key key="railway:signal:distant:form"
+						value="light" />
+					<multiselect key="railway:signal:distant:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:hl1;DE-ESO:hl4;DE-ESO:hl7;DE-ESO:hl10;DE-ESO:kennlicht;?"
+						display_values="Hl 1 (vmax ahead);Hl 4 (100 kph ahead);Hl 7 (40 or 60 kph ahead);Hl 10 (stop ahead);marker light;unknown"
+						de.display_values="Hl 1 (Fahrt erwarten);Hl 4 (100 km/h erwarten);Hl 7 (40 oder 60 km/h erwarten);Hl 10 (Halt erwarten);Kennlicht;unbekannt" />
+					<check key="railway:signal:distant:repeated"
+						text="Repeated Signal"
+						de.text="Vorsignalwiederholer"
+						/>
+					<check key="railway:signal:distant:shortened"
+						text="Shortened Breaking Distance"
+						de.text="Reduzierter Bremswegabstand"
+						/>
+					<space />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+				</item>
+			</group>
+			<group name="Sk Signals" de.name="Sk-Signale">
+				<item name="Sk Combined Signal" de.name="Sk-Kombinationssignal" type="node">
+					<label text="Sk Combined Signal" de.text="Sk-Kombinationssignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:combined:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:combined"
+						value="DE-ESO:sk" />
+					<key key="railway:signal:combined:form"
+						value="light" />
+					<combo key="railway:signal:combined:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:combined:states"
+						default="DE-ESO:hp0;DE-ESO:sk1;DE-ESO:sk2"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:hp0;DE-ESO:sk1;DE-ESO:sk2|DE-ESO:hp0;DE-ESO:sk1;DE-ESO:sk2;DE-ESO:kennlicht"
+						de.display_values="kein Kennlicht|Kennlicht möglich"
+						display_values="no marker light|marker light possible" />
+					<combo key="railway:signal:combined:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:combined:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs7"
+						display_values="substitute signal (Zs 1);cautioness signal (Zs 7)"
+						de.display_values="Ersatzsignal (Zs 1);Vorsichtsignal (Zs 7)"
+						/>
+					<space />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+				</item>
+				<item name="Sk Main Signal" de.name="Sk-Hauptsignal" type="node">
+					<label text="Sk Main Signal" de.text="Sk-Hauptsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:main:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:main"
+						value="DE-ESO:sk" />
+					<key key="railway:signal:main:form"
+						value="light" />
+					<combo key="railway:signal:main:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:main:states"
+						default="DE-ESO:hp0;DE-ESO:sk1"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:hp0;DE-ESO:sk1|DE-ESO:hp0;DE-ESO:sk1;DE-ESO:kennlicht"
+						de.display_values="kein Kennlicht|Kennlicht möglich"
+						display_values="no marker light|marker light possible" />
+					<combo key="railway:signal:main:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:main:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:dr:zs1;DE-ESO:db:zs7"
+						display_values="substitute signal (Zs 1);cautioness signal (Zs 7)"
+						de.display_values="Ersatzsignal (Zs 1);Vorsichtsignal (Zs 7)"
+						/>
+					<space />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+				</item>
+				<item name="Sk Distant Signal" de.name="Sk-Vorsignal" type="node">
+					<label text="Sk Distant Signal" de.text="Sk-Vorsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:distant"
+						value="DE-ESO:sk" />
+					<key key="railway:signal:distant:form"
+						value="light" />
+					<combo key="railway:signal:distant:states"
+						default="DE-ESO:sk1;DE-ESO:sk2"
+						text="Signal states"
+						de.text="Signalzustände"
+						delimiter="|"
+						values="DE-ESO:sk1;DE-ESO:sk2|DE-ESO:sk1;DE-ESO:sk2;DE-ESO:kennlicht"
+						de.display_values="kein Kennlicht|Kennlicht möglich"
+						display_values="no marker light|marker light possible" />
+					<check key="railway:signal:distant:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremsweg"
+						/>
+					<check key="railway:signal:distant:repeated"
+						text="Repeated Signal"
+						de.text="Vorsignalwiederholer"
+						/>
+					<space />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+				</item>
+			</group>
+			<group name="H/V Signals" de.name="H/V-Signale" icon="de/hp0-semaphore-32.png">
+				<item name="Hp Semaphore Main Signal" de.name="Hp-Form-Hauptsignal" icon="de/hp0-semaphore-32.png" type="node">
+					<label text="Hp Semaphore Main Signal" de.text="Hp-Form-Hauptsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:main:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:main"
+						value="DE-ESO:hp" />
+					<key key="railway:signal:main:form"
+						value="semaphore" />
+					<combo key="railway:signal:main:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:main:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:hp0;DE-ESO:hp1;DE-ESO:hp2;?"
+						display_values="Hp 0 (Stop);Hp 1 (Proceed);Hp 2 (Proceed at reduced speed);other states unkown"
+						de.display_values="Hp 0 (Halt);Hp 1 (Fahrt);Hp 2 (Langsamfahrt);weitere Zustände unbekannt"
+						values_sort="false"
+						/>
+					<combo key="railway:signal:main:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:main:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:db:zs1;DE-ESO:dr:zs1;DE-ESO:db:zs7;DE-ESO:db:zs12;no"
+						display_values="substitution signal (Zs 1 ex-DB);substitution signal (Zs 1 ex-DR);cautiousness signal (Zs 7);M Board (Zs 12);no substitution signal"
+						de.display_values="Ersatzsignal (Zs 1 ex-DB);Ersatzsignal (Zs 1 ex-DR);Vorsichtsignal (Zs 7);M-Tafel (Zs 12);kein Ersatzsignal vorhanden"
+						values_sort="false"
+						/>
+					<space />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+					<preset_link preset_name="ex-DR Diamond Board (Zs 103)" />
+				</item>
+				<item name="Hp Light Signal" de.name="Hp-Licht-Hauptsignal" icon="de/hp2-light-32.png" type="node">
+					<label text="Hp Light Signal" de.text="Hp-Licht-Hauptsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:main:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:main"
+						value="DE-ESO:hp" />
+					<key key="railway:signal:main:form"
+						value="light" />
+					<combo key="railway:signal:main:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:main:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:hp0;DE-ESO:hp1;DE-ESO:hp2;DE-ESO:kennlicht;off;?"
+						display_values="Hp 0 (Stop);Hp 1 (Proceed);Hp 2 (Proceed at reduced speed);kennlicht (marker light);dark;other states unkown"
+						de.display_values="Hp 0 (Halt);Hp 1 (Fahrt);Hp 2 (Langsamfahrt);Kennlicht;dunkelgeschaltet;weitere Zustände unbekannt"
+						values_sort="false"
+						/>
+					<combo key="railway:signal:main:function"
+						text="Signal function"
+						de.text="Signalaufgabe"
+						values="entry,exit,block,intermediate"
+						display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+						/>
+					<multiselect key="railway:signal:main:substitute_signal"
+						text="Substitute signal (multi-selection)"
+						de.text="Ersatzsignal (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:db:zs1;DE-ESO:dr:zs1;DE-ESO:db:zs7;DE-ESO:db:zs12"
+						display_values="substitution signal (ex-DB Zs 1);substitution signal (ex-DR Zs 1);cautioness signal (Zs 7);M board (Zs 12)"
+						de.display_values="Ersatzsignal (ex-DB Zs 1);Ersatzsignal (ex-DR Zs 1);Vorsichtsignal (Zs 7);M-Tafel (Zs 12)"
+						/>
+					<space />
+					<preset_link preset_name="Vr Distant Light Signal" />
+					<preset_link preset_name="Route Indicator (Zs 2)" />
+					<preset_link preset_name="Speed Indicator (Zs 3)" />
+					<preset_link preset_name="Sh 1 Light" />
+					<preset_link preset_name="Short Entry Indicator (Zs 13)" />
+					<preset_link preset_name="Left-Track Indicator (Zs 6)" />
+					<preset_link preset_name="Left-Track Substitute Indicator (Zs 8)" />
+					<preset_link preset_name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" />
+				</item>
+				<separator />
+				<item name="Vr Semaphore Distant Signal" de.name="Vr-Form-Vorsignal" icon="de/vr2-semaphore-32.png" type="node">
+					<label text="Vr Semaphore Distant Signal" de.text="Vr-Form-Vorsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:distant"
+						value="DE-ESO:vr" />
+					<key key="railway:signal:distant:form"
+						value="semaphore" />
+					<combo key="railway:signal:distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:distant:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:vr0;DE-ESO:vr1;DE-ESO:vr2;?"
+						display_values="Vr 0 (Expect Stop);Vr 1 (Expect Proceed);Vr 2 (Expect Proceed at reduced speed);other states unknown"
+						de.display_values="Vr 0 (Halt erwarten);Vr 1 (Fahrt erwarten);Vr 2 (Langsamfahrt erwarten);weitere Zustände unbekannt"
+						values_sort="false"
+						/>
+					<combo key="railway:signal:distant:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremsweg"
+						values="DE-ESO:db:ne2,DE-ESO:dr:so3c"
+						display_values="DB (weißes Dreieck),DR (Kreis)"
+						/>
+					<check key="railway:signal:distant:repeated"
+						text="Repeated Signal"
+						de.text="Vorsignalwiederholer"
+						/>
+					<space />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+				</item>
+				<item name="Vr Distant Light Signal" de.name="Vr-Licht-Vorsignal" icon="de/vr0-light-32.png" type="node">
+					<label text="Vr Distant Light Signal" de.text="Vr-Licht-Vorsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:distant"
+						value="DE-ESO:vr" />
+					<key key="railway:signal:distant:form"
+						value="light" />
+					<combo key="railway:signal:distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<multiselect key="railway:signal:distant:states"
+						text="Signal states (multi-selection)"
+						de.text="Signalzustände (Mehrfachauswahl)"
+						delimiter=";"
+						values="DE-ESO:vr0;DE-ESO:vr1;DE-ESO:vr2;DE-ESO:kennlicht;off;?"
+						display_values="Vr 0 (Expect Stop);Vr 1 (Expect Proceed);Vr 2 (Expect Proceed at reduced speed);kennlicht (marker light);dark;other states unknown"
+						de.display_values="Vr 0 (Halt erwarten);Vr 1 (Fahrt erwarten);Vr 2 (Langsamfahrt erwarten);Kennlicht;dunkelgeschaltet;weitere Zustände unbekannt"
+						values_sort="false"
+						/>
+					<check key="railway:signal:distant:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremsweg"
+						/>
+					<check key="railway:signal:distant:repeated"
+						text="Repeated Signal"
+						de.text="Vorsignalwiederholer"
+						/>
+					<space />
+					<preset_link preset_name="Route Announcing Indicator (Zs 2v)" />
+					<preset_link preset_name="Distant Speed Indicator (Zs 3v)" />
+				</item>
+			</group>
+			<item name="Sh 1 Light" de.name="Sh-1-Licht" icon="de/sh1.png" type="node">
+				<label text="Sh 1 lights at other signals like Ks, Hp or Hl signals" de.text="Sh-1-Licht an anderen Signalen wie Ks-, Hl- oder Hp-Signalen." />
+				<space />
+				<key key="railway:signal:minor"
+					value="DE-ESO:sh1" />
+				<key key="railway:signal:minor:form"
+					value="light" />
+			</item>
+			<item name="Trapezoir Board (Ne 1)" de.name="Trapeztafel (Ne 1)" icon="de/ne1-32.png" type="node">
+				<label text="Trapezoir Board (Ne 1)" de.text="Trapeztafel (Ne 1)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:main:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<text key="railway:position:exact"
+					text="Exact position if signal is mounted at the left track (e.g. '13.427')"
+					de.text="Standortangabe an Trapeztafeln im Gegengleis (z. B. '13.427')"
+					/>
+				<space />
+				<key key="railway:signal:main"
+					value="DE-ESO:ne1" />
+				<key key="railway:signal:main:form"
+					value="sign" />
+				<combo key="railway:signal:main:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Normalhöhe,Zwergsignal"
+					/>
+				<key key="railway:signal:main:function"
+					value="entry" />
+			</item>
+			<item name="Distant Signal Board (Ne 2)" de.name="Vorsignaltafel (Ne 2)" icon="de/ne2-32.png" type="node">
+				<label text="Distant Signal Board (Ne 2)" de.text="Vorsignaltafel (Ne 2)" />
+				<label text="This signal is only mapped if there is no semaphore/light distant signal." de.text="Dieses Signal wird nur erfasst, wenn es ohne Vorsignal aufgestellt ist." />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<combo key="railway:signal:distant"
+					text="Type"
+					de.text="Typ"
+					values="DE-ESO:db:ne2,DE-ESO:dr:so3,DE-ESO:dr:so3b"
+					display_values="Ne 2 ex-DB,So 3 ex-DR, So 3b ex-DR (with black dot)"
+					de.display_values="Ne 2 ex-DB,So 3 ex-DR, So 3b ex-DR (mit schwarzem Punkt)"
+					match="keyvalue!" />
+				<key key="railway:signal:distant:form"
+					value="sign" />
+				<combo key="railway:signal:distant:height"
+                                        text="Signal height"
+                                        de.text="Signalbauform"
+                                        values="normal,dwarf"
+                                        display_values="Normalhöhe,Zwergsignal"
+                                        />
+				<check key="railway:signal:distant:shortened"
+					text="Shortened distance"
+					de.text="Verkürzter Bremsweg"
+					/>
+			</item>
+			<item name="Cross Board (So 106)" de.name="Kreuztafel (So 106)" icon="de/so106-32.png" type="node">
+				<label text="Cross Board (So 106)" de.text="Kreuztafel (So 106)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:distant"
+					value="DE-ESO:so106" />
+				<key key="railway:signal:distant:form"
+					value="sign" />
+			</item>
+			<separator />
+			<group name="Crossing Signals" de.name="Bahnübergangssignale" icon="de/bue1-ds-32.png">
+				<item name="Crossing Protection Signal (Bü 0/1)" de.name="Bü-Überwachungssignal (Bü 0/Bü 1)" icon="de/bue1-ds-32.png" type="node">
+					<label text="Crossing Protection Signal (Bü 0/1)" de.text="Bü-Überwachungssignal (Bü 0/Bü 1)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:crossing"
+						text="Exact type"
+						de.text="Signaltyp"
+						values="DE-ESO:bü,DE-ESO:so16"
+						display_values="Bü (ex-DB),So 16 (ex-DR)"
+						match="keyvalue!" />
+					<combo key="railway:signal:crossing:states"
+						text="Signal states"
+						de.text="Signalzustände"
+						values="DE-ESO:bü0;DE-ESO:bü1,DE-ESO:so16a;DE-ESO:so16b"
+						display_values="Bü 0/1 (ex-DB),So 16a/b (ex-DR)"
+						/>
+					<key key="railway:signal:crossing:form"
+						value="light" />
+					<check key="railway:signal:crossing:repeated"
+						text="Repeated"
+						de.text="Signalwiederholer (weiße Scheibe)"
+						/>
+					<check key="railway:signal:crossing:shortened"
+						text="Shortened distance"
+						de.text="Verkürzter Bremswegabstand (weißes Dreieck)"
+						/>
+				</item>
+				<item name="Diamond Board (Bü 2)" de.name="Rautentafel ex-DB (Bü 2)" icon="de/bue2-ds-28.png" type="node">
+					<label text="Diamond Board (Bü 2). Expect crossing signale (Bü 0/1)" de.text="Rautentafel ex-DB. Bü-Überwachungssignal erwarten (Bü 2)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:crossing_distant"
+						value="DE-ESO:bü2" />
+					<key key="railway:signal:crossing_distant:form"
+						value="sign" />
+					<check key="railway:signal:crossing_distant:shortened"
+						text="Shortened distance (white triangle)"
+						de.text="Verkürzter Bremswegabstand (weißes Dreieck)"
+						/>
+				</item>
+				<item name="Warning Board (So 15)" de.name="Warntafel (So 15)" icon="de/bue3-57.png" type="node">
+					<label text="Warning board (So 15) in East Germany (expect crossing signal)" de.text="Warntafel ex-DR. Bü-Überwachungssignal erwarten (So 15)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:crossing_distant"
+						value="DE-ESO:so15" />
+					<key key="railway:signal:crossing_distant:form"
+						value="sign" />
+				</item>
+				<item de.name="Einschaltkontakt Bahnübergang (Merktafel, Bü 3)"
+				    name="Activation switch crossing (Reminder Board, Bü 3)" icon="de/bue3-57.png" type="node">
+					<label de.text="Einschaltkontakt Bahnübergang/Merktafel (Bü 3)"
+					   text="Activation switch of a level crossing/ (Reminder Board, Bü 3)" />
+					<label de.text="Existiert nur im Gebiet der ehemaligen Bundesbahn (DS 301)."
+					   text="This signal only exists in West Germany (former area of Deutsche Bundesbahn)." />
+					<label de.text="Wird als Punkt auf dem Gleis erfasst."
+					   text="Is being mapped as a node on the track." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<key key="railway:signal:crossing_distant"
+						value="DE-ESO:bü3"
+						match="keyvalue!" />
+					<key key="railway:signal:crossing_distant:form"
+						value="sign" />
+				</item>
+				<item de.name="Einschaltkontakt Bahnübergang/Merkpfahl (So 14)"
+				    name="Activation switch crossing/Reminder Pole (So 14)" icon="de/bue3-57.png" type="node">
+					<label de.text="Einschaltkontakt Bahnübergang/Merkpfahl (So 14)"
+					   text="Activation switch of a level crossing/reminder pole (So 14)" />
+					<label de.text="Existiert nur im Gebiet der ehemaligen Reichsbahn (DV 301)."
+					   text="This signal only exists in East Germany (former area of Deutsche Reichsbahn)." />
+					<label de.text="Wird als Punkt auf dem Gleis erfasst."
+					   text="Is being mapped as a node on the track." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<key key="railway:signal:direction"
+						value="both" />
+					<key key="railway:signal:crossing_distant"
+						value="DE-ESO:so14"
+						match="keyvalue!" />
+					<key key="railway:signal:crossing_distant:form"
+						value="sign" />
+				</item>
+				<item name="Whistle Board (Bü 4, Pf 1/2)" de.name="Pfeiftafel (Bü 4/Pf 1/2)" icon="de/bue4-ds-32.png" type="node">
+					<label text="Whistle Board (Bü 4, Pf 1/2)" de.text="Pfeiftafel (Bü 4/Pf 1/2)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:whistle:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:whistle"
+						delimiter=";"
+						text="Exact type"
+						de.text="Signaltyp"
+						values="DE-ESO:db:bü4;DE-ESO:dr:pf1;DE-ESO:dr:pf2"
+						display_values="Bü 4 (ex-DB);Pf 1 (one board, ex-DR);Pf 2 (two boards at one post, ex-DR)"
+						de.display_values="Bü 4 (ex-DB);Pf 1 (einfache Pfeiftafel ex-DR);Pf 2 (doppelte Pfeiftafel ex-DR)"
+						/>
+					<key key="railway:signal:whistle:form"
+						value="sign" />
+					<check key="railway:signal:whistle:twice"
+						text="Whistle twice?"
+						de.text="Doppelte Pfeiftafel?"
+						/>
+					<check key="railway:signal:whistle:only_transit"
+						text="Whistle only when train does not stop before crossing?"
+						de.text="Zwei senkrechte Striche?"
+						default="off"
+						/>
+				</item>
+				<item name="Ring Board (Bü 5)" de.name="Läutetafel (Bü 5)" icon="de/bue5-32.png" type="node">
+					<label text="Ring Board (Bü 5)" de.text="Läutetafel (Bü 5)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:ring:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<key key="railway:signal:ring"
+						value="DE-ESO:bü5" />
+					<key key="railway:signal:ring:form"
+						value="sign" />
+					<check key="railway:signal:ring:only_transit"
+						text="Whistle only when train does not stop before crossing?"
+						de.text="Zwei senkrechte Striche?"
+						/>
+				</item>
+				<item name="Level Crossing Marker Board" de.name="Bü-Kennzeichentafel" icon="de/crossing-info.png" type="node">
+					<label text="Level Crossing Marker Board" de.text="Bü-Kennzeichentafel" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_info:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<reference ref="direction_fw_bw" />
+					<key key="railway:signal:crossing_info"
+						value="DE-ESO:bü-kennzeichentafel" />
+					<key key="railway:signal:crossing_info:form"
+						value="sign" />
+					<text key="railway:signal:crossing_info:caption"
+						text="Caption (e.g. 'Bü 123,4')"
+						de.text="Beschriftung (z. B. 'Bü 123,4')"
+						/>
+					<check key="railway:signal:crossing_info:repeated"
+						text="Repeated"
+						de.text="Signalwiederholer (weiße Scheibe)"
+						/>
+					<combo key="railway:signal:crossing_info:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Level Crossing Announcement Board" de.name="Bü-Ankündetafel" icon="de/crossing-hint.png" type="node">
+					<label text="Level Crossing Announcement Board" de.text="Bü-Ankündetafel" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:crossing_hint:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<reference ref="direction_fw_bw" />
+					<key key="railway:signal:crossing_hint"
+						value="DE-ESO:bü-ankündetafel" />
+					<key key="railway:signal:crossing_hint:form"
+						value="sign" />
+					<text key="railway:signal:crossing_hint:caption"
+						text="Caption (e.g. 'Bü 123,4')"
+						de.text="Beschriftung (z. B. 'Bü 123,4')"
+						/>
+					<check key="railway:signal:crossing_hint:repeated"
+						text="Repeated"
+						de.text="Signalwiederholer (weiße Scheibe)"
+						/>
+					<combo key="railway:signal:crossing_hint:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+			</group>
+			<group name="Protective and Shunting Signals (Sh)" de.name="Schutzsignale" icon="de/sh1-semaphore-normal-32.png">
+				<item name="Shunting Stop Signal (Sh 0/Sh 1)" de.name="Schutzhaltsignal (Sh 0/Sh 1)" icon="de/sh0-semaphore-dwarf-32.png" type="node">
+					<label text="Shunting Stop Signal (Sh 0/Sh 1)" de.text="Schutzhaltsignal  (Sh 0/Sh 1)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:minor:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge,in_track"
+						display_values="left,right,on a bridge over the tracks,in the track/at the buffer stop"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke,Gleismitte/am Prellbock"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:minor"
+						value="DE-ESO:sh" />
+					<combo key="railway:signal:minor:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,semaphore,sign"
+						display_values="Lichtsignal,Formsignal,Tafel"
+						/>
+					<combo key="railway:signal:minor:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:minor:states"
+						text="Displayed signals"
+						de.text="Angezeigte Signalbilder"
+						values="DE-ESO:hp0;DE-ESO:sh1,DE-ESO:sh0;DE-ESO:sh1,DE-ESO:hp0;DE-ESO:kennlicht"
+						display_values="light signal (Hp 0/Sh 1),semaphore signal (Sh 0/Sh 1),Hp 0/marker light"
+						de.display_values="Lichtsignal (Hp 0/Sh 1),Formsignal (Sh 0/Sh 1),Zugdeckungssignal (Hp 0/Kennlicht)"
+						/>
+					<space />
+					<label text="Signal Gsp 2 siehe 'Gleissperre'" />
+				</item>
+				<item name="Protective Stop (Sh 2)" de.name="Schutzhalttafel (Sh 2)" icon="de/sh2-32.png" type="node">
+					<label text="Protective Stop (Sh 2)" de.text="Schutzhalttafel (Sh 2)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:minor:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,in_track"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+						/>
+					<reference ref="direction_fw_bw_b" />
+					<space />
+					<key key="railway:signal:minor"
+						value="DE-ESO:sh2" />
+					<key key="railway:signal:minor:form"
+						value="sign" />
+					<key key="railway:signal:minor:height"
+						value="normal" />
+				</item>
+				<item name="Expect Sh 2 Board" de.name="Wärtervorscheibe" icon="de/sh3.png" type="node">
+					<label text="Expect Sh 2 Board" de.text="Wärtervorscheibe" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:minor_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:minor_distant"
+						value="DE-ESO:dr:sh3" />
+					<key key="railway:signal:minor_distant:form"
+						value="sign" />
+					<combo key="railway:signal:minor_distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+			</group>
+			<group name="Shunting Signals" de.name="Rangiersignale" icon="de/ra11-sign-32.png">
+				<item name="Limit of Shunting Board (Ra 10)" de.name="Rangierhalttafel (Ra 10)" icon="de/ra10-32.png" type="node">
+					<label text="Limit of Shunting Board (Ra 10)" de.text="Rangierhalttafel (Ra 10)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:shunting:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:shunting"
+						value="DE-ESO:ra10" />
+					<key key="railway:signal:shunting:form"
+						value="sign" />
+					<combo key="railway:signal:shunting:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Waiting Board (Ra 11)" de.name="Rangierhaltsignal (Ra 11)" icon="de/ra11-sign-32.png" type="node">
+					<label text="Rangierhaltsignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<reference ref="sig_ref" />
+					<check key="railway:signal:shunting:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:shunting"
+						text="Type of signal"
+						de.text="Signaltyp"
+						values="DE-ESO:ra11,DE-ESO:ra11b"
+						display_values="Ra 11 (yellow),Ra 11b (white)"
+						de.display_values="Ra 11 (gelb),Ra 11b (weiß)"
+						match="keyvalue!" />
+					<combo key="railway:signal:shunting:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="light signal with Sh 1,board"
+						de.display_values="Lichtsignal mit Sh 1,Tafel"
+						/>
+					<combo key="railway:signal:shunting:states"
+						text="Signal states"
+						de.text="Signalzustände"
+						values="DE-ESO:ra11;DE-ESO:sh1, "
+						display_values="Ra 11/Sh 1,only board"
+						de.display_values="Ra 11/Sh 1,nur Tafel"
+						/>
+					<combo key="railway:signal:shunting:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Hump Yard Signal (Ra 6–9)" de.name="Abdrücksignal (Ra 6–Ra 9)" type="node">
+					<label text="Hump Yard Signal (Ra 6–9)" de.text="Abdrücksignal (Ra 6–Ra 9)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:humping:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:humping"
+						value="DE-ESO:ra" />
+					<combo key="railway:signal:humping:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,semaphore"
+						display_values="Lichtsignal,Formsignal"
+						/>
+					<key key="railway:signal:humping:states"
+						value="DE-ESO:ra6;DE-ESO:ra7;DE-ESO:ra8;DE-ESO:ra9" />
+					<combo key="railway:signal:humping:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Clear-of-Points Marker (Ra 12)" de.name="Grenzzeichen (Ra 12)" icon="de/ra12.png" type="node">
+					<label text="Clear-of-Points Marker (Ra 12)" de.text="Grenzzeichen (Ra 12)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+						/>
+					<key key="railway:signal:fouling_point"
+						value="DE-ESO:ra12" />
+				</item>
+				<item name="ex-DR Diamond Board (Zs 103)" de.name="ex-DR Rautentafel (Zs 103)" type="node">
+					<label text="ex-DR Rautentafel (Zs 103)" />
+					<label text="existiert nur an Formhauptsignalen in Ostdeutschland" />
+					<label text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<key key="railway:signal:shunting"
+						value="DE-ESO:zs103" />
+					<key key="railway:signal:shunting:form"
+						value="sign" />
+				</item>
+			</group>
+			<group name="Subsidiary Signals" de.name="Zusatzsignale" icon="de/zs3-60-sign-up-32.png">
+				<item name="Route Indicator (Zs 2)" de.name="Richtungsanzeiger (Zs 2)" icon="de/zs2-F-38.png" type="node">
+					<label text="Route Indicator (Zs 2)" de.text="Richtungsanzeiger (Zs 2)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:route:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:route"
+						value="DE-ESO:zs2" />
+					<text key="railway:signal:route:states"
+						text="Signal states (separated by ';', use '?' if you don't know all possible values)"
+						de.text="Mögliche Anzeigewerte (getrennt durch ';', verwende '?', wenn du nicht alle Werte kennst)"
+						/>
+					<key key="railway:signal:route:form"
+						value="light" />
+				</item>
+				<item name="Route Announcing Indicator (Zs 2v)" de.name="Richtungsvoranzeiger (Zs 2v)" icon="de/zs2v-F-38.png" type="node">
+					<label text="Route Announcing Indicator (Zs 2v)" de.text="Richtungsvoranzeiger (Zs 2v)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:route_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:route_distant"
+						value="DE-ESO:zs2v" />
+					<text key="railway:signal:route_distant:states"
+						text="Signal states (separated by ';', use '?' if you don't know all possible values)"
+						de.text="Mögliche Anzeigewerte (getrennt durch ';', verwende '?', wenn du nicht alle Werte kennst)"
+						/>
+					<key key="railway:signal:route_distant:form"
+						value="light" />
+				</item>
+				<separator />
+				<item name="Speed Indicator (Zs 3)" de.name="Geschwindigkeitsanzeiger (Zs 3)" icon="de/zs3-60-sign-up-32.png" type="node">
+					<label text="Speed Indicator (Zs 3)" de.text="Geschwindigkeitsanzeiger (Zs 3)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:speed_limit:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:speed_limit"
+						value="DE-ESO:zs3" />
+					<combo key="railway:signal:speed_limit:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="Lichtsignal,Tafel"
+						/>
+					<multiselect key="railway:signal:speed_limit:speed" 
+						text="Speed (km/h)"
+						de.text="Geschwindigkeit (km/h)"
+						delimiter=";"
+						values="off;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;?"
+						display_values="off;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;unknown"
+						de.display_values="dunkel;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;unbekannt" />
+					<combo key="railway:signal:speed_limit:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Distant Speed Indicator (Zs 3v)" de.name="Geschwindigkeitsvoranzeiger (Zs 3v)" icon="de/zs3v-60-sign-down-32.png" type="node">
+					<label text="Distant Speed Indicator (Zs 3v)" de.text="Geschwindigkeitsvoranzeiger (Zs 3v)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:speed_limit_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:speed_limit_distant"
+						value="DE-ESO:zs3v" />
+					<combo key="railway:signal:speed_limit_distant:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="Lichtsignal,Tafel"
+						/>
+					<multiselect key="railway:signal:speed_limit_distant:speed" 
+						text="Speed (km/h)"
+						de.text="Geschwindigkeit (km/h)"
+						delimiter=";"
+						values="off;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;?"
+						display_values="off;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;unknown"
+						de.display_values="dunkel;10;20;30;40;50;60;70;80;90;100;110;120;130;140;150;160;170;180;190;200;unbekannt" />
+					<combo key="railway:signal:speed_limit_distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="End of Speed Restriction (Zs 10)" de.name="Endesignal (Zs 10)" icon="de/zs10-sign-32.png" type="node">
+					<label text="End of Speed Restriction (Zs 10)" de.text="Endesignal (Zs 10)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:speed_limit:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:speed_limit"
+						value="DE-ESO:db:zs10" />
+					<combo key="railway:signal:speed_limit:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="Lichtsignal,Tafel"
+						/>
+					<key key="railway:signal:speed_limit:speed"
+						value="none" />
+					<combo key="railway:signal:speed_limit:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<separator />
+				<item name="Left-Track Indicator (Zs 6)" de.name="Gegengleisanzeiger (Zs 6)" icon="de/zs6-sign-30.png" type="node">
+					<label text="Left-Track Indicator (Zs 6)" de.text="Gegengleisanzeiger" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:wrong_road:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:wrong_road" text="Type" de.text="Typ" match="keyvalue!">
+						<list_entry value="DE-ESO:db:zs6" display_value="Zs 6 DB" short_description="Gegengleisanzeiger Zs 6 (ex-DB)" />
+						<list_entry value="DE-ESO:dr:zs7" display_value="Zs 7 DR" short_description="Gegengleisanzeiger Zs 7 (ex-DR)" />
+					</combo>
+					<combo key="railway:signal:wrong_road:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="sign,light"
+						display_values="Tafel,Leuchtanzeige"
+						/>
+				</item>
+				<item name="Left-Track Substitute Indicator (Zs 8)" de.name="Gegengleisfahrt-Ersatzsignal (Zs 8)" type="node">
+					<label text="Left-Track Substitute Indicator (Zs 8)" de.text="Gegengleisfahrt-Ersatzsignal (Zs 8)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:wrong_road:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:wrong_road" text="Type" de.text="Typ" match="keyvalue!">
+						<list_entry value="DE-ESO:db:zs8" display_value="Zs 8 DB" short_description="Left-Track Order Signal Zs 8 (ex-DB)" de.short_description="Falschfahrt-Auftragssignal Zs 8 (ex-DB)" />
+						<list_entry value="DE-ESO:dr:zs8" display_value="Zs 8 DR" short_description="Left-Track Substitute Signal Zs 8 (ex-DB)" de.short_description="Linksfahrtersatzsignal Zs 8 (ex-DR)" />
+		            </combo>
+					<combo key="railway:signal:wrong_road:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="sign,light"
+						display_values="Tafel,Leuchtanzeige"
+						/>
+				</item>
+				<separator />
+				<item name="Short Entry Indicator (Zs 13)" de.name="Stumpfgleis- und Frühhaltanzeiger (Zs 13)" icon="de/zs13-sign-30.png" type="node">
+					<label text="Short Entry Indicator (Zs 13)" de.text="Stumpfgleis- und Frühhaltanzeiger (Zs 13)" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:short_route:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:short_route"
+						text="Type of signal"
+						de.text="Signaltyp"
+						values="DE-ESO:zs13,DE-ESO:dr:zs6,DE-ESO:dr:zs106"
+						display_values="Zs 13,Zs 6 (light signal ex-DR),Zs 106 (board ex-DR)"
+						de.display_values="Zs 13,Zs 6 (Lichtsignal ex-DR),Zs 106 (Tafel ex-DR)"
+						match="keyvalue!" />
+					<combo key="railway:signal:short_route:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="Lichtsignal,Tafel"
+						/>
+					<combo key="railway:signal:short_route:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+			</group>
+			<group name="Speed Restriction Signs (Lf)" de.name="Langsamfahrsignale (Lf)" icon="de/lf7-70-sign-32.png">
+				<item name="Speed Restriction Sign" de.name="Geschwindigkeitssignal" icon="de/lf7-70-sign-32.png" type="node">
+					<label name="Speed Restriction Sign" text="Geschwindigkeitssignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:speed_limit:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:speed_limit" text="Type of signal" de.text="Signaltyp" match="keyvalue!">
+						<list_entry value="DE-ESO:lf7" display_value="Lf 7" short_description="Permanent Speed Restriction" de.short_description="Geschwindigkeitssignal" />
+						<list_entry value="DE-ESO:dr:lf1/2" display_value="Lf 1/2" short_description="Permanent Speed Restriction (ex-DR)" de.short_description="Langsamfahrbeginnscheibe (ex-DR)" />
+						<list_entry value="DE-ESO:lf2" display_value="Lf 2" short_description="Temporary Speed Restriction Begin Board" de.short_description="Anfangsscheibe" />
+						<list_entry value="DE-ESO:lf3" display_value="Lf 3" short_description="End of Temporary Speed Restriction" de.short_description="Endscheibe" />
+						<list_entry value="DE-ESO:db:lf5" display_value="Lf 5 DB" short_description="Permanent Speed Restriction Begin Board (ex-DB)" de.short_description="Anfangstafel (ex-DB)" />
+						<list_entry value="DE-ESO:dr:lf5" display_value="Lf 5 DR" short_description="Corner Board (ex-DR)" de.short_description="Eckentafel (ex-DR)" />
+					</combo>
+					<key key="railway:signal:speed_limit:form"
+						value="sign" />
+					<combo key="railway:signal:speed_limit:speed"
+						text="Speed (km/h)"
+						de.text="Geschwindigkeit (km/h)"
+						values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,none"
+						display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,end (Zs 10; Lf 3)"
+						de.display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,Aufhebung (Zs 10; Lf 3)" />
+					<combo key="railway:signal:speed_limit:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:speed_limit:turn_direction"
+						text="Turn direction arrow – leave this key empty if there is no one."
+						de.text="Richtungspfeil – leer lassen, falls es keinen gibt."
+						values="left,through,right"
+						display_values="Left,Through,Right"
+						de.display_values="Links,Geradeaus,Rechts"
+						/>
+				</item>
+				<item name="Advance Warning Indicator" de.name="Geschwindigkeits-Ankündesignal" icon="de/lf6-60-sign-down-32.png" type="node">
+					<label text="Advance Warning Indicator (Announces a Speed Restriction)" de.text="Geschwindigkeits-Ankündesignal" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:speed_limit_distant:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<combo key="railway:signal:speed_limit_distant" text="Type of signal" de.text="Signaltyp" match="keyvalue!">
+						<list_entry value="DE-ESO:lf6" display_value="Lf 6" short_description="advance warning indicator" de.short_description="Geschwindigkeits-Ankündesignal Lf 6" />
+						<list_entry value="DE-ESO:lf1" display_value="Lf 1" short_description="warning board (temporary speed restriction)" de.short_description="Langsamfahrscheibe Lf 1" />
+						<list_entry value="DE-ESO:db:lf4" display_value="Lf 4 DB" short_description="advance warning indicator (ex-DB)" de.short_description="Geschwindigkeitstafel Lf 4 (ex-DB)" />
+						<list_entry value="DE-ESO:dr:lf4" display_value="Lf 4" de.short_description="advance warning indicator (ex-DR)" />
+					</combo>
+					<key key="railway:signal:speed_limit_distant:form"
+						value="sign" />
+					<combo key="railway:signal:speed_limit_distant:speed"
+						text="Speed (km/h)"
+						de.text="Geschwindigkeit (km/h)"
+						values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,off"
+						display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,off"
+						de.display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,off" />
+					<combo key="railway:signal:speed_limit_distant:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+					<combo key="railway:signal:speed_limit_distant:turn_direction"
+						text="Turn direction arrow – leave this key empty if there is no one."
+						de.text="Richtungspfeil – leer lassen, falls es keinen gibt."
+						values="left,through,right"
+						display_values="Left,Through,Right"
+						de.display_values="Links,Geradeaus,Rechts"
+						/>
+				</item>
+			</group>
+			<item name="Protection Signal of a Resetting Switch (Ne 13)" de.name="Überwachungssignal Rückfallweiche (Ne 13)" icon="de/ne13a-32.png" type="node">
+				<label text="Protection Signal of a Resetting Switch (Ne 13)" de.text="Überwachungssignal Rückfallweiche (Ne 13)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:resetting_switch:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:resetting_switch"
+					value="DE-ESO:ne13" />
+				<key key="railway:signal:resetting_switch:form"
+					value="light" />
+				<key key="railway:signal:resetting_switch:states"
+					value="DE-ESO:ne13a;DE-ESO:ne13b" />
+				<combo key="railway:signal:resetting_switch:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Resetting Switch Announcement Board (Ne 12)" de.name="Ankündigung Überwachungssignal Rückfallweiche (Ne 12)" icon="de/ne12-38.png" type="node">
+				<label text="Announcement Board of a Resetting Switch Protection Signal (Ne 12)" de.text="Ankündigung Überwachungssignal Rückfallweiche (Ne 12)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:resetting_switch_distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:resetting_switch_distant"
+					value="DE-ESO:ne12" />
+				<key key="railway:signal:resetting_switch_distant:form"
+					value="sign" />
+				<combo key="railway:signal:resetting_switch_distant:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<separator />
+			<item name="Chequerboard Sign (Ne 4)" de.name="Schachbretttafel (Ne 4)" icon="de/ne4-normal-32.png" type="node">
+				<label text="Chequerboard Sign (Ne 4)" de.text="Schachbretttafel (Ne 4)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:expected_position:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<combo key="railway:signal:expected_position"
+					text="Side of track where the signal would be mounted usually"
+					de.text="Gleisseite, auf der man das Signal normalerweise erwarten würde"
+					values="left,right"
+					display_values="left in direction of OSM way,right in direction of OSM way"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					match="keyvalue!" />
+				<combo key="railway:signal:expected_position:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Stop Marker (Ne 5)" de.name="Haltetafel (Ne 5)" icon="de/ne5-ds301-32.png" type="node">
+				<label text="Stop Marker (Ne 5)" de.text="Haltetafel (Ne 5)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:stop:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:stop"
+					value="DE-ESO:ne5" />
+				<key key="railway:signal:stop:form"
+					value="sign" />
+				<combo key="railway:signal:stop:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+				<text key="railway:signal:stop:caption"
+					text="text on subsidiary plate"
+					de.text="Zusatztext"
+					/>
+			</item>
+			<item name="Stop Request Signal (Ne 5)" de.name="Anforderung Bedarfshalt (Ne 5)" icon="de/ne5-light-32.png" type="node">
+				<label text="Stop sign as light signal (Ne 5) with meaning of 'stop requested'" de.text="Haltetafel als Lichtsignal (Ne 5) in der Bedeutung 'Anforderung Bedarfshalt'," />
+				<label text="shows a white flashing H on a black background if someone wants to enter the train" de.text="zeigt bei Haltewunsch ein weiß blinkendes H auf schwarzem Grund" />
+				<label text="according to DB Ril 301.1401 (6) / ESO AB 220a" de.text="nach DB-Richtlinie 301.1401 (6) bzw. ESO AB 220a" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:stop_demand:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:stop_demand"
+					value="DE-ESO:ne5" />
+				<key key="railway:signal:stop_demand:form"
+					value="light" />
+				<combo key="railway:signal:stop_demand:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Halt Advance Board (Ne 6)" de.name="Haltepunkttafel (Ne 6)" icon="de/ne6-32.png" type="node">
+				<label text="Halt Advance Board (Ne 6)" de.text="Haltepunkttafel (Ne 6)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:station_distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:station_distant"
+					value="DE-ESO:ne6" />
+				<key key="railway:signal:station_distant:form"
+					value="sign" />
+			</item>
+			<item name="Snowplow Sign (Ne 7)" de.name="Schneepflugtafel (Ne 7)" icon="de/ne7-yellow-up-32.png" type="node">
+				<label text="Snowplow Sign (Ne 7)" de.text="Schneepflugtafel" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:snowplow:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:snowplow"
+					value="DE-ESO:ne7" />
+				<key key="railway:signal:snowplow:form"
+					value="sign" />
+				<combo key="railway:signal:snowplow:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+				<combo key="railway:signal:snowplow:type"
+					text="Order"
+					de.text="Anweisung"
+					values="up,down"
+					display_values="Heben,Senken"
+					/>
+			</item>
+			<item name="ETCS Stop Marker (Ne 14)" de.name="ETCS-Halt-Tafel (Ne 14, ETCS Stop Marker)" icon="etcs-stop-marker-arrow-left-32.png" type="node">
+				<label text="ETCS Stop Marker (Ne 14)" de.text="ETCS-Halt-Tafel (Ne 14), auch bekannt als ETCS Stop Marker" />
+				<label text="Wird als Punkt auf dem Gleis erfasst. Steht am Hauptsignal oder virtuellem Signal (Level 2 ohne Signale)." />
+				<space />
+				<reference ref="sig_ref" />
+				<check key="railway:signal:train_protection:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge,overhead"
+					display_values="left,right,on a bridge over the tracks,overhead (at catenary level)"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke,in der Oberleitung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<check key="railway:signal:catenary_mast"
+					text="On catenary mast"
+					de.text="Am Oberleitungsmast"
+					/>
+				<key key="railway:signal:train_protection"
+					value="DE-ESO:ne14" /> 
+				<key key="railway:signal:train_protection:type"
+					value="block_marker" />
+				<key key="railway:signal:train_protection:form"
+					value="sign" />
+			</item>
+			<item name="Catenary Signals (El)" de.name="Fahrleitungssignal (El)" icon="de/el6-28.png" type="node">
+				<label text="Catenary Signals (El)" de.text="Fahrleitungssignal (El)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:electricity:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,overhead"
+					display_values="left,right,overhead (at catenary level)"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,in der Oberleitung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<combo key="railway:signal:electricity"
+					text="Exact type"
+					de.text="Signaltyp"
+					values="DE-ESO:el1v,DE-ESO:el1,DE-ESO:el2,DE-ESO:el3,DE-ESO:el4,DE-ESO:el5,DE-ESO:el6"
+					display_values="Open Circuit Breaker Ahead (El 1v),Open Circuit Breaker (El 1),Close Circuit Breaker (El 2),Advance Lower Pantograph (El 3),Execute Sign for Lower Pantograph(s) (El 4),Execute Sign for Raise Pantograph(s) (El 5),Limit of Electric Traction (El 6)"
+					de.display_values="Ausschaltsignal erwarten (El 1v),Ausschaltsignal (El 1),Einschaltsignal (El 2),Bügel-ab-Signal erwarten (El 3),Bügel-ab-Signal (El 4),Bügel-an-Signal (El 5),Halt für Fahrzeuge mit gehobenem Stromabnehmer (El 6)"
+					/>
+				<combo key="railway:signal:electricity:turn_direction"
+					text="Turn direction arrow – leave this key empty if there is no one."
+					de.text="Richtungspfeil – leer lassen, falls es keinen gibt."
+					values="left,through,right"
+					display_values="Left,Through,Right"
+					de.display_values="Links,Geradeaus,Rechts"
+					/>
+				<combo key="railway:signal:electricity:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="normal,dwarf"
+					de.display_values="Mastbauform,Zwergsignal"
+					/>
+				<combo key="railway:signal:electricity:type"
+					text="Meaning"
+					de.text="Bedeutung"
+					values="power_off_advance,power_off,power_on,pantograph_down_advance,pantograph_down,pantograph_up,end_of_catenary"
+					display_values="Ausschaltsignal erwarten (El 1v),Ausschaltsignal (El 1),Einschaltsignal (El 2),Bügel-ab-Signal erwarten (El 3),Bügel-ab-Signal (El 4),Bügel-an-Signal (El 5),Halt für Fahrzeuge mit gehobenem Stromabnehmer (El 6)"
+					/>
+				<key key="railway:signal:electricity:form"
+					value="sign" />
+				<text key="railway:signal:electricity:voltage"
+					text="voltage (if mentioned on subsidiary plate)"
+					de.text="Spannung (falls angezeigt)"
+					/>
+				<text key="railway:signal:electricity:frequency"
+					text="frequency (if mentioned on subsidiary plate)"
+					de.text="Frequenz (falls angezeigt)"
+					/>
+			</item>
+			<group name="Signals for Helper Engines (Ts)" de.name="Signale für Schiebelokomotiven und Sperrfahrten (Ts)">
+				<item name="Stop Banking (Ts 1)" de.name="Nachschieben einstellen (Ts 1)" type="node">
+					<label text="Stop Banking (Ts 1)" de.text="Nachschieben einstellen" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:helper_engine:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:helper_engine"
+						value="DE-ESO:ts" />
+					<combo key="railway:signal:helper_engine:form"
+						text="Signal form"
+						de.text="Anzeigeart"
+						values="light,sign"
+						display_values="Lichtsignal,Tafel"
+						/>
+					<key key="railway:signal:helper_engine:states"
+						value="DE-ESO:ts1" />
+					<combo key="railway:signal:helper_engine:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+				<item name="Stop/Proceed for Returning Helper Engines (Ts 2/3)" de.name="Halt/Weiterfahrt für zurückkehrende Schieblokomotiven und Sperrfahrten (Ts 2/3)" type="node">
+					<label text="Stop/Proceed for Returning Helper Engines (Ts 2/3)" de.text="Halt/Weiterfahrt für zurückkehrende Schieblokomotiven und Sperrfahrten" />
+					<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+					<space />
+					<key key="railway"
+						value="signal" />
+					<check key="railway:signal:helper_engine:deactivated"
+						text="Out of order"
+						de.text="Ungültigkeitskreuz"
+						/>
+					<combo key="railway:signal:position"
+						text="Signal position"
+						de.text="Signalstandort"
+						values="left,right,bridge"
+						display_values="left,right,on a bridge over the tracks"
+						de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+						/>
+					<reference ref="direction_fw_bw" />
+					<space />
+					<key key="railway:signal:helper_engine"
+						value="DE-ESO:ts" />
+					<key key="railway:signal:helper_engine:form"
+						value="semaphore" />
+					<key key="railway:signal:helper_engine:states"
+						value="DE-ESO:ts2;DE-ESO:ts3" />
+					<combo key="railway:signal:helper_engine:height"
+						text="Signal height"
+						de.text="Signalbauform"
+						values="normal,dwarf"
+						display_values="normal,dwarf"
+						de.display_values="Mastbauform,Zwergsignal"
+						/>
+				</item>
+			</group>
+			<separator />
+			<item name="Proceed Indicator" de.name="Fahrtanzeiger" icon="de/fahrtanzeiger-32.png" type="node">
+				<label text="Proceed Indicator" de.text="Fahrtanzeiger" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<reference ref="sig_ref" />
+				<check key="railway:signal:main_repeated:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw_b" />
+				<space />
+				<key key="railway:signal:main_repeated"
+					value="DE-ESO:fahrtanzeiger" />
+				<key key="railway:signal:main_repeated:form"
+					value="light" />
+			</item>
+			<item name="Starting Order and Close Doors Signal (Zp 9/Zp 10)" de.name="Abfahrtssignal und Türen schließen (Zp 9/Zp 10)" icon="de/zp9-db-38.png" type="node">
+				<label text="Starting Order and Close Doors Signal (Zp 9/Zp 10)" de.text="Abfahrtssignal und Türen schließen (Zp 9/Zp 10)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:departure:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw_b" />
+				<key key="railway:signal:departure"
+					value="DE-ESO:zp" />
+				<multiselect key="railway:signal:departure:states"
+					text="Signal states (multi-selection)"
+					de.text="Signalzustände (Mehrfachauswahl)"
+					delimiter=";"
+					values="DE-ESO:zp10;DE-ESO:zp9"
+					display_values="close doors (Zp 10);starting order (Zp 9)"
+					de.display_values="Türen schließen Zp 10;Abfahrtssignal Zp 9"
+					/>
+				<key key="railway:signal:departure:form"
+					value="light" />
+			</item>
+			<item name="Break Test Signals (Zp6–8)" de.name="Bremsprobesignal (Zp 6–Zp 8)" icon="de/zp8-32.png" type="node">
+				<label text="Break Test Signals (Zp6–8)" de.text="Bremsprobesignal(Zp 6–Zp 8)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:brake_test:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="left,right,on a bridge over the tracks"
+					de.display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw_b" />
+				<key key="railway:signal:brake_test"
+					value="DE-ESO:zp" />
+				<key key="railway:signal:brake_test:form"
+					value="light" />
+				<key key="railway:signal:brake_test:states"
+					value="DE-ESO:db:zp6;DE-ESO:db:zp7;DE-ESO:db:zp8" />
+			</item>
+			<separator />
+			<item name="Block Marker" de.name="Blockkennzeichen" icon="de/blockkennzeichen-28.png" type="node">
+				<label text="Block Marker (ETCS/LZB)" de.text="Blockkennzeichen (ETCS/LZB)" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<label text="ETCS Stop Marker (Ne 14) see …" de.text="ETCS-Halt-Tafel (Ne 14) siehe …" />
+				<preset_link preset_name="ETCS Stop Marker (Ne 14)" />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:train_protection:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<check key="railway:signal:catenary_mast"
+					text="On catenary mast"
+					de.text="Am Oberleitungsmast"
+					/>
+				<text key="ref"
+					text="Block reference"
+					de.text="Blockbezeichner"
+					/>
+				<key key="railway:signal:train_protection"
+					value="DE-ESO:blockkennzeichen" /> 
+				<key key="railway:signal:train_protection:type"
+					value="block_marker" />
+				<key key="railway:signal:train_protection:form"
+					value="sign" />
+			</item>
+			<item name="LZB Section Marker" de.name="LZB-Bereichskennzeichen" icon="de/lzb-section-start-32.png" type="node">
+				<label text="LZB Section Marker" de.text="LZB-Bereichskennzeichen" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:train_protection:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<check key="railway:signal:catenary_mast"
+					text="On catenary mast"
+					de.text="Am Oberleitungsmast"
+					/>
+				<key key="railway:signal:train_protection"
+					value="DE-ESO:lzb-bereichskennzeichen" />
+				<key key="railway:signal:train_protection:form"
+					value="sign" />
+			</item>
+			<item name="Train Radio Board" de.name="Zugfunk-Kanalhinweis" type="node">
+				<label text="Train Radio Board" de.text="Zugfunk-Kanalhinweis" />
+				<label text="This signal is being mapped as a node on the track." de.text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<key key="railway:signal:radio"
+					value="DE-ESO:zugfunk-kanalhinweis" />
+				<key key="railway:signal:radio:form"
+					value="sign" />
+				<text key="railway:signal:radio:frequency"
+					text="Frequency/Channel"
+					de.text="Frequenz/Kanal"
+					/>
+			</item>
+	</group>
+</presets>

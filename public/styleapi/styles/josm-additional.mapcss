@@ -1,0 +1,185 @@
+/*
+OpenRailwayMap Style File for JOSM
+Additional icons for mapping railway information
+
+OpenRailwayMap Copyright (C) 2015 Michael Reichert
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See ../COPYING for details.
+
+This style is not suitable for map rendering! It uses some JOSM default icons, 
+available under GPL v2 or newer. These icons are not included.
+
+Format details:
+* https://josm.openstreetmap.de/wiki/Help/Styles/MapCSSImplementation
+* https://wiki.openstreetmap.org/wiki/MapCSS/0.2
+*/
+
+meta
+{
+	title: "OpenRailwayMap additional icons and symbols for editing";
+	version: "0"; 
+	description: "Style for a assisting mapping of railway information in JOSM. Not suitable for map rendering.";
+	author: "Nakaner";
+	link: "https://wiki.openstreetmap.org/wiki/OpenRailwayMap";
+	watch-modified: true;
+}
+
+way|z9-[railway=disused][!"disused:railway"]
+{
+	color: "red";
+	text: eval("missing disused:railway");
+}
+way|z9-[railway=abandoned][!"abandoned:railway"]
+{
+	color: "red";
+	text: eval("missing abandoned:railway");
+}
+way|z9-[railway=razed][!"razed:railway"]
+{
+	color: "red";
+	text: eval("missing razed:railway");
+}
+way|z9-[railway=proposed][!"proposed:railway"]
+{
+	color: "red";
+	text: eval("missing proposed:railway");
+}
+way|z9-[railway=construction][!"construction:railway"]
+{
+	color: "red";
+	text: eval("missing construction:railway");
+}
+
+node|z14-[railway=milestone]["railway:position"]
+{
+	z-index: 100;
+	icon-image: "icons/milestone-sign-16.png";
+	icon-width: 10;
+	icon-height: 16;
+	allow-overlap: true;
+}
+
+node|z14-[railway=milestone][!"railway:position"]
+{
+	z-index: 100;
+	icon-image: "icons/milestone-sign-without-km-16.png";
+	icon-width: 10;
+	icon-height: 16;
+	allow-overlap: true;
+}
+
+/* German route distant signals (Zs 2v), missing route information */
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route_distant"="DE-ESO:zs2v"][!"railway:signal:route_distant:states"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route_distant"="DE-ESO:zs2v"]["railway:signal:route_distant:states"="?"]
+{
+	z-index: 85;
+	icon-width: 15;
+	icon-height: 19;
+	allow-overlap: true;
+	icon-image: "icons/de/zs2v-unknown-38.png";
+}
+
+/* German route signals (Zs 2), missing route information */
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route"="DE-ESO:zs2"][!"railway:signal:route:states"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route"="DE-ESO:zs2"]["railway:signal:route:states"="?"]
+{
+	z-index: 90;
+	icon-width: 15;
+	icon-height: 19;
+	allow-overlap: true;
+	icon-image: "icons/de/zs2-unknown-38.png";
+}
+
+/* German speed signals (Zs 3v), missing speed information */
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit_distant"="DE-ESO:zs3v"]["railway:signal:speed_limit_distant:form"=~/(sign|light)/][!"railway:signal:speed_limit_distant:speed"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit_distant"="DE-ESO:zs3v"]["railway:signal:speed_limit_distant:form"=~/(sign|light)/]["railway:signal:speed_limit_distant:speed"="?"]
+{
+	z-index: 95;
+	icon-width: 22;
+	icon-height: 19;
+	allow-overlap: true;
+	icon-image: "icons/de/zs3v-empty-sign-down-44.png";
+}
+
+/* German speed signals (Zs 3), missing speed information */
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit"="DE-ESO:zs3"]["railway:signal:speed_limit:form"=~/(sign|light)/][!"railway:signal:speed_limit:speed"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit"="DE-ESO:zs3"]["railway:signal:speed_limit:form"=~/(sign|light)/]["railway:signal:speed_limit:speed"="?"]
+{
+	z-index: 195;
+	icon-width: 22;
+	icon-height: 19;
+	allow-overlap: true;
+	icon-image: "icons/de/zs3-empty-sign-up-44.png";
+}
+
+/* German line speed signals (Lf 6), missing speed information */
+node|z14-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit_distant"="DE-ESO:lf6"]["railway:signal:speed_limit_distant:form"=sign][!"railway:signal:speed_limit_distant:speed"]
+{
+	z-index: 295;
+	icon-width: 22;
+	icon-height: 19;
+	allow-overlap: true;
+	icon-image: "icons/de/lf6-empty-sign-down-44.png";
+}
+
+/* German line speed signals (Lf 7), missing speed information */
+node|z14-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit"="DE-ESO:lf7"]["railway:signal:speed_limit:form"=sign][!"railway:signal:speed_limit:speed"]
+{
+	z-index: 395;
+	icon-width: 13;
+	icon-height: 16;
+	allow-overlap: true;
+	icon-image: "icons/de/lf7-empty-sign-32.png";
+}
+
+node|z16-[railway=signal][!"railway:signal:direction"]
+{
+	z-index: 1000;
+	icon-image: "presets/misc/deprecated.svg";
+	/* presets/misc/deprecated.svg is part of the JOSM installation, 
+	   that's why it is not included at OpenRailwayMap repository */
+	icon-width: 16;
+	icon-height: 16;
+	allow-overlap: true;
+}
+
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:main"=~/^(hp|hl|ks|sv|sk)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:distant"=~/^(vr|hl|ks|sv|sk|db:ne|dr:so)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit"=~/^(db:|dr:){0,1}lf/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:speed_limit_distant"=~/^(db:|dr:){0,1}lf/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:combined"=~/^(hl|ks|sv|sk)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:crossing"=~/^(bü|dr:so|db:bü)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:crossing_distant"=~/^(bü|dr:so|db:bü)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"=~/^el/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:humping"=~/^ra/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:whistle"=~/^(pf|bü|db:bü|dr:so)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:ring"=~/^(pf|bü|db:bü|dr:so)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route"=zs2],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:route_distant"=zs2v],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:wrong_road"=~/^(zs|dr:zs|db:zs)/],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:stop"=ne5],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:station_distant"=ne6],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:resetting_switch"=ne13],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:snowplow:order"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:snowplow"=ne7],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:short_route"=zs13],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:brake_test"=zp],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:lzb"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:lzb_start"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:main:marker_light"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:distant:marker_light"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:combined:marker_light"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:minor:marker_light"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:minor:form"=light]["railway:signal:minor:states"="sh0;sh1"],
+node|z16-[railway=signal]["railway:signal:direction"]["railway:signal:stop:description"]
+{
+	z-index: 10000;
+	/* high z-index to overwrite other stylesheets */
+	icon-image: "presets/misc/deprecated.svg";
+	/* presets/misc/deprecated.svg is part of the JOSM installation, 
+	   that's why it is not included at OpenRailwayMap repository */
+	icon-width: 16;
+	icon-height: 16;
+	allow-overlap: true;
+}

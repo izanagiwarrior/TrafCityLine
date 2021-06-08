@@ -1,0 +1,1547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+OpenRailwayMap JOSM Presets File
+Edition for Austrian railways (in German)
+
+OpenRailwayMap Copyright (C) 2012-2014 Alexander Matheisen
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+-->
+
+
+<presets xmlns="http://josm.openstreetmap.de/tagging-preset-1.0" author="OpenRailwayMap" version="1.0" shortdescription="OpenRailwayMap Signale AT V2" description="Preset to tag Austrian railway signals">
+	<chunk id="sig_ref">
+		<key key="railway"
+			value="signal" />
+		<text key="ref"
+			text="Signal ref"
+			de.text="Signalbezeichnung"
+			/>
+	</chunk>
+	<chunk id="direction_fw_bw">
+		<combo key="railway:signal:direction"
+			text="Direction"
+			de.text="Anzeigerichtung"
+			values="forward,backward"
+			display_values="in direction of OSM way,against direction of OSM way"
+			de.display_values="In Wegrichtung,Entgegen Wegrichtung"
+			/>
+	</chunk>
+	<chunk id="direction_fw_bw_b">
+		<combo key="railway:signal:direction"
+			text="Direction"
+			de.text="Anzeigerichtung"
+			values="forward,backward,both"
+			display_values="in direction of OSM way,against direction of OSM way,both directions"
+			de.display_values="In Wegrichtung,Entgegen Wegrichtung,Beide Richtungen"
+			/>
+	</chunk>
+	<group name="OpenRailwayMap Signale AT V2" icon="signals.png">
+		<item name="Formhauptsignal" type="node" icon="de/hp1-semaphore-38.png" >
+			<label text="Formhauptsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:main:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:main"
+				value="AT-V2:hauptsignal" />
+			<key key="railway:signal:main:form"
+				value="semaphore" />
+			<combo key="railway:signal:main:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<multiselect key="railway:signal:main:states"
+				text="Signal states (multi-selection)"
+				de.text="Signalzustände (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:halt;AT-V2:frei;AT-V2:frei_mit_40;AT-V2:frei_mit_20"
+				display_values="Halt;Frei;Frei mit 40 km/h;Frei mit 20 km/h"
+				/>
+			<combo key="railway:signal:main:function"
+				text="Signal function"
+				de.text="Signalaufgabe"
+				values="entry,exit,block,intermediate"
+				display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+				/>
+			<multiselect key="railway:signal:main:substitute_signal"
+				text="Substitute signal (multi-selection)"
+				de.text="Ersatzsignal (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:ersatzsignal;AT-V2:vorsichtssignal"
+				display_values="Ersatzsignal;Vorsichtssignal"
+				/>
+			<space />
+			<preset_link preset_name="Geschwindigkeitsanzeiger" />
+			<preset_link preset_name="Geschwindigkeitsvoranzeiger" />
+			<preset_link preset_name="Verschubsignal" />
+			<preset_link preset_name="Abfahrtsignal" />
+		</item>
+		<item name="Lichthauptsignal" type="node" icon="at/hauptsignal-frei-mit-40-32.png" >
+			<label text="Lichthauptsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:main:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:main"
+				value="AT-V2:hauptsignal" />
+			<key key="railway:signal:main:form"
+				value="light" />
+			<combo key="railway:signal:main:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<multiselect key="railway:signal:main:states"
+				text="Signal states (multi-selection)"
+				de.text="Signalzustände (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:halt;AT-V2:frei;AT-V2:frei_mit_60;AT-V2:frei_mit_40;AT-V2:frei_mit_20"
+				display_values="Halt;Frei;Frei mit 60 km/h;Frei mit 40 km/h;Frei mit 20 km/h"
+				/>
+			<combo key="railway:signal:main:function"
+				text="Signal function"
+				de.text="Signalaufgabe"
+				values="entry,exit,block,intermediate"
+				display_values="Einfahrsignal,Ausfahrsignal,Blocksignal,Zwischensignal"
+				/>
+			<multiselect key="railway:signal:main:substitute_signal"
+				text="Substitute signal (multi-selection)"
+				de.text="Ersatzsignal (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:ersatzsignal;AT-V2:vorsichtssignal"
+				display_values="Ersatzsignal;Vorsichtssignal"
+				/>
+			<space />
+			<preset_link preset_name="Lichtvorsignal" />
+			<preset_link preset_name="Geschwindigkeitsanzeiger" />
+			<preset_link preset_name="Geschwindigkeitsvoranzeiger" />
+			<preset_link preset_name="Verschubsignal" />
+			<preset_link preset_name="Abfahrtsignal" />
+		</item>
+		<separator />
+		<item name="Formvorsignal" type="node" icon="at/vorsicht-semaphore-38.png" >
+			<label text="Formvorsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:distant"
+				value="AT-V2:vorsignal" />
+			<key key="railway:signal:distant:form"
+				value="semaphore" />
+			<combo key="railway:signal:distant:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<key key="railway:signal:distant:states"
+				value="AT-V2:vorsicht;AT-V2:hauptsignal_frei" />
+			<space />
+			<preset_link preset_name="Geschwindigkeitsvoranzeiger" />
+		</item>
+		<item name="Lichtvorsignal" type="node" icon="at/vorsignal-hauptsignal-frei-mit-40-22.png" >
+			<label text="Lichtvorsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:distant"
+				value="AT-V2:vorsignal" />
+			<key key="railway:signal:distant:form"
+				value="light" />
+			<combo key="railway:signal:distant:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<multiselect key="railway:signal:distant:states"
+				text="Signal states (multi-selection)"
+				de.text="Signalzustände (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:vorsicht;AT-V2:hauptsignal_frei;AT-V2:hauptsignal_frei_mit_60;AT-V2:hauptsignal_frei_mit_40"
+				display_values="Vorsicht;Hauptsignal frei;Hauptsignal frei mit 60 km/h;Hauptsignal frei mit 40 km/h"
+				/>
+			<space />
+			<preset_link preset_name="Geschwindigkeitsvoranzeiger" />
+		</item>
+		<separator />
+		<item name="Trapeztafel" icon="de/ne1-32.png" type="node">
+			<label text="Trapeztafel" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:main:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:main"
+				value="AT-V2:trapeztafel" />
+			<key key="railway:signal:main:form"
+				value="sign" />
+			<combo key="railway:signal:main:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Normalhöhe,Zwergsignal"
+				/>
+			<key key="railway:signal:main:function"
+				value="entry" />
+		</item>
+		<item name="Kreuztafel" icon="de/so106-32.png" type="node">
+			<label text="Kreuztafel" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:distant"
+				value="AT-V2:kreuztafel" />
+			<key key="railway:signal:distant:form"
+				value="sign" />
+		</item>
+		<separator />
+		<item name="Schutzsignal" type="node">
+			<label text="Schutzsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:minor"
+				value="AT-V2:schutzsignal" />
+			<key key="railway:signal:minor:form"
+				value="light" />
+			<combo key="railway:signal:minor:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<key key="railway:signal:minor:states"
+				value="AT-V2:fahrverbot;AT-V2:fahrverbot_aufgehoben" />
+			<multiselect key="railway:signal:minor:substitute_signal"
+				text="Substitute signal (multi-selection)"
+				de.text="Ersatzsignal (Mehrfachauswahl)"
+				delimiter=";"
+				values="AT-V2:ersatzsignal;AT-V2:vorsichtssignal"
+				display_values="Ersatzsignal;Vorsichtssignal"
+				/>
+			<space />
+			<preset_link preset_name="Geschwindigkeitsanzeiger" />
+			<preset_link preset_name="Geschwindigkeitsvoranzeiger" />
+			<preset_link preset_name="Verschubsignal" />
+			<preset_link preset_name="Abfahrtsignal" />
+		</item>
+		<item name="Sperrsignal, verstellbar" type="node" icon="at/weiterfahrt-erlaubt-28.png" >
+			<label text="Sperrsignal, verstellbar" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:minor"
+				value="AT-V2:sperrsignal" />
+			<key key="railway:signal:minor:form"
+				value="semaphore" />
+			<key key="railway:signal:minor:states"
+				value="AT-V2:weiterfahrt_verboten;AT-V2:weiterfahrt_erlaubt" />
+			<combo key="railway:signal:minor:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Sperrsignal, fix" type="node" icon="at/weiterfahrt-verboten-24.png" >
+			<label text="Sperrsignal, fix" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw_b" />
+			<space />
+			<key key="railway:signal:minor"
+				value="AT-V2:weiterfahrt_verboten" />
+			<key key="railway:signal:minor:form"
+				value="sign" />
+			<combo key="railway:signal:minor:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Haltscheibe" icon="de/sh2-32.png" type="node">
+			<label text="Haltscheibe" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:minor"
+				value="AT-V2:haltscheibe" />
+			<key key="railway:signal:minor:form"
+				value="sign" />
+			<combo key="railway:signal:minor:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<separator />
+		<group name="Verschubsignale">
+			<item name="Verschubsignal" type="node" icon="at/verschubverbot-aufgehoben-28.png" >
+				<label text="Verschubsignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<reference ref="sig_ref" />
+				<check key="railway:signal:shunting:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:shunting"
+					value="AT-V2:verschubsignal" />
+				<key key="railway:signal:shunting:form"
+					value="light" />
+				<key key="railway:signal:shunting:states"
+					value="AT-V2:verschubverbot;AT-V2:verschubverbot_aufgehoben" />
+				<combo key="railway:signal:shunting:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Verschubhalttafel" type="node" icon="de/ra10-32.png" >
+				<label text="Verschubhalttafel" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:shunting:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:shunting"
+					value="AT-V2:verschubhalttafel" />
+				<key key="railway:signal:shunting:form"
+					value="sign" />
+				<combo key="railway:signal:shunting:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Wartesignal (Tafel)" type="node" icon="de/ra11-sign-32.png" >
+				<label text="Wartesignal (Tafel)" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:shunting:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:shunting"
+					value="AT-V2:wartesignal" />
+				<key key="railway:signal:shunting:form"
+					value="sign" />
+				<combo key="railway:signal:shunting:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Wartesignal (Lichtsignal)" type="node">
+				<label text="Wartesignal (Lichtsignal)" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:shunting:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:shunting"
+					value="AT-V2:wartesignal" />
+				<key key="railway:signal:shunting:form"
+					value="light" />
+				<key key="railway:signal:shunting:states"
+					value="AT-V2:wartesignal;AT-V2:verschubverbot_aufgehoben" />
+				<combo key="railway:signal:shunting:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Abdrücksignal" type="node">
+				<label text="Abdrücksignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:humping:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:humping"
+					value="AT-V2:abdrücksignal" />
+				<key key="railway:signal:humping:form"
+					value="light" />
+				<key key="railway:signal:humping:states"
+					value="AT-V2:abdrücken_verboten;AT-V2:langsam_abdrücken;AT-V2:schnell_abdrücken" />
+				<combo key="railway:signal:humping:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+		</group>
+		<separator />
+		<item name="Geschwindigkeitsanzeiger" type="node" icon="at/geschwindigkeitsanzeiger-40-sign-28.png" >
+			<label text="Geschwindigkeitsanzeiger" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:speed_limit:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:speed_limit"
+				value="AT-V2:geschwindigkeitsanzeiger" />
+			<combo key="railway:signal:speed_limit:form"
+				text="Signal form"
+				de.text="Anzeigeart"
+				values="light,sign"
+				display_values="Lichtsignal,Tafel"
+				/>
+			<combo key="railway:signal:speed_limit:speed"
+				text="Speed (km/h, in case of light signals separate the possible values (number or 'off') with ';')"
+				de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+				values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,?"
+				display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,unknown"
+				de.display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,unbekannt" />
+			<combo key="railway:signal:speed_limit:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Geschwindigkeitsvoranzeiger" type="node" icon="at/geschwindigkeitsvoranzeiger-40-light-28.png" >
+			<label text="Geschwindigkeitsvoranzeiger" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:speed_limit_distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:speed_limit_distant"
+				value="AT-V2:geschwindigkeitvorsanzeiger" />
+			<combo key="railway:signal:speed_limit_distant:form"
+				text="Signal form"
+				de.text="Anzeigeart"
+				values="light,sign"
+				display_values="Lichtsignal,Tafel"
+				/>
+			<combo key="railway:signal:speed_limit_distant:speed"
+				text="Speed (km/h, in case of light signals separate the possible values(number or 'off') with ';')"
+				de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+				values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,?"
+				display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,unknown"
+				de.display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,unbekannt" />
+			<combo key="railway:signal:speed_limit_distant:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Geschwindigkeitstafel" type="node" icon="at/geschwindigkeitstafel-80-sign-32.png" >
+			<label text="Geschwindigkeitstafel" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:speed_limit:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:speed_limit"
+				value="AT-V2:geschwindigkeitstafel" />
+			<key key="railway:signal:speed_limit:form"
+				value="sign" />
+			<combo key="railway:signal:speed_limit:form"
+				text="Signal form"
+				de.text="Anzeigeart"
+				values="light,sign"
+				display_values="Lichtsignal,Tafel"
+				/>
+			<combo key="railway:signal:speed_limit:speed"
+				text="Speed (km/h, in case of light signals separate the possible values (number or 'off') with ';')"
+				de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+				values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200"
+				display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" />
+			<combo key="railway:signal:speed_limit:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Ankündigungstafel" type="node" icon="at/ankuendigungstafel-80-sign-44.png" >
+			<label text="Ankündigungstafel" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:speed_limit_distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:speed_limit_distant"
+				value="AT-V2:ankündigungstafel" />
+			<key key="railway:signal:speed_limit_distant:form"
+				value="sign" />
+			<combo key="railway:signal:speed_limit_distant:speed"
+				text="Speed (km/h, in case of light signals separate the possible values(number or 'off') with ';')"
+				de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+				values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200"
+				display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" />
+			<combo key="railway:signal:speed_limit_distant:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<group name="Langsamfahrsignale">
+			<item name="Ankündigungssignal" type="node">
+				<label text="Ankündigungssignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:speed_limit_distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:speed_limit_distant"
+					value="AT-V2:ankündigungssignal" />
+				<key key="railway:signal:speed_limit_distant:form"
+					value="sign" />
+				<combo key="railway:signal:speed_limit_distant:speed"
+					text="Speed (km/h, in case of light signals separate the possible values(number or 'off') with ';')"
+					de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+					values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200"
+					display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" />
+				<combo key="railway:signal:speed_limit_distant:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Anfangssignal" type="node">
+				<label text="Anfangssignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:speed_limit:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:speed_limit"
+					value="AT-V2:anfangssignal" />
+				<key key="railway:signal:speed_limit:form"
+					value="sign" />
+				<combo key="railway:signal:speed_limit:speed"
+					text="Speed (km/h, in case of light signals separate the possible values (number or 'off') with ';')"
+					de.text="Geschwindigkeit (km/h, bei Lichtsignalen mögliche Werte (Zahl oder 'off') mit ';' trennen)"
+					values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200"
+					display_values="10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200" />
+				<combo key="railway:signal:speed_limit:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Endsignal" type="node">
+				<label text="Endsignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:speed_limit:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:speed_limit"
+					value="AT-V2:endsignal" />
+				<key key="railway:signal:speed_limit:form"
+					value="sign" />
+				<key key="railway:signal:speed_limit:speed"
+					value="none" />
+				<combo key="railway:signal:speed_limit:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+		</group>
+		<separator />
+		<item name="Fahrleitungssignal" icon="de/el6-28.png" type="node">
+			<label text="Fahrleitungssignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:electricity:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,overhead"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Oberleitung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<combo key="railway:signal:electricity"
+				text="Exact type"
+				de.text="Signaltyp"
+				values="AT-V2:ankündigung_hauptschalter_aus,AT-V2:hauptschalter_aus,AT-V2:hauptschalter_ein,AT-V2:ankündigung_stromabnehmer_tief,AT-V2:stromabnehmer_tief,AT-V2:stromabnehmer_hoch,AT-V2:halt_fuer_fahrzeuge_mit_angehobenem_stromabnehmer,AT-V2:bahnhof-streckentrennung_anfang,AT-V2:bahnhof-streckentrennung_ende"
+				display_values="Ankündigung Hauptschalter aus,Hauptschalter aus,Hauptschalter ein,Ankündigung Stromabnehmer tief,Stromabnehmer tief,Stromabnehmer hoch,Halt für Fahrzeuge mit angehobenem Stromabnehmer,Bahnhof-Streckentrennung Anfang,Bahnhof-Streckentrennung Ende"
+				/>
+			<combo key="railway:signal:electricity:turn_direction"
+				text="Turn direction arrow – if the signals only valid for some turn directions at the next switch/junction. Leave this key empty if there is no arrow."
+				de.text="Richtungs – falls das Signal an der nächsten Weiche/Abzweigung nur für bestimmte Richtungen gilt. Leer lassen, falls es keinen Richtungspfeil gibt."
+				values="left,through,right"
+				display_values="links,geradeaus,rechts"
+				/>
+			<combo key="railway:signal:electricity:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<combo key="railway:signal:electricity:type"
+				text="Meaning"
+				de.text="Bedeutung"
+				values="power_off_advance,power_off,power_on,pantograph_down_advance,pantograph_down,pantograph_up,end_of_catenary,pantograph_down,pantograph_up"
+				display_values="Ankündigung Hauptschalter aus,Hauptschalter aus,Hauptschalter ein,Ankündigung Stromabnehmer tief,Stromabnehmer tief,Stromabnehmer hoch,Halt für Fahrzeuge mit angehobenem Stromabnehmer,Bahnhof-Streckentrennung Anfang,Bahnhof-Streckentrennung Ende"
+				/>
+			<key key="railway:signal:electricity:form"
+				value="sign" />
+		</item>
+		<item name="Schaltzeiger/Stellungszeiger" type="node">
+			<label text="Schaltzeiger/Stellungszeiger" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:electricity:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,overhead"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Oberleitung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:electricity"
+				value="AT-V2:schaltzeiger" />
+			<key key="railway:signal:electricity:states"
+				value="AT-V2:eingeschaltet;AT-V2:ausgeschaltet" />
+			<key key="railway:signal:electricity:type"
+				value="power_indicator" />
+			<key key="railway:signal:electricity:form"
+				value="sign" />
+		</item>
+		<separator />
+		<group name="Eisenbahnkreuzungen">
+			<item name="Eisenbahnkreuzungs-Überwachungssignal" type="node">
+				<label text="Eisenbahnkreuzungs-Überwachungssignal" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:crossing:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:crossing"
+					value="AT-V2:ek_überwachungssignal" />
+				<key key="railway:signal:crossing:states"
+					value="AT-V2:ek_grundstellung;AT-V2:ek_gesichert" />
+				<key key="railway:signal:crossing:form"
+					value="light" />
+			</item>
+			<item name="Eisenbahnkreuzungs-Zusatztafel Anfang" type="node">
+				<label text="Eisenbahnkreuzungs-Zusatztafel Anfang" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:crossing_hint:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:crossing_hint"
+					value="AT-V2:eküs" />
+				<key key="railway:signal:crossing_hint:form"
+					value="sign" />
+				<text key="railway:signal:crossing_hint:caption"
+					text="Caption (e.g. '3 EK')"
+					de.text="Beschriftung (z. B. '3 EK')"
+					/>
+				<combo key="railway:signal:crossing_hint:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Eisenbahnkreuzungs-Zusatztafel Ende" type="node">
+				<label text="Eisenbahnkreuzungs-Zusatztafel Ende" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:crossing_info:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:crossing_info"
+					value="AT-V2:eküs" />
+				<key key="railway:signal:crossing_info:form"
+					value="sign" />
+				<text key="railway:signal:crossing_info:caption"
+					text="Caption (e.g. 'EK 3')"
+					de.text="Beschriftung (z. B. 'EK 3')"
+					/>
+				<combo key="railway:signal:crossing_info:height"
+					text="Signal height"
+					de.text="Signalbauform"
+					values="normal,dwarf"
+					display_values="Mastbauform,Zwergsignal"
+					/>
+			</item>
+			<item name="Rautentafel" type="node">
+				<label text="Rautentafel" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:crossing_distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:crossing_distant"
+					value="AT-V2:rautentafel" />
+				<key key="railway:signal:crossing_distant:form"
+					value="sign" />
+			</item>
+			<item name="Schaltstellenpflock" type="node">
+				<label text="Schaltstellenpflock" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:crossing_distant:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:crossing_distant"
+					value="AT-V2:schaltstellenpflock" />
+				<key key="railway:signal:crossing_distant:form"
+					value="sign" />
+				<text key="railway:signal:crossing_distant:caption"
+					text="Position of level crossing (e.g. '13.427')"
+					de.text="Streckenkilometer der Eisenbahnkreuzung (z. B. '13.427')"
+					/>
+			</item>
+			<item name="Pfeifpflock" type="node">
+				<label text="Pfeifpflock" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:whistle:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:whistle"
+					value="AT-V2:pfeifpflock" />
+				<key key="railway:signal:whistle:form"
+					value="sign" />
+			</item>
+			<item name="Gruppenpfeifpflock" type="node">
+				<label text="Gruppenpfeifpflock" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:whistle:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:whistle"
+					value="AT-V2:gruppenpfeifpflock" />
+				<key key="railway:signal:whistle:form"
+					value="sign" />
+			</item>
+			<item name="Endpflock" type="node">
+				<label text="Endpflock" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:whistle:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right,bridge"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+					/>
+				<reference ref="direction_fw_bw" />
+				<space />
+				<key key="railway:signal:whistle"
+					value="AT-V2:endpflock" />
+				<key key="railway:signal:whistle:form"
+					value="sign" />
+			</item>
+		</group>
+		<item name="Haltepunkt" icon="de/ne5-dv301-32.png" type="node">
+			<label text="Haltepunkt" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:stop:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<key key="railway:signal:stop"
+				value="AT-V2:haltepunkt" />
+			<key key="railway:signal:stop:form"
+				value="sign" />
+			<combo key="railway:signal:stop:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+			<text key="railway:signal:stop:description"
+				text="Description"
+				de.text="Zusatztext"
+				/>
+		</item>
+		<item name="Haltestellentafel" icon="de/ne6-32.png" type="node">
+			<label text="Haltestellentafel" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:station_distant:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<key key="railway:signal:station_distant"
+				value="AT-V2:haltestellentafel" />
+			<key key="railway:signal:station_distant:form"
+				value="sign" />
+		</item>
+		<item name="Weichenüberwachungssignal" type="node">
+			<label text="Weichenüberwachungssignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:resetting_switch:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:resetting_switch"
+				value="AT-V2:weichenüberwachungssignal" />
+			<key key="railway:signal:resetting_switch:form"
+				value="light" />
+			<combo key="railway:signal:resetting_switch:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<group name="Grenzmarken">
+			<item name="Grenzmarke" type="node">
+				<label text="Grenzmarke" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<key key="railway:signal:fouling_point"
+					value="AT-V2:grenzmarke" />
+			</item>
+			<item name="Markierte Grenzmarke" type="node">
+				<label text="Markierte Grenzmarke" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<key key="railway:signal:fouling_point"
+					value="AT-V2:markierte_grenzmarke" />
+			</item>
+			<item name="Verschub-Grenzmarke" type="node">
+				<label text="Verschub-Grenzmarke" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<key key="railway:signal:fouling_point"
+					value="AT-V2:verschub-grenzmarke" />
+			</item>
+			<item name="Grenzmarke für Rollwagenbetrieb" type="node">
+				<label text="Grenzmarke für Rollwagenbetrieb" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<key key="railway:signal:fouling_point"
+					value="AT-V2:grenzmarke_rollwagenbetrieb" />
+			</item>
+		</group>
+		<item name="Bremsprobesignal" type="node">
+			<label text="Bremsprobesignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:brake_test:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw_b" />
+			<key key="railway:signal:brake_test"
+				value="AT-V2:bremsprobesignal" />
+			<key key="railway:signal:brake_test:form"
+				value="light" />
+			<key key="railway:signal:brake_test:states"
+				value="AT-V2:bremsen_anlegen;AT-V2:bremsen_lösen;AT-V2:bremsprobe_beendet" />
+		</item>
+		<item name="Abfahrtsignal" type="node">
+			<label text="Abfahrtsignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:departure:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw_b" />
+			<key key="railway:signal:departure"
+				value="AT-V2:abfahrt" />
+			<key key="railway:signal:departure:form"
+				value="light" />
+		</item>
+		<item name="Fahrerlaubnissignal" type="node">
+			<label text="Fahrerlaubnissignal" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:departure:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw_b" />
+			<key key="railway:signal:departure"
+				value="AT-V2:fahrerlaubnissignal" />
+			<combo key="railway:signal:departure:form"
+				text="Signal form"
+				de.text="Anzeigeart"
+				values="light,sign"
+				display_values="Lichtsignal,Tafel"
+				/>
+			<check key="railway:signal:departure:repeated"
+				text="Repeated Signal"
+				de.text="Vorsignalwiederholer"
+				/>
+		</item>
+		<group name="Räumsignale">
+			<item name="Räumarbeit einstellen" type="node">
+				<label text="Räumarbeit einstellen" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:snowplow:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:snowplow"
+					value="AT-V2:räumarbeit_einstellen" />
+				<key key="railway:signal:snowplow:form"
+					value="sign" />
+				<key key="railway:signal:snowplow:type"
+					value="up" />
+			</item>
+			<item name="Mittelräumer heben" type="node">
+				<label text="Mittelräumer heben" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:snowplow:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:snowplow"
+					value="AT-V2:mittelräumer_heben" />
+				<key key="railway:signal:snowplow:form"
+					value="sign" />
+				<key key="railway:signal:snowplow:type"
+					value="up" />
+			</item>
+			<item name="Räumarbeit aufnehmen" type="node">
+				<label text="Räumarbeit aufnehmen" />
+				<label text="Wird als Punkt auf dem Gleis erfasst." />
+				<space />
+				<key key="railway"
+					value="signal" />
+				<check key="railway:signal:snowplow:deactivated"
+					text="Out of order"
+					de.text="Ungültigkeitskreuz"
+					/>
+				<combo key="railway:signal:position"
+					text="Signal position"
+					de.text="Signalstandort"
+					values="left,right"
+					display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+					/>
+				<reference ref="direction_fw_bw" />
+				<key key="railway:signal:snowplow"
+					value="AT-V2:räumarbeit_aufnehmen" />
+				<key key="railway:signal:snowplow:form"
+					value="sign" />
+				<key key="railway:signal:snowplow:type"
+					value="down" />
+			</item>
+		</group>
+		<item name="LZB-Bereichskennzeichen" type="node" icon="de/lzb-section-start-32.png" >
+			<label text="LZB-Bereichskennzeichen" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:train_protection:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<check key="railway:signal:catenary_mast"
+				text="On catenary mast"
+				de.text="Am Oberleitungsmast"
+				/>
+			<key key="railway:signal:train_protection"
+				value="AT-V2:lzb-bereichskennzeichen" />
+			<key key="railway:signal:train_protection:form"
+				value="sign" />
+			<combo key="railway:signal:train_protection:type"
+				text="Direction"
+				de.text="Anzeigerichtung"
+				values="start,section"
+				display_values="LZB Anfang,Bereichswechsel"
+				/>
+			<text key="railway:position:exact"
+				text="Exact position (e.g. '13.427')"
+				de.text="Standortangabe (z. B. '13.427')"
+				/>
+		</item>
+		<item name="Signalnachahmer" type="node">
+			<label text="Signalnachahmer" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<reference ref="sig_ref" />
+			<check key="railway:signal:main_repeated:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,bridge"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Signalbrücke"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:main_repeated"
+				value="AT-V2:signalnachahmer" />
+			<key key="railway:signal:main_repeated:form"
+				value="light" />
+			<key key="railway:signal:main_repeated:states"
+				value="AT-V2:hauptsignal_halt;AT-V2:hauptsignal_frei;AT-V2:hauptsignal_frei_geschwindigkeitsbeschränkung" />
+			<combo key="railway:signal:main_repeated:substitute_signal"
+				text="Substitute signal"
+				de.text="Ersatzsignal"
+				values="AT-V2:ersatzsignal, "
+				display_values="Kann Ersatzsignal anzeigen,Kann kein Ersatzsignal anzeigen"
+				/>
+		</item>
+		<item name="Fahrwegende" type="node">
+			<label text="Fahrwegende" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:minor"
+				value="AT-V2:fahrwegende" />
+			<key key="railway:signal:minor:form"
+				value="sign" />
+			<combo key="railway:signal:minor:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="Dienstruhe" type="node">
+			<label text="Dienstruhe" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:minor:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right,in_track"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung,Gleismitte/am Prellbock"
+				/>
+			<reference ref="direction_fw_bw" />
+			<space />
+			<key key="railway:signal:main:substitute_signal"
+				value="AT-V2:dienstruhe" />
+			<key key="railway:signal:main:substitute_signal:form"
+				value="sign" />
+			<combo key="railway:signal:main:substitute_signal:height"
+				text="Signal height"
+				de.text="Signalbauform"
+				values="normal,dwarf"
+				display_values="Mastbauform,Zwergsignal"
+				/>
+		</item>
+		<item name="ETCS-Blockkennzeichen" type="node">
+			<label text="ETCS-Blockkennzeichen" />
+			<label text="Wird als Punkt auf dem Gleis erfasst." />
+			<space />
+			<key key="railway"
+				value="signal" />
+			<check key="railway:signal:lzb:deactivated"
+				text="Out of order"
+				de.text="Ungültigkeitskreuz"
+				/>
+			<combo key="railway:signal:position"
+				text="Signal position"
+				de.text="Signalstandort"
+				values="left,right"
+				display_values="Links von Wegrichtung,Rechts von Wegrichtung"
+				/>
+			<reference ref="direction_fw_bw" />
+			<check key="railway:signal:catenary_mast"
+				text="On catenary mast"
+				de.text="Am Oberleitungsmast"
+				/>
+			<text key="ref"
+				text="Block reference"
+				de.text="Blockbezeichner"
+				/>
+			<key key="railway:signal:train_protection"
+				value="AT-V2:etcs-blockkennzeichen" />
+			<key key="railway:signal:train_protection:form"
+				value="sign" />
+			<key key="railway:signal:train_protection:type"
+				value="block_marker" />
+		</item>
+	</group>
+</presets>

@@ -1,0 +1,916 @@
+/*
+OpenRailwayMap Style File for JOSM and KothicJS
+Standard layer
+
+OpenRailwayMap Copyright (C) 2012 Alexander Matheisen
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+
+Format details:
+* https://josm.openstreetmap.de/wiki/Help/Styles/MapCSSImplementation
+* https://wiki.openstreetmap.org/wiki/MapCSS/0.2
+*/
+
+meta
+{
+	title: "OpenRailwayMap infrastructure standard layer";
+	version: "0";
+	description: "Style for a infrastructure standard layer railroad network map.";
+	author: "rurseekatze";
+	link: "https://wiki.openstreetmap.org/wiki/OpenRailwayMap";
+	watch-modified: true;
+}
+
+canvas
+{
+	default-points: true;
+	default-lines: true;
+}
+
+@import url("common.mapcss");
+
+way.tracks_present,
+way.tracks_disused,
+way.tracks_abandoned,
+way.tracks_preserved,
+way.tracks_razed,
+way.tracks_proposed,
+way.tracks_construction
+{
+	set .tracks;
+}
+
+/***********/
+/* bridges */
+/***********/
+way|z10-[bridge=yes].tracks,
+way|z10-[bridge=cantilever].tracks,
+way|z10-[bridge=covered].tracks,
+way|z10-[bridge=movable].tracks,
+way|z10-[bridge=trestle].tracks,
+way|z10-[bridge=viaduct].tracks
+{
+	set .bridge;
+}
+
+way.bridge::bridges
+{
+	z-index: 1;
+	casing-width: 3.5;
+	casing-color: #797979;
+}
+way|z12-[!"railway:track_ref"].bridge::bridges
+{
+	z-index: 4000;
+	text-position: line;
+	text-color: #585858;
+	font-size: 11;
+	font-family: "Verdana Bold";
+	font-weight: bold;
+	font-style: italic;
+	text-halo-radius: 1;
+	text-halo-color: white;
+	text: eval(join(" ", tag("ref"), any(tag("bridge:name"), tag("name"))));
+}
+
+/*******************************************/
+/* transparent casing of historic railways */
+/*******************************************/
+way|z9-[railway=disused].tracks,
+way|z9-[railway=abandoned].tracks,
+way|z9-[railway=razed].tracks
+{
+	z-index: 10;
+	casing-color: black;
+	casing-opacity: 0.2;
+	casing-width: 1;
+	width: 0.8
+}
+
+/*************************************************************/
+/* tunnel label (not render if the track has a track number) */
+/*************************************************************/
+way|z10-[tunnel=yes][!"railway:track_ref"].tracks::tunnels
+{
+	z-index: 4001;
+	text-position: line;
+	text-color: #585858;
+	font-size: 11;
+	font-family: "Verdana Bold";
+	font-weight: bold;
+	font-style: italic;
+	text-halo-radius: 1;
+	text-halo-color: white;
+	text: eval(join(" ", tag("ref"), any(tag("tunnel:name"), tag("name"))));
+}
+
+/*************************/
+/* tunnels color (white) */
+/*************************/
+way|z10-[tunnel=yes].tracks::tunnels
+{
+	z-index: 4000;
+	width: 6;
+	color: white;
+	opacity: 0.6;
+	linecap: butt;
+}
+/* also cap the tracks inside the tunnel with a straight line,
+ * otherwise the round end of the track would run out of the
+ * tunnel with the normal track color instead of the lighter one,
+ * looking like a glith. */
+way|z10-[tunnel=yes].tracks
+{
+	linecap: butt;
+}
+
+/**********************************************/
+/* text of tracks outside bridges and tunnels */
+/* default track label contains ref and name  */
+/**********************************************/
+way[!service][!bridge][!tunnel].tracks
+{
+	z-index: 10000;
+	text: eval(join(" ", tag("ref"), tag("name")));
+	text-position: line;
+	text-color: #585858;
+	font-size: 11;
+	font-family: "Verdana Bold";
+	font-weight: bold;
+	text-halo-radius: 1;
+	text-halo-color: white;
+}
+
+/* name of abandoned railways which have abanoned:name=* and abandoned:ref=* */
+way|z11-[railway=abandoned][!bridge][!tunnel]["abandoned:name"],
+way|z11-[railway=abandoned][!bridge][!tunnel]["abandoned:ref"]
+{
+	text: eval(join(" ", tag("abandoned:ref"), tag("abandoned:name")));
+}
+
+/* name of abandoned railways which have razed:name=* and razed:ref=* */
+way|z11-[railway=razed][!bridge][!tunnel]["razed:name"],
+way|z11-[railway=razed][!bridge][!tunnel]["razed:ref"]
+{
+	text: eval(join(" ", tag("razed:ref"), tag("razed:name")));
+}
+
+/*****************************************/
+/* track ref's on tracks inside stations */
+/*****************************************/
+way|z17-["railway:track_ref"].tracks
+{
+	text: "railway:track_ref";
+	text-position: line;
+	text-color: white;
+	font-size: 11;
+	font-family: "Verdana Bold";
+	font-weight: bold;
+	text-halo-radius: 4;
+	text-halo-color: blue;
+	shield-color: blue;
+	shield-shape: rectangular;
+}
+
+/**** COLORS ****/
+
+/***************************************************************************************/
+/* simple railways without service or usage, and those which have no special rendering */
+/* sidings without specified usage                                                     */
+/* yard tracks without specified usage                                                 */
+/* crossover tracks without specified usage                                            */
+/***************************************************************************************/
+way[!usage][!service].tracks,
+way[usage=tourism][!service].tracks,
+way[usage=military].tracks,
+way[usage=test][!service].tracks,
+way[!usage][service=siding].tracks,
+way[!usage][service=yard].tracks,
+way[!usage][service=crossover].tracks
+{
+	color: black;
+}
+
+/***************************************/
+/* spur tracks without specified usage */
+/***************************************/
+way[!usage][service=spur].tracks
+{
+	color: #87491D;
+}
+
+/*********************************************/
+/* branch railways, service tag not rendered */
+/*********************************************/
+way[railway=construction]["construction:railway"=rail][usage=branch].tracks,
+way[railway=proposed]["proposed:railway"=rail][usage=branch].tracks,
+way[usage=branch][!service].tracks
+{
+	color: #DACA00;
+}
+
+/*******************************************/
+/* main railways, service tag not rendered */
+/*******************************************/
+/** shared between railway=proposed and railway=construction **/
+/*  show the color of what the railway will become            */
+way[railway=construction]["construction:railway"=rail][usage=main].tracks,
+way[railway=proposed]["proposed:railway"=rail][usage=main].tracks,
+way[usage=main][!service].tracks
+{
+	color: #FF8100;
+}
+
+/************************************************/
+/* highspeed railways, service tag not rendered */
+/************************************************/
+way[railway=construction]["construction:railway"=rail][usage=main][highspeed=yes].tracks,
+way[railway=proposed]["proposed:railway"=rail][usage=main][highspeed=yes].tracks,
+way[usage=main][highspeed=yes][!service].tracks
+{
+	color: #FF0C00;
+}
+
+/*************************************************/
+/* industrial railways without service tag       */
+/* industrial railways with various service tags */
+/*************************************************/
+way[usage=industrial][!service].tracks,
+way[usage=industrial][service=siding].tracks,
+way[usage=industrial][service=spur].tracks,
+way[usage=industrial][service=yard].tracks,
+way[usage=industrial][service=crossover].tracks
+{
+	color: #87491D;
+}
+
+/*********************/
+/* light rail tracks */
+/*********************/
+way[railway=light_rail].tracks,
+way[railway=construction]["construction:railway"=light_rail].tracks,
+way[railway=construction]["construction"=light_rail].tracks,
+way[railway=proposed]["proposed:railway"=light_rail].tracks,
+way[railway=proposed]["proposed"=light_rail].tracks
+{
+	color: #00BD14;
+}
+
+/*****************/
+/* subway tracks */
+/*****************/
+way[railway=subway].tracks,
+way[railway=construction]["construction:railway"=subway].tracks,
+way[railway=construction]["construction"=subway].tracks,
+way[railway=proposed]["proposed:railway"=subway].tracks,
+way[railway=proposed]["proposed"=subway].tracks
+{
+	color: #0300C3;
+}
+
+/***************/
+/* tram tracks */
+/***************/
+way[railway=tram].tracks,
+way[railway=construction]["construction:railway"=tram].tracks,
+way[railway=construction]["construction"=tram].tracks,
+way[railway=proposed]["proposed:railway"=tram].tracks,
+way[railway=proposed]["proposed"=tram].tracks
+{
+	color: #D877B8;
+}
+
+/***************************************************************************************/
+/* simple railways without service or usage, and those which have no special rendering */
+/***************************************************************************************/
+way|z10-[railway=rail][!usage][!service],
+way|z10-[railway=rail][usage=tourism][!service],
+way|z10-[railway=rail][usage=military],
+way|z10-[railway=rail][usage=test][!service]
+{
+	z-index: 400;
+	width: 2.5;
+}
+
+/***********************************/
+/* sidings without specified usage */
+/***********************************/
+way|z10-[railway=rail][!usage][service=siding]
+{
+	z-index: 870;
+	width: 2;
+}
+
+/***************************************/
+/* yard tracks without specified usage */
+/***************************************/
+way|z10-[railway=rail][!usage][service=yard]
+{
+	z-index: 860;
+	width: 1.5;
+}
+
+/***************************************/
+/* spur tracks without specified usage */
+/***************************************/
+way|z10-[railway=rail][!usage][service=spur]
+{
+	z-index: 880;
+	width: 3;
+	text-position: line;
+}
+
+/********************************************/
+/* crossover tracks without specified usage */
+/********************************************/
+way|z10-[railway=rail][!usage][service=crossover]
+{
+	z-index: 300;
+	width: 1;
+}
+
+/*********************************************/
+/* branch railways, service tag not rendered */
+/*********************************************/
+way|z2-[railway=rail][usage=branch][!service]
+{
+	z-index: 1000;
+	width: 1.5;
+}
+/* thicker lines in higher zoom levels */
+way|z6-8[railway=rail][usage=branch][!service]
+{
+	width: 2.5;
+}
+way|z9-[railway=rail][usage=branch][!service]
+{
+	width: 3.5;
+}
+
+/*******************************************/
+/* main railways, service tag not rendered */
+/*******************************************/
+way|z2-[railway=rail][usage=main][!service]
+{
+	z-index: 1100;
+	width: 1.5;
+}
+/* thicker lines in higher zoom levels */
+way|z6-8[railway=rail][usage=main][!service]
+{
+	width: 2.5;
+}
+way|z9-[railway=rail][usage=main][!service]
+{
+	width: 3.5;
+}
+
+/************************************************/
+/* highspeed railways, service tag not rendered */
+/************************************************/
+way|z2-[railway=rail][usage=main][highspeed=yes][!service]
+{
+	z-index: 2000;
+	width: 1.5;
+}
+/* thicker lines in higher zoom levels */
+way|z6-8[railway=rail][usage=main][highspeed=yes][!service]
+{
+	width: 2.5;
+}
+way|z9-[railway=rail][usage=main][highspeed=yes][!service]
+{
+	width: 3.5;
+}
+
+/*******************************************/
+/* industrial railways without service tag */
+/*******************************************/
+way|z10-[railway=rail][usage=industrial][!service]
+{
+	z-index: 850;
+	width: 2;
+}
+
+/*************************************************/
+/* industrial railways with various service tags */
+/*************************************************/
+way|z10-[railway=rail][usage=industrial][service=siding],
+way|z10-[railway=rail][usage=industrial][service=spur],
+way|z10-[railway=rail][usage=industrial][service=yard],
+way|z10-[railway=rail][usage=industrial][service=crossover]
+{
+	z-index: 850;
+	width: 1.5;
+}
+
+/**********************/
+/* preserved railways */
+/**********************/
+way|z9-[railway=preserved]
+{
+	z-index: 400;
+	color: #70584D;
+	width: 2;
+	casing-width: 2;
+	casing-color: #70584D;
+	casing-dashes: 3,10;
+}
+
+/*******************************/
+/* railways under construction */
+/*******************************/
+way|z9-[railway=construction].tracks
+{
+	z-index: 400;
+	dashes: 9,9;
+	width: 3;
+}
+
+/*********************/
+/* proposed railways */
+/*********************/
+way|z9-[railway=proposed].tracks
+{
+	z-index: 350;
+	dashes: 2,8;
+	width: 3;
+}
+
+/********************/
+/* disused railways */
+/********************/
+way|z9-[railway=disused]
+{
+	z-index: 300;
+	color: #70584D;
+	width: 3;
+}
+
+/**********************/
+/* abandoned railways */
+/**********************/
+way|z9-[railway=abandoned]
+{
+	z-index: 250;
+	dashes: 5,5;
+	color: #70584D;
+	width: 3;
+	opacity: 0.8;
+}
+
+/******************/
+/* razed railways */
+/******************/
+way|z9-[railway=razed]
+{
+	z-index: 200;
+	dashes: 3,7;
+	color: #70584D;
+	opacity: 0.6;
+	width: 3;
+}
+
+/*********************/
+/* tram tracks       */
+/* subway tracks     */
+/* light rail tracks */
+/*********************/
+way|z11-[railway=tram],
+way|z10-[railway=subway],
+way|z10-[railway=light_rail]
+{
+	z-index: 1100;
+	width: 2.5;
+}
+
+/*******************************************************************************************/
+/* narrow gauge tracks without service or usage, and those which have no special rendering */
+/*******************************************************************************************/
+way|z9-[railway=narrow_gauge][!usage][!service],
+way|z9-[railway=narrow_gauge][usage=tourism][!service],
+way|z9-[railway=narrow_gauge][usage=military],
+way|z9-[railway=narrow_gauge][usage=test][!service]
+{
+	z-index: 1200;
+	width: 1.5;
+	casing-width: 1.5;
+}
+
+/************************************************/
+/* narrow gauge sidings without specified usage */
+/************************************************/
+way|z10-[railway=narrow_gauge][!usage][service=siding]
+{
+	z-index: 850;
+	width: 1.5;
+	casing-width: 1;
+}
+
+/****************************************************/
+/* narrow gauge yard tracks without specified usage */
+/****************************************************/
+way|z10-[railway=narrow_gauge][!usage][service=yard]
+{
+	z-index: 840;
+	width: 1.5;
+	casing-width: 1;
+}
+
+/****************************************************/
+/* narrow gauge spur tracks without specified usage */
+/****************************************************/
+way|z10-[railway=narrow_gauge][!usage][service=spur]
+{
+	z-index: 860;
+	width: 1.5;
+	casing-width: 1;
+	text-position: line;
+}
+
+/*********************************************************/
+/* narrow gauge crossover tracks without specified usage */
+/*********************************************************/
+way|z10-[railway=narrow_gauge][!usage][service=crossover]
+{
+	z-index: 280;
+	width: 1.5;
+	casing-width: 1;
+}
+
+/**********************************************************/
+/* narrow gauge branch railways, service tag not rendered */
+/**********************************************************/
+way|z9-[railway=narrow_gauge][usage=branch][!service]
+{
+	z-index: 880;
+	width: 1.5;
+	casing-width: 1.5;
+}
+
+/********************************************************/
+/* narrow gauge main railways, service tag not rendered */
+/********************************************************/
+way|z9-[railway=narrow_gauge][usage=main][!service]
+{
+	z-index: 1080;
+	width: 1.5;
+	casing-width: 1.5;
+}
+
+/*************************************************************/
+/* narrow gauge highspeed railways, service tag not rendered */
+/*************************************************************/
+way|z9-[railway=narrow_gauge][usage=main][highspeed=yes][!service]
+{
+	z-index: 2980;
+	width: 1.5;
+	casing-width: 1.5;
+}
+
+/********************************************************/
+/* narrow gauge industrial railways without service tag */
+/********************************************************/
+way|z9-[railway=narrow_gauge][usage=industrial][!service]
+{
+	z-index: 830;
+	width: 1.5;
+	casing-width: 1.5;
+}
+
+/**************************************************************/
+/* narrow gauge industrial railways with various service tags */
+/**************************************************************/
+way|z10-[railway=narrow_gauge][usage=industrial][service=siding],
+way|z10-[railway=narrow_gauge][usage=industrial][service=spur],
+way|z10-[railway=narrow_gauge][usage=industrial][service=yard],
+way|z10-[railway=narrow_gauge][usage=industrial][service=crossover]
+{
+	z-index: 830;
+	width: 1.5;
+	casing-width: 1;
+}
+
+/* must stay last: apply the color of the line also to the casing */
+way[railway=narrow_gauge].tracks
+{
+	casing-color: eval(prop("color"));
+	casing-dashes: 3,3;
+}
+
+/************/
+/* switches */
+/************/
+node|z16-[railway=switch]
+{
+	z-index: 5000;
+	symbol-shape: circle;
+	symbol-size: 8;
+	symbol-stroke-color: black;
+	symbol-fill-color: black;
+	text: "ref";
+	text-position: auto;
+	font-size: 11;
+	text-color: black;
+	font-weight: bold;
+	text-halo-radius: 1;
+	text-halo-color: white;
+}
+
+/***************************/
+/* local operated switches */
+/***************************/
+node|z16-[railway=switch]["railway:local_operated"=yes]
+{
+	z-index: 5000;
+	symbol-shape: circle;
+	symbol-size: 8;
+	symbol-stroke-color: black;
+	symbol-fill-color: black;
+	text: "ref";
+	text-position: auto;
+	font-size: 11;
+	text-color: black;
+	font-weight: bold;
+	text-halo-radius: 1;
+	text-halo-color: yellow;
+}
+
+/**********************/
+/* resetting switches */
+/**********************/
+node|z16-[railway=switch]["railway:switch:resetting"=yes]
+{
+	z-index: 5000;
+	symbol-shape: circle;
+	symbol-size: 8;
+	symbol-stroke-color: black;
+	symbol-fill-color: black;
+	text: "ref";
+	text-position: auto;
+	font-size: 11;
+	text-color: black;
+	font-weight: bold;
+	text-halo-radius: 1;
+	text-halo-color: orange;
+}
+
+/**************/
+/* milestones */
+/**************/
+node|z11-[railway=milestone]
+{
+	z-index: 600;
+	text: "railway:position";
+	text-position: auto;
+	text-color: black;
+	font-size: 11;
+	font-family: "Arial Black";
+	font-weight: bold;
+	text-halo-radius: 0.5;
+	text-halo-color: white;
+}
+node|z11-[railway=milestone]["railway:position"=~/\.0$/]
+{
+	z-index: 601;
+}
+
+/*******************/
+/* level crossings */
+/*******************/
+node|z14-[railway=level_crossing]
+{
+	z-index: 10000;
+	icon-image: "icons/level-crossing-24.png";
+	icon-width: 12;
+	icon-height: 7;
+	allow-overlap: false; 
+}
+
+/***************************************/
+/* footway crossings (inside stations) */
+/***************************************/
+node|z14-[railway=crossing]
+{
+	z-index: 10000;
+	icon-image: "icons/crossing-24.png";
+	icon-width: 12;
+	icon-height: 7;
+	allow-overlap: false; 
+}
+
+/************/
+/* stations */
+/************/
+node|z8-[railway=station][station!=light_rail][station!=subway],
+node|z10-[railway=station][station=light_rail],
+node|z10-[railway=station][station=subway]
+{
+	text: "railway:ref";
+	text-position: auto;
+	font-size: 12;
+	text-color: blue;
+	text-halo-radius: 1.5;
+	text-halo-color: white;
+}
+/* show full station name in higher zoom levels */
+node|z11-[railway=station]
+{
+	text: "name";
+}
+/* stations are bold, non-train stations are italic */
+node|z8-[railway=station][station!=light_rail][station!=subway]
+{
+	z-index: 30000;
+	font-family: "Arial Black";
+	font-weight: bold;
+}
+node|z10-[railway=station][station=light_rail],
+node|z10-[railway=station][station=subway]
+{
+	z-index: 25000;
+	font-family: Arial;
+	font-style: italic;
+}
+
+/*********/
+/* yards */
+/*********/
+node|z8-[railway=yard]
+{
+	z-index: 25000;
+	text: "railway:ref";
+	text-position: auto;
+	font-size: 12;
+	text-color: #87491D;
+	font-weight: bold;
+	font-family: Arial;
+	text-halo-radius: 1.5;
+	text-halo-color: #F1F1F1;
+}
+/* show full yard name in higher zoom levels */
+node|z11-[railway=yard]
+{
+	text: "name";
+}
+
+/*********/
+/* halts */
+/*********/
+node|z10-[railway=halt]
+{
+	z-index: 20000;
+	text: "railway:ref";
+	text-position: auto;
+	font-size: 12;
+	text-color: blue;
+	font-weight: bold;
+	font-family: Arial;
+	text-halo-radius: 1.5;
+	text-halo-color: white;
+}
+/* show full halt name in higher zoom levels */
+node|z11-[railway=halt]
+{
+	text: "name";
+}
+
+/**********************************************/
+/* junctions, crossovers and service stations */
+/**********************************************/
+node|z8-[railway=junction],
+node|z8-[railway=service_station],
+node|z8-[railway=crossover]
+{
+	z-index: 15000;
+	text: "railway:ref";
+	text-position: auto;
+	font-size: 12;
+	text-color: #616161;
+	font-weight: bold;
+	font-family: Arial;
+	text-halo-radius: 1.5;
+	text-halo-color: #F1F1F1;
+}
+/* show full station name in higher zoom levels */
+node|z11-[railway=junction],
+node|z11-[railway=service_station],
+node|z11-[railway=crossover]
+{
+	text: "name";
+}
+
+/*********/
+/* sites */
+/*********/
+node|z8-[railway=site]
+{
+	z-index: 10000;
+	text: "railway:ref";
+	text-position: auto;
+	font-size: 12;
+	text-color: #616161;
+	font-weight: bold;
+	font-family: Arial;
+	text-halo-radius: 1.5;
+	text-halo-color: #F1F1F1;
+}
+/* show full site name in higher zoom levels */
+node|z11-[railway=site]
+{
+	text: "name";
+}
+
+/**************/
+/* tram stops */
+/**************/
+node|z13[railway=tram_stop]
+{
+	z-index: 6000;
+	icon-image: "icons/tramstop.png";
+	icon-width: 10;
+	icon-height: 10;
+}
+
+node|z14-[railway=tram_stop]
+{
+	z-index: 6000;
+	text: "name";
+	text-position: auto;
+	font-size: 10;
+	text-color: #D877B8;
+	font-weight: bold;
+	font-family: Arial;
+	text-halo-radius: 1;
+	text-halo-color: white;
+}
+
+/*****************/
+/* owner changes */
+/*****************/
+node|z11-[railway=border],
+node|z13-[railway=owner_change]
+{
+	z-index: 10000;
+	icon-image: "icons/border-32.png";
+	icon-width: 16;
+	icon-height: 16;
+}
+
+/*****************************/
+/* turntables and traversers */
+/*****************************/
+way|z11-15[railway=turntable],
+area|z11-15[railway=turntable],
+way|z11-15[railway=traverser],
+area|z11-15[railway=traverser]
+{
+	z-index: 880;
+	color: #ababab;
+	width: 2;
+	fill-color: #ababab;
+}
+
+way|z16-[railway=turntable],
+area|z16-[railway=turntable],
+way|z16-[railway=traverser],
+area|z16-[railway=traverser]
+{
+	z-index: 880;
+	color: #808080;
+	width: 2;
+	fill-color: #ababab;
+}
+
+/******************/
+/* railway phones */
+/******************/
+node|z17-[railway=phone]
+{
+	z-index: 880;
+	icon-image: "icons/phone-32.png";
+	icon-width: 12;
+	icon-height: 16;
+}
+
+/*************************************/
+/* radio towers (GSM-R and analogue) */
+/*************************************/
+node|z13-[railway=radio][man_made=mast],
+node|z13-[railway=radio][man_made=tower] {
+	z-index: 880;
+	icon-image: "icons/radio-mast-30.png";
+	icon-width: 10;
+	icon-height: 15;
+}
+
+/**************************************************************/
+/* radio beam antennas (GSM-R and analogue) used near tunnels */
+/**************************************************************/
+node|z13-[railway=radio][man_made=antenna] {
+	z-index: 880;
+	icon-image: "icons/radio-antenna-20.png";
+	icon-width: 10;
+	icon-height: 10;
+}

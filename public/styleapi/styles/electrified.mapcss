@@ -1,0 +1,452 @@
+/*
+OpenRailwayMap Style File for JOSM and KothicJS
+Electrification layer
+
+OpenRailwayMap Copyright (C) 2015-2016 Rolf Eike Beer
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+
+Format details:
+* https://josm.openstreetmap.de/wiki/Help/Styles/MapCSSImplementation
+* https://wiki.openstreetmap.org/wiki/MapCSS/0.2
+*/
+
+meta
+{
+	title: "OpenRailwayMap Electrification layer";
+	version: "0";
+	description: "Style for a electrification layer railroad network map.";
+	author: "Dakon";
+	link: "http://wiki.openstreetmap.org/wiki/OpenRailwayMap";
+	watch-modified: true;
+}
+
+canvas
+{
+	default-points: true;
+	default-lines: true;
+}
+
+@import url("common.mapcss");
+
+way.tracks_present,
+way.tracks_preserved
+{
+	set .tracks;
+}
+way[electrified][electrified!=no].tracks
+{
+	set .etracks;
+}
+
+way["proposed:electrified"].tracks,
+way["proposed:electrified"].tracks_proposed
+{
+	set .ptracks;
+}
+way["proposed:electrified"!=no].ptracks
+{
+	set .eptracks;
+}
+
+way["construction:electrified"].tracks,
+way["construction:electrified"].tracks_construction
+{
+	set .ctracks;
+}
+way["construction:electrified"!=no].ctracks
+{
+	set .ectracks;
+}
+
+way[voltage][frequency].etracks,
+way["proposed:voltage"]["proposed:frequency"].eptracks,
+way["construction:voltage"]["construction:frequency"].ectracks
+{
+	text: eval(concat(tag("voltage"), " V ", tag("frequency"), " Hz"));
+	text-position: line;
+	text-color: #585858;
+	font-size: 11;
+	font-family: "Verdana Bold";
+	font-weight: bold;
+	text-halo-radius: 1;
+	text-halo-color: white;
+}
+way["proposed:voltage"]["proposed:frequency"].eptracks,
+way["construction:voltage"]["construction:frequency"].ectracks
+{
+	font-style: italic;
+}
+way[voltage][frequency=0].etracks
+{
+	text: eval(concat(tag("voltage"), " V ="));
+}
+way["proposed:voltage"]["proposed:frequency"=0].eptracks
+{
+	text: eval(concat(tag("proposed:voltage"), " V ="));
+}
+way["construction:voltage"]["construction:frequency"=0].ectracks
+{
+	text: eval(concat(tag("construction:voltage"), " V ="));
+}
+way[voltage>=1000][frequency].etracks
+{
+	text: eval(concat(tag("voltage")/1000, " kV ", tag("frequency"), " Hz"));
+}
+way["proposed:voltage">=1000]["proposed:frequency"].eptracks
+{
+	text: eval(concat(tag("proposed:voltage")/1000, " kV ", tag("proposed:frequency"), " Hz"));
+}
+way["construction:voltage">=1000]["construction:frequency"].ectracks
+{
+	text: eval(concat(tag("construction:voltage")/1000, " kV ", tag("construction:frequency"), " Hz"));
+}
+way[voltage>=1000][frequency=0].etracks
+{
+	text: eval(concat(tag("voltage")/1000, " kV ="));
+}
+way["proposed:voltage">=1000]["proposed:frequency"=0].eptracks
+{
+	text: eval(concat(tag("proposed:voltage")/1000, " kV ="));
+}
+way["construction:voltage">=1000]["construction:frequency"=0].ectracks
+{
+	text: eval(concat(tag("construction:voltage")/1000, " kV ="));
+}
+
+/* tracks electrified by rail */
+way[electrified=rail].etracks,
+way["proposed:electrified"=rail].eptracks,
+way["construction:electrified"=rail].ectracks
+{
+	z-index: 1;
+	casing-width: 2;
+	casing-color: #797979;
+}
+way|z16-[electrified=rail].etracks,
+way|z16-["proposed:electrified"=rail].eptracks,
+way|z16-["construction:electrified"=rail].ectracks
+{
+	casing-width: 3;
+}
+
+way.tracks,
+way.ptracks,
+way.ctracks
+{
+	width: 2;
+	kothicjs-ignore-layer: true;
+}
+way["proposed:voltage"]["proposed:frequency"].eptracks
+{
+	dashes: 2,8;
+	width: 3;
+}
+way["construction:voltage"]["construction:frequency"].ectracks
+{
+	dashes: 5,5;
+}
+
+@supports not (user-agent: josm) {
+	way[!electrified].tracks,
+	way[electrified!=no][!voltage].tracks,
+	way[electrified!=no][!frequency].tracks
+	{
+		z-index: 0;
+		color: gray;
+	}
+}
+
+way[electrified=no].tracks,
+way["proposed:electrified"=no].ptracks,
+way["construction:electrified"=no].ctracks
+{
+	z-index: 1;
+	color: black;
+}
+way[electrified=no][deelectrified][deelectrified!=no].tracks,
+way[electrified=no]["abandoned:electrified"]["abandoned:electrified"!=no].tracks
+{
+	z-index: 1;
+	color: #70584D;
+}
+
+way[frequency=0][voltage<750].etracks,
+way["proposed:frequency"=0]["proposed:voltage"<750].eptracks,
+way["construction:frequency"=0]["construction:voltage"<750].ectracks
+{
+	z-index: 2;
+	color: #FF79B8;
+}
+
+way[frequency=0][voltage=750].etracks,
+way["proposed:frequency"=0]["proposed:voltage"=750].eptracks,
+way["construction:frequency"=0]["construction:voltage"=750].cptracks
+{
+	z-index: 3;
+	color: #F930FF;
+}
+
+way[frequency=0][voltage>750][voltage<1000].etracks,
+way["proposed:frequency"=0]["proposed:voltage">750]["proposed:voltage"<1000].eptracks,
+way["construction:frequency"=0]["construction:voltage">750]["construction:voltage"<1000].ectracks
+{
+	z-index: 4;
+	color: #D033FF;
+}
+
+way[frequency=0][voltage=1000].etracks,
+way["proposed:frequency"=0]["proposed:voltage"=1000].eptracks,
+way["construction:frequency"=0]["construction:voltage"=1000].ectracks
+{
+	z-index: 5;
+	color: #5C1CCB;
+}
+
+way[frequency=0][voltage>1000][voltage<1500].etracks,
+way["proposed:frequency"=0]["proposed:voltage">1000]["proposed:voltage"<1500].eptracks,
+way["construction:frequency"=0]["construction:voltage">1000]["construction:voltage"<1500].ectracks
+{
+	z-index: 6;
+	color: #007ACB;
+}
+
+way[frequency=0][voltage=1500].etracks,
+way["proposed:frequency"=0]["proposed:voltage"=1500].eptracks,
+way["construction:frequency"=0]["construction:voltage"=1500].ectracks
+{
+	z-index: 7;
+	color: #0098CB;
+}
+
+way[frequency=0][voltage>1500][voltage<3000].etracks,
+way["proposed:frequency"=0]["proposed:voltage">1500]["proposed:voltage"<3000].eptracks,
+way["construction:frequency"=0]["construction:voltage">1500]["construction:voltage"<3000].ectracks
+{
+	z-index: 8;
+	color: #00B7CB;
+}
+
+way[frequency=0][voltage=3000].etracks,
+way["proposed:frequency"=0]["proposed:voltage"=3000].eptracks,
+way["construction:frequency"=0]["construction:voltage"=3000].ectracks
+{
+	z-index: 9;
+	color: #0000FF;
+}
+
+way[frequency=0][voltage>3000].etracks,
+way["proposed:frequency"=0]["proposed:voltage">3000].eptracks,
+way["construction:frequency"=0]["construction:voltage">3000].ectracks
+{
+	z-index: 10;
+	color: #1969FF;
+}
+
+way[frequency][frequency!=0][voltage<15000].etracks,
+way["proposed:frequency"!=0]["proposed:voltage"<15000].eptracks,
+way["construction:frequency"!=0]["construction:voltage"<15000].ectracks
+{
+	z-index: 11;
+	color: #97FF2F;
+}
+
+way[frequency][frequency!=0][voltage>=15000][voltage<25000].etracks,
+way["proposed:frequency"!=0]["proposed:voltage">15000]["proposed:voltage"<25000].eptracks,
+way["construction:frequency"!=0]["construction:voltage">15000]["construction:voltage"<25000].ectracks
+{
+	z-index: 12;
+	color: #F1F100;
+}
+
+way[frequency="16.67"][voltage=15000].etracks,
+way["proposed:frequency"="16.67"]["proposed:voltage"=15000].eptracks,
+way["construction:frequency"="16.67"]["construction:voltage"=15000].ectracks
+{
+	z-index: 13;
+	color: #00FF00;
+}
+
+way[frequency="16.7"][voltage=15000].etracks,
+way["proposed:frequency"="16.7"]["proposed:voltage"=15000].eptracks,
+way["construction:frequency"="16.7"]["construction:voltage"=15000].ectracks
+{
+	z-index: 14;
+	color: #00CB66;
+}
+
+way[frequency][frequency!=0][voltage>=25000].etracks,
+way["proposed:frequency"!=0]["proposed:voltage">25000].eptracks,
+way["construction:frequency"!=0]["construction:voltage">25000].ectracks
+{
+	z-index: 15;
+	color: #FF9F19;
+}
+
+way[frequency=50][voltage=25000].etracks,
+way["proposed:frequency"=50]["proposed:voltage"=25000].eptracks,
+way["construction:frequency"=50]["construction:voltage"=25000].ectracks
+{
+	z-index: 16;
+	color: #FF0000;
+}
+
+way[frequency=60][voltage=25000].etracks,
+way["proposed:frequency"=60]["proposed:voltage"=25000].eptracks,
+way["construction:frequency"=60]["construction:voltage"=25000].ectracks
+{
+	z-index: 17;
+	color: #C00000;
+}
+
+/************************************/
+/* DE power off advance sign El 1v  */
+/* AT Ankündigung Hauptschalter aus */
+/************************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el1v"]["railway:signal:electricity:type"="power_off_advance"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:ankündigung_hauptschalter_aus"]["railway:signal:electricity:type"="power_off_advance"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 440;
+	icon-image: "icons/de/el1v-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/**************************/
+/* DE power off sign El 1 */
+/* AT Hauptschalter aus   */
+/* NL uitschakelbord 306a */
+/**************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el1"]["railway:signal:electricity:type"="power_off"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:hauptschalter_aus"]["railway:signal:electricity:type"="power_off"]["railway:signal:electricity:form"=sign],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:306a"]["railway:signal:electricity:type"="power_off"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 460;
+	icon-image: "icons/de/el1-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/*******************************************/
+/* DE tram power off shortly signal (St 7) */
+/*******************************************/
+node|z17-[railway=signal]["railway:signal:electricity"="DE-BOStrab:st7"]["railway:signal:electricity:type"="power_off_shortly"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:electricity"="DE-AVG:st7"]["railway:signal:electricity:type"="power_off_shortly"]["railway:signal:electricity:form"="sign"]
+{
+	z-index: 459;
+	icon-image: "icons/de/bostrab/st7-24.png";
+	icon-width: 11;
+	icon-height: 12;
+	allow-overlap: true;
+}
+
+/*************************/
+/* DE power on sign El 2 */
+/* AT Hauptschalter ein  */
+/* NL inschakelbord 307a */
+/*************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el2"]["railway:signal:electricity:type"="power_on"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:hauptschalter_ein"]["railway:signal:electricity:type"="power_on"]["railway:signal:electricity:form"=sign],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:307a"]["railway:signal:electricity:type"="power_on"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 458;
+	icon-image: "icons/de/el2-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/********************************************/
+/* DE pantograph down advance El 3          */
+/* AT Ankündigung Stromabnehmer tief        */
+/* NL aankondiging stroomafnemers neer 308a */
+/********************************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el3"]["railway:signal:electricity:type"="pantograph_down_advance"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:andkündigung_stromabnehmer_tief"]["railway:signal:electricity:type"="pantograph_down_advance"]["railway:signal:electricity:form"=sign],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:308a"]["railway:signal:electricity:type"="pantograph_down_advance"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 440;
+	icon-image: "icons/de/el3-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/*******************************/
+/* DE pantograph down El 4     */
+/* AT Stromabnehmer tief       */
+/* NL stroomafnemers neer 309a */
+/*******************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el4"]["railway:signal:electricity:type"="pantograph_down"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:stromabnehmer_tief"]["railway:signal:electricity:type"="pantograph_down"]["railway:signal:electricity:form"=sign],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:309a"]["railway:signal:electricity:type"="pantograph_down"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 460;
+	icon-image: "icons/de/el4-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/*****************************/
+/* DE pantograph up El 5     */
+/* AT Stromabnehmer hoch     */
+/* NL stroomafnemers op 310a */
+/*****************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el5"]["railway:signal:electricity:type"="pantograph_up"]["railway:signal:electricity:form"="sign"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:stromabnehmer_hoch"]["railway:signal:electricity:type"="pantograph_up"]["railway:signal:electricity:form"=sign],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:310a"]["railway:signal:electricity:type"="pantograph_up"]["railway:signal:electricity:form"=sign]
+{
+	z-index: 458;
+	icon-image: "icons/de/el5-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/*******************************************************/
+/* DE end of catenary sign El 6                        */
+/* AT Halt für Fahrzeuge mit angehobenem Stromabnehmer */
+/* NL einde bovenleiding                               */
+/*******************************************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el6"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"="sign"]["railway:signal:electricity:turn_direction"!="left"]["railway:signal:electricity:turn_direction"!="right"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:halt_fuer_fahrzeuge_mit_angehobenem_stromabnehmer"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"=sign]["railway:signal:electricity:turn_direction"!="left"]["railway:signal:electricity:turn_direction"!="right"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="NL:311"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"="sign"]["railway:signal:electricity:turn_direction"!="left"]["railway:signal:electricity:turn_direction"!="right"]
+{
+	z-index: 450;
+	icon-image: "icons/de/el6-14.png";
+	icon-width: 14;
+	icon-height: 14;
+	allow-overlap: true;
+}
+
+/*********************************************************************/
+/* DE end of catenary sign El 6 + arrow right                        */
+/* AT Halt für Fahrzeuge mit angehobenem Stromabnehmer + arrow right */
+/*********************************************************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el6"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"="sign"]["railway:signal:electricity:turn_direction"="right"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:halt_fuer_fahrzeuge_mit_angehobenem_stromabnehmer"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"=sign]["railway:signal:electricity:turn_direction"="right"]
+{
+	z-index: 450;
+	icon-image: "icons/de/el6-right-18.png";
+	icon-width: 14;
+	icon-height: 18;
+	allow-overlap: true;
+}
+
+/********************************************************************/
+/* DE end of catenary sign El 6 + arrow left                        */
+/* AT Halt für Fahrzeuge mit angehobenem Stromabnehmer + arrow left */
+/********************************************************************/
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="DE-ESO:el6"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"="sign"]["railway:signal:electricity:turn_direction"="left"],
+node|z17-[railway=signal]["railway:signal:direction"]["railway:signal:electricity"="AT-V2:halt_fuer_fahrzeuge_mit_angehobenem_stromabnehmer"]["railway:signal:electricity:type"="end_of_catenary"]["railway:signal:electricity:form"=sign]["railway:signal:electricity:turn_direction"="left"]
+{
+	z-index: 450;
+	icon-image: "icons/de/el6-left-18.png";
+	icon-width: 14;
+	icon-height: 18;
+	allow-overlap: true;
+}

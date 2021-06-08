@@ -1,0 +1,773 @@
+# OpenRailwayMap Copyright (C) 2018 Alexander Matheisen
+# This program comes with ABSOLUTELY NO WARRANTY.
+# This is free software, and you are welcome to redistribute it under certain conditions.
+# See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+#
+# Translators:
+# 1ec5 <mxn@1ec5.org>, 2013
+# Minh Nguyễn <minh@nguyen.cincinnati.oh.us>, 2013-2014
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenRailwayMap\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-08 12:29+0100\n"
+"PO-Revision-Date: 2017-09-23 19:12+0000\n"
+"Last-Translator: Minh Nguyễn <minh@nguyen.cincinnati.oh.us>\n"
+"Language-Team: Vietnamese (https://www.transifex.com/rurseekatze/openrailwaymap/language/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "More Info"
+msgstr "Thêm Thông tin"
+
+msgid "Contact"
+msgstr "Liên lạc"
+
+msgid "Javascript is not activated"
+msgstr "JavaScript không được kích hoạt"
+
+msgid ""
+"Javascript is needed to show the map and run this website. Please turn on "
+"Javascript in your browser settings."
+msgstr "Trang Web này cần JavaScript để hoạt động và hiển thị bản đồ. Xin vui lòng bật lên tùy chọn JavaScript trong trình duyệt của bạn."
+
+msgid "Loading..."
+msgstr "Đang tải…"
+
+msgid "Nothing found."
+msgstr "Không tìm thấy kết quả."
+
+msgid "Last update"
+msgstr "Cập nhật lần cuối"
+
+msgid "Empty input."
+msgstr "Xin vui lòng nhập truy vấn."
+
+msgid "Kilometer"
+msgstr "Kilômét"
+
+msgid "Track"
+msgstr "Đường ray"
+
+msgid "Permalink"
+msgstr "Liên kết Thường trực"
+
+msgid "Hillshading"
+msgstr "Bóng đồi"
+
+msgid "Hillshading by <a href='https://www.nasa.gov/'>NASA SRTM</a>"
+msgstr "Bóng đồi do <a href='https://www.nasa.gov/'>NASA SRTM</a> cung cấp"
+
+msgid "Rendering: OpenRailwayMap"
+msgstr "Bản đồ kết xuất: OpenRailwayMap"
+
+msgid "Mapnik"
+msgstr "Mapnik"
+
+msgid "Mapnik Grayscale"
+msgstr "Mapnik Đơn sắc"
+
+msgid "Map data &copy; OpenStreetMap contributors"
+msgstr "Dữ liệu bản đồ &copy; những người đóng góp vào OpenStreetMap"
+
+msgid "Select a map style"
+msgstr "Chọn một kiểu bản đồ"
+
+msgid "Public transport"
+msgstr "Giao thông công cộng"
+
+msgid "Search results"
+msgstr "Kết quả tìm kiếm"
+
+msgid "Search only in the current map view"
+msgstr "Chỉ tìm kiếm trong bản đồ hiện tại"
+
+msgid "HTML-Code"
+msgstr "Mã HTML"
+
+msgid ""
+"Copy this HTML code snippet into your website to show a small map with a "
+"marker."
+msgstr "Chép dán đoạn mã HTML này vào trang Web của bạn để hiển thị một bản đồ nhỏ có ghim."
+
+msgid "Fullscreen"
+msgstr "Toàn màn hình"
+
+#, php-format
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d giây"
+
+#, php-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d phút"
+
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d giờ"
+
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d ngày"
+
+#, php-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d tuần"
+
+#, php-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d tháng"
+
+#, php-format
+msgid "more than %s ago"
+msgstr "cách đây hơn %s"
+
+#, php-format
+msgid "%s ago"
+msgstr "cách đây %s"
+
+msgid "Infrastructure"
+msgstr "Cơ sở hạ tầng"
+
+msgid "Signalling"
+msgstr "Báo hiệu"
+
+msgid "Maxspeeds"
+msgstr "Tốc độ tối đa"
+
+msgid "Electrification"
+msgstr ""
+
+msgid "Halt"
+msgstr "Ga xép"
+
+msgid "Station"
+msgstr "Nhà ga"
+
+msgid "Junction"
+msgstr "Ga đầu mối"
+
+msgid "Yard"
+msgstr "Sân đường sắt"
+
+msgid "Crossover"
+msgstr "Điểm đường sắt giao nhau"
+
+msgid "Site"
+msgstr "Nơi"
+
+msgid "Service station"
+msgstr "Nhà bảo quản"
+
+msgid "Subway/Light rail station"
+msgstr ""
+
+msgid "Tram stop"
+msgstr "Trạm tàu điện"
+
+msgid "Milestone"
+msgstr "Cột mốc"
+
+msgid "Signal"
+msgstr ""
+
+msgid "Level crossing"
+msgstr "Điểm giao đường sắt"
+
+msgid "Crossing"
+msgstr "Điểm giao"
+
+msgid "Legend"
+msgstr "Chú giải"
+
+msgid "Bridge"
+msgstr "Cầu"
+
+msgid "Tunnel"
+msgstr "Đường hầm"
+
+msgid "Line ref"
+msgstr "Số đường"
+
+msgid "Railroad line"
+msgstr "Đường sắt"
+
+msgid "Siding"
+msgstr "Đường tránh"
+
+msgid "Yard track"
+msgstr ""
+
+msgid "Spur"
+msgstr "Nhánh"
+
+msgid "Crossover track"
+msgstr "Đường cắt ngang"
+
+msgid "Branch line"
+msgstr "Nhánh"
+
+msgid "Main line"
+msgstr "Đường chính"
+
+msgid "Highspeed line"
+msgstr "Đường cao tốc"
+
+msgid "Industrial line"
+msgstr "Đường công nghiệp"
+
+msgid "Industrial service track"
+msgstr "Đường phụ công nghiệp"
+
+msgid "Preserved track"
+msgstr "Đường được bảo tồn"
+
+msgid "Preserved service track"
+msgstr "Đường phụ được bảo tồn"
+
+msgid "Track under construction"
+msgstr "Đường đang xây"
+
+msgid "Proposed track"
+msgstr "Đường được đề nghị"
+
+msgid "Disused track"
+msgstr "Đường không hoạt động"
+
+msgid "Abandoned track"
+msgstr "Đường bỏ hoang"
+
+msgid "Razed track"
+msgstr "Đường san bằng"
+
+msgid "Tram"
+msgstr "Tài điện"
+
+msgid "Subway"
+msgstr "Tàu điện ngầm"
+
+msgid "Light rail"
+msgstr "Đường nhẹ"
+
+msgid "Narrow gauge track"
+msgstr "Đường khổ hẹp"
+
+msgid "Switch (remote-controlled)"
+msgstr "Ghi (điều khiển từ xa)"
+
+msgid "Switch (local operated)"
+msgstr "Ghi (điều khiển tại chỗ)"
+
+msgid "Resetting switch"
+msgstr "Ghi đặt lại"
+
+msgid "Signal box"
+msgstr "Tủ báo hiệu"
+
+msgid "Owner change"
+msgstr "Thay đổi chủ"
+
+msgid "Railway crossing"
+msgstr "Điểm giao đường sắt"
+
+msgid "Buffer stop"
+msgstr ""
+
+msgid "Isolated track section"
+msgstr "Khúc đường không nối"
+
+msgid "Platform"
+msgstr "Bến"
+
+msgid "Vending machine"
+msgstr "Máy bán vé"
+
+msgid "Ticket shop"
+msgstr "Cửa bán vé"
+
+msgid "Subway entrance"
+msgstr "Cửa vào nhà ga tàu điện ngầm"
+
+msgid "Phone"
+msgstr "Điện thoại"
+
+msgid "Water tower"
+msgstr "Tháp nước"
+
+msgid "Fuel"
+msgstr "Cây xăng"
+
+msgid "Water crane"
+msgstr "Vòi lấy nước"
+
+msgid "Coaling facility"
+msgstr "Trạm lấy than"
+
+msgid "Wash"
+msgstr ""
+
+msgid "Pit"
+msgstr ""
+
+msgid "Loading gauge"
+msgstr "Khổ tải trọng"
+
+msgid "Hump yard"
+msgstr ""
+
+msgid "Rail brake"
+msgstr "Phanh trên ray"
+
+msgid "Engine shed"
+msgstr "Nhà đầu máy"
+
+msgid "Workshop"
+msgstr "Xưởng"
+
+msgid "Radio tower"
+msgstr "Tháp radio"
+
+msgid "Turntable"
+msgstr "Đường quay"
+
+msgid "Traverser"
+msgstr ""
+
+msgid "Loading ramp"
+msgstr "Dốc tải"
+
+msgid "Crane"
+msgstr "Vòi"
+
+msgid "Track scale"
+msgstr "Cân xe ray"
+
+msgid "Carrier truck pit"
+msgstr ""
+
+msgid "Gauge conversion"
+msgstr "Đổi khổ đường"
+
+msgid "Gate"
+msgstr "Cổng"
+
+msgid "Museum"
+msgstr "Viện bảo tàng"
+
+msgid "Container terminal"
+msgstr "Cảng chuyển thùng"
+
+msgid "Station building"
+msgstr "Nhà ga"
+
+msgid "Factory connected to railroad line"
+msgstr "Nhà máy nối với đường sắt"
+
+msgid "Rack"
+msgstr "Giá"
+
+msgid "Embankment"
+msgstr "Đường đắp cao"
+
+msgid "Cutting"
+msgstr "Đường xẻ"
+
+msgid "Miniature railway"
+msgstr "Đường nhỏ"
+
+msgid "Funicular"
+msgstr "Đường leo núi"
+
+msgid "Military line"
+msgstr "Đường quân sự"
+
+msgid "Military service track"
+msgstr "Đường phụ quân sự"
+
+msgid "Ferry terminal"
+msgstr "Nhà ga phà"
+
+msgid "Ferry"
+msgstr "Phà"
+
+msgid "Test line"
+msgstr "Đường thử"
+
+msgid "Test service track"
+msgstr "Đường phụ thử"
+
+msgid "Car shuttle"
+msgstr ""
+
+msgid "Rolling highway"
+msgstr "Đường sắt chở xe tải"
+
+msgid "Nothing to see in this zoom level. Please zoom in."
+msgstr "Mức thu phóng này không có gì để nhìn. Xin vui lòng phóng to."
+
+msgid "Legend not available for this style."
+msgstr "Kiểu bản đồ này không có bảng chú giải."
+
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+msgid "Desktop version"
+msgstr "Phiên bản để bàn"
+
+msgid "Style"
+msgstr "Kiểu"
+
+msgid "Search"
+msgstr "Tìm kiếm"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "No information"
+msgstr ""
+
+msgid "speed only given for one direction"
+msgstr ""
+
+msgid "main track, service track"
+msgstr ""
+
+msgid "Quick search shortcut"
+msgstr ""
+
+msgid "Placeholder"
+msgstr ""
+
+msgid "Donate"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid "Wiki"
+msgstr ""
+
+msgid "Search milestone"
+msgstr ""
+
+msgid "Station code"
+msgstr ""
+
+msgid "Search station"
+msgstr ""
+
+msgid "UIC reference"
+msgstr ""
+
+msgid "About this project"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Line operator"
+msgstr ""
+
+msgid "Operator"
+msgstr ""
+
+msgid "More results"
+msgstr ""
+
+msgid "Spur junction"
+msgstr ""
+
+msgid "No background map"
+msgstr ""
+
+msgid "Deelectrified"
+msgstr ""
+
+msgid "No information about train protection"
+msgstr ""
+
+msgid "Hp-Lichthauptsignal ohne Angabe der Signalzustände"
+msgstr ""
+
+msgid "Track usage"
+msgstr ""
+
+msgid "Lf 7 Geschwindigkeitssignal"
+msgstr ""
+
+msgid "%SPDMIN%-%SPDMAX% km/h (disused/under construction)"
+msgstr ""
+
+msgid "1.5 – 3kV ="
+msgstr ""
+
+msgid "ETCS under construction"
+msgstr ""
+
+msgid "3kV ="
+msgstr ""
+
+msgid "Germany"
+msgstr ""
+
+msgid "Not electrified"
+msgstr ""
+
+msgid "shunting signal type Ro"
+msgstr ""
+
+msgid "Track type"
+msgstr ""
+
+msgid "El 5 \"Bügel an\"-Signal"
+msgstr ""
+
+msgid "Linienzugbeeinflussung"
+msgstr ""
+
+msgid "25kV 50Hz ~"
+msgstr ""
+
+msgid "So 106 Kreuztafel"
+msgstr ""
+
+msgid "Ra 11 Wartezeichen mit Sh 1"
+msgstr ""
+
+msgid "Junction, Crossover, Service Station, Site"
+msgstr ""
+
+msgid "Hp-Formhauptsignal ohne Angabe der Signalzustände"
+msgstr ""
+
+msgid "At least 25kV ~"
+msgstr ""
+
+msgid "minor signal type Lo"
+msgstr ""
+
+msgid "Finland"
+msgstr ""
+
+msgid "15 – 25kV ~"
+msgstr ""
+
+msgid "ETCS"
+msgstr ""
+
+msgid "Electrification under construction"
+msgstr ""
+
+msgid "no train protection"
+msgstr ""
+
+msgid "Blockkennzeichen"
+msgstr ""
+
+msgid "Ne 6 Haltepunkttafel"
+msgstr ""
+
+msgid "Ne 1 Trapeztafel"
+msgstr ""
+
+msgid "15kV 16⅔Hz ~"
+msgstr ""
+
+msgid "Ra 11 Wartezeichen ohne Sh 1 / Wartesignal ohne 'Verschubverbot aufgehoben'"
+msgstr ""
+
+msgid "signals"
+msgstr ""
+
+msgid "Ne 5 Haltetafel"
+msgstr ""
+
+msgid "Voltage"
+msgstr ""
+
+msgid "More than 3kV ="
+msgstr ""
+
+msgid "Lf 6 Geschwindigkeits­ankündesignal"
+msgstr ""
+
+msgid "3rd rail"
+msgstr ""
+
+msgid "750 – 1000V ="
+msgstr ""
+
+msgid "Less than 15kV ~"
+msgstr ""
+
+msgid "1kV ="
+msgstr ""
+
+msgid "crossing signal type To"
+msgstr ""
+
+msgid "1 – 1.5kV ="
+msgstr ""
+
+msgid "block signal type So"
+msgstr ""
+
+msgid "%SPDMIN%-%SPDMAX% km/h"
+msgstr ""
+
+msgid "1.5kV ="
+msgstr ""
+
+msgid "El 2 Einschaltsignal"
+msgstr ""
+
+msgid "Ra 10 Rangierhalttafel / Verschubhalttafel"
+msgstr ""
+
+msgid "Zs 10 Endesignal (Tafel)"
+msgstr ""
+
+msgid "El 1 Ausschaltsignal"
+msgstr ""
+
+msgid "Ra 11b Wartezeichen"
+msgstr ""
+
+msgid "El 6 Halt für Fahrzeuge mit gehobenem Stromabnehmer"
+msgstr ""
+
+msgid "Less than 750V ="
+msgstr ""
+
+msgid "Punktförmige Zugbeeinflussung"
+msgstr ""
+
+msgid "Operating Sites"
+msgstr ""
+
+msgid "train protection"
+msgstr ""
+
+msgid "contact line"
+msgstr ""
+
+msgid "El 4 \"Bügel ab\"-Signal"
+msgstr ""
+
+msgid "750V ="
+msgstr ""
+
+msgid "25kV 60Hz ~"
+msgstr ""
+
+msgid "El 3 \"Bügel ab\"-Ankündigungssignal"
+msgstr ""
+
+msgid "Electrification proposed"
+msgstr ""
+
+msgid "El 1v Ausschaltsignal erwarten"
+msgstr ""
+
+msgid "15kV 16.7Hz ~"
+msgstr ""
+
+msgid "Sh-Lichtsperrsignal (normal, Zwergsignal)"
+msgstr ""
+
+msgid "distant signal with Eo 2 (new type)"
+msgstr ""
+
+msgid "Ks-Hauptsignal"
+msgstr ""
+
+msgid "Bü 5 Läutetafel (normal, für durchfahrende Züge)"
+msgstr ""
+
+msgid "Ks-Mehrabschnittssignal (normal, verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "Vr-Lichtvorsignal mit Vr 2 (normal, Wiederholer/verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "Bü 2 Rautentafel (normal, verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "Ks-Vorsignal (normal, Wiederholer, verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "Bü 4 Pfeiftafel (normal, für durchfahrende Züge)"
+msgstr ""
+
+msgid "ex-Pf 1 Pfeiftafel (normal, für durchfahrende Züge)"
+msgstr ""
+
+msgid "El 4 \"Bügel ab\"-Signal"
+msgstr ""
+
+msgid "Vr-Formvorsignal ohne Angabe der Signalzustände"
+msgstr ""
+
+msgid "Vr-Formvorsignal (ohne Vr 2, mit Vr 2)"
+msgstr ""
+
+msgid "main signal without aspects given (new type, old type)"
+msgstr ""
+
+msgid "Hp-Lichthauptsignal (ohne Hp 2, mit Hp 2)"
+msgstr ""
+
+msgid "main signal with Po 1 (new type, old type)"
+msgstr ""
+
+msgid "main signal with Po 2 (new type, old type)"
+msgstr ""
+
+msgid "El 3 \"Bügel ab\"-Ankündigungssignal"
+msgstr ""
+
+msgid "distant signal with Eo 1 (new type, old type)"
+msgstr ""
+
+msgid "Vr-Lichtvorsignal ohne Vr 2 (normal, Wiederholer/verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "Sh-Formsperrsignal (normal, Zwergsignal)"
+msgstr ""
+
+msgid "Sv-Signal (ohne Hp 0, mit Hp 0)"
+msgstr ""
+
+msgid "Hp-Formhauptsignal (ohne Hp 2, mit Hp 2)"
+msgstr ""
+
+msgid "El 5 \"Bügel an\"-Signal"
+msgstr ""
+
+msgid "Vr-Lichtvorsignal ohne Angabe der Signalzustände (normal, Wiederholer/verkürzter Bremswegabstand)"
+msgstr ""
+
+msgid "distant signal without aspects given (new type, old type)"
+msgstr ""
+
+msgid "Zs 3v Geschwindigkeits­voranzeiger (Tafel, Lichtsignal)"
+msgstr ""
+
+msgid "Zs 3 Geschwindigkeits­anzeiger (Tafel, Lichtsignal)"
+msgstr ""
+
+msgid "Imprint &amp; Privacy Policy"
+msgstr ""

@@ -1,0 +1,43 @@
+/*
+OpenRailwayMap Copyright (C) 2012 Alexander Matheisen
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+*/
+
+@charset "utf-8";
+
+html,body
+{
+	background-color: white;
+	color: black;
+	margin: 0;
+	padding: 0;
+	font-family: Trebuchet MS,Helvetica,Arial,sans-serif;
+	font-size: 12px;
+}
+
+td
+{
+	margin: 0;
+}
+
+td:first-child
+{
+	width: 80px;
+	height: 16px;
+}
+
+td.section {
+	width: 100%;
+	font-weight: bold;
+	font-size: 12px;
+	height: 1.6em;
+	padding-top: 1em;
+}
+
+canvas
+{
+	padding: 0;
+	margin: 0;
+}

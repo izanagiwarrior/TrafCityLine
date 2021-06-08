@@ -1,0 +1,738 @@
+meta
+{
+	title: "OpenRailwayMap – international validation ruleset";
+	version: "2017-01-09";
+	description: "Validation of railway data according to the OpenRailwayMap tagging scheme.";
+	author: "rurseekatze";
+	link: "https://wiki.openstreetmap.org/wiki/OpenRailwayMap/Tagging";
+	watch-modified: true;
+}
+
+/* Track with usage AND service */
+way[railway][usage][usage!=industrial][usage!=military][service]
+{
+	throwError: "Track tagged with usage=* AND service=* - remove one of these tags";
+	fixRemove: "service";
+	assertMatch: "way railway=rail usage=main service=siding";
+	assertNoMatch: "way railway=rail usage=main";
+	assertNoMatch: "way railway=rail service=siding";
+	assertNoMatch: "way railway=rail usage=industrial service=yard";
+	assertNoMatch: "way railway=rail usage=military service=yard";
+}
+
+/* Station mapped as way or area */
+way[railway=station],
+area[railway=station]
+{
+	throwError: "Station mapped as a way, but should be mapped as a node";
+	assertMatch: "way railway=station";
+	assertMatch: "area railway=station";
+	assertNoMatch: "node railway=station";
+}
+
+/* Milestone without position */
+node[railway=milestone][!railway:position]
+{
+	throwWarning: "Milestone without position, add railway:position=*";
+	assertMatch: "node railway=milestone";
+	assertNoMatch: "node railway=milestone railway:position=42.0";
+}
+
+/* Track without operator */
+way[railway][!operator]
+{
+	throwOther: "Track without operator";
+	assertMatch: "way railway=rail";
+	assertNoMatch: "node railway=rail operator=SNCF";
+	assertNoMatch: "relation railway=rail";
+	assertNoMatch: "way railway=rail operator=SNCF";
+}
+
+/* traffic_mode is deprecated, should be changed to railway:traffic_mode */
+way[railway][traffic_mode]
+{
+	throwError: "Key traffic_mode is deprecated";
+	fixChangeKey: "traffic_mode=>railway:traffic_mode";
+	suggestAlternative: "railway:traffic_mode";
+	assertMatch: "way railway=rail traffic_mode=passenger";
+	assertNoMatch: "node railway=rail";
+	assertNoMatch: "way railway=rail";
+	assertNoMatch: "area railway=rail";
+	assertNoMatch: "way railway=rail railway:traffic_mode=passenger";
+}
+
+/* usage=freight is deprecated, should be changed to railway:traffic_mode=freight */
+/* rule with auto-fix if no railway:traffic_mode=* is not tagged or               */
+/*                          railway:traffic_mode!=(mixed|passenger)               */
+way[railway][usage=freight][!railway:traffic_mode],
+way[railway][usage=freight][railway:traffic_mode=freight]
+{
+	throwError: "usage=freight is deprecated";
+	fixChangeKey: "usage=>railway:traffic_mode";
+	suggestAlternative: "railway:traffic_mode=freight";
+	assertMatch: "way railway=rail usage=freight";
+	assertMatch: "way railway=rail usage=freight railway:traffic_mode=freight";
+	assertNoMatch: "way railway=rail usage=main";
+	assertNoMatch: "way railway=rail usage=branch";
+	assertNoMatch: "way railway=rail usage=industrial";
+	assertNoMatch: "way railway=rail railway:traffic_mode";
+}
+
+/* usage=freight is deprecated, should be changed to railway:traffic_mode=freight */
+/* rule with auto-fix if railway:traffic_mode=(passenger|mixed) */
+way[railway][usage=freight][railway:traffic_mode=~/^(passenger|mixed)$/]
+{
+	throwError: "usage=freight is deprecated";
+	fixAdd: "railway:traffic_mode=mixed";
+	fixRemove: "usage";
+	suggestAlternative: "railway:traffic_mode=mixed";
+	assertMatch: "way railway=rail usage=freight railway:traffic_mode=passenger";
+	assertMatch: "way railway=rail usage=freight railway:traffic_mode=mixed";
+	assertNoMatch: "way railway=rail usage=main";
+	assertNoMatch: "way railway=rail usage=branch";
+	assertNoMatch: "way railway=rail usage=industrial";
+	assertNoMatch: "way railway=rail usage=freight 'railway:traffic_mode'=freight";
+	assertNoMatch: "way railway=rail railway:traffic_mode";
+}
+
+/* Track without workrules */
+way[railway][railway!=platform][!workrules]
+{
+	throwOther: "Track without workrules";
+	assertMatch: "way railway=rail";
+	assertNoMatch: "node railway=rail workrules=EBO";
+	assertNoMatch: "relation railway=rail";
+	assertNoMatch: "way railway=rail workrules=EBO";
+}
+
+/* operator is not necessary for signals and milestones if equal to track operator */
+way[railway][operator] > node[railway=signal][operator]
+{
+	throwWarning: "operator is not necessary for signals if equal to track operator";
+/* 	assertMatch: "node railway=signal operator=DB ∈ way railway=rail operator=DB"; */
+	assertNoMatch: "node railway=signal";
+	assertNoMatch: "node railway=signal operator=DB";
+	assertNoMatch: "way railway=rail operator=DB";
+	assertNoMatch: "way railway=rail operator=DB";
+}
+way[railway][operator] > node[railway=milestone][operator]
+{
+	throwWarning: "operator is not necessary for milestones if equal to track operator";
+/* 	assertMatch: "node railway=milestone operator=DB ∈ way railway=rail operator=DB"; */
+	assertNoMatch: "way railway=rail operator=DB";
+	assertNoMatch: "node railway=milestone";
+	assertNoMatch: "way railway=rail operator=DB";
+}
+
+/* supervised=* is deprecated, replace it with the new crossing:supervision=* */
+node[railway=level_crossing][supervised],
+node[railway=crossing][supervised]
+{
+	throwWarning: "supervised=* is deprecated";
+	fixChangeKey: "supervised=>crossing:supervision";
+	suggestAlternative: "crossing:supervision";
+	assertMatch: "node railway=level_crossing supervised=yes";
+	assertNoMatch: "node railway=level_crossing";
+}
+
+/* signal specification given but node is not tagged as signal or equivalent type */
+node[/^railway:signal:/][railway!=signal][railway!=buffer_stop][railway!=derail]
+{
+	throwWarning: "signal specification given but node is not tagged as signal or equivalent type";
+	assertMatch: "node railway:signal:direction=forward";
+	assertMatch: "node railway:signal:position=right railway=level_crossing";
+	assertNoMatch: "node railway:signal:position=right railway=signal";
+	assertNoMatch: "node railway=signal railway:signal:direction=forward";
+	assertNoMatch: "node railway=buffer_stop railway:signal:minor=sh2";
+	assertNoMatch: "node railway=derail railway:signal:minor=sh";
+}
+
+/* a signal which is a sign cannot have different states */
+node[railway=signal]["railway:signal:main:form"=sign]["railway:signal:main:states"],
+node[railway=signal]["railway:signal:distant:form"=sign]["railway:signal:distant:states"],
+node[railway=signal]["railway:signal:combined:form"=sign]["railway:signal:combined:states"],
+node[railway=signal]["railway:signal:shunting:form"=sign]["railway:signal:shunting:states"],
+node[railway=signal]["railway:signal:main_repeated:form"=sign]["railway:signal:main_repeated:states"],
+node[railway=signal]["railway:signal:minor:form"=sign]["railway:signal:minor:states"],
+node[railway=signal]["railway:signal:minor_distant:form"=sign]["railway:signal:minor_distant:states"],
+node[railway=signal]["railway:signal:crossing:form"=sign]["railway:signal:crossing:states"],
+node[railway=signal]["railway:signal:crossing_distant:form"=sign]["railway:signal:crossing_distant:states"],
+node[railway=signal]["railway:signal:humping:form"=sign]["railway:signal:humping:states"],
+node[railway=signal]["railway:signal:speed_limit:form"=sign]["railway:signal:speed_limit:speed"=~/;/],
+node[railway=signal]["railway:signal:speed_limit_distant:form"=sign]["railway:signal:speed_limit_distant:speed"=~/;/],
+node[railway=signal]["railway:signal:route:form"=sign]["railway:signal:route:states"],
+node[railway=signal]["railway:signal:route_distant:form"=sign]["railway:signal:route_distant:states"],
+node[railway=signal]["railway:signal:wrong_road:form"=sign]["railway:signal:wrong_road:states"],
+node[railway=signal]["railway:signal:stop_demand:form"=sign]["railway:signal:stop_demand:states"],
+node[railway=signal]["railway:signal:departure:form"=sign]["railway:signal:departure:states"],
+node[railway=signal]["railway:signal:resetting_switch:form"=sign]["railway:signal:resetting_switch:states"],
+node[railway=signal]["railway:signal:short_route:form"=sign]["railway:signal:short_route:states"],
+node[railway=signal]["railway:signal:brake_test:form"=sign]["railway:signal:brake_test:states"]
+{
+	throwError: "A sign cannot have different states.";
+	assertMatch: "node railway=signal railway:signal:main:states=hp0;hp1 railway:signal:main:form=sign";
+	assertMatch: "node railway=signal railway:signal:speed_limit:form=sign railway:signal:speed_limit:speed=80;90";
+	assertNoMatch: "node railway=signal railway:signal:main:states=hp0;hp1 railway:signal:main:form=semaphore";
+	assertNoMatch: "node railway=signal railway:signal:main:states=hp0;hp1 railway:signal:main:form=light";
+	assertNoMatch: "node railway=signal railway:signal:speed_limit:form=sign railway:signal:speed_limit:speed=80";
+}
+
+/* track numbers inside a station should be railway:track_ref, not name */
+way[railway][railway!=platform][name=~/^[0-9]+[a-z]*.*/]["railway:track_ref"=*name]
+{
+	throwError: "track numbers inside a station should be railway:track_ref, not name";
+	fixRemove: "name";
+	suggestAlternative: "railway:track_ref";
+	assertMatch: "way railway=rail name=4 railway:track_ref=4";
+	assertMatch: "way railway=rail name=4a railway:track_ref=4a";
+	assertMatch: "way railway=light_rail name=14 railway:track_ref=14";
+	assertMatch: "way railway=rail name=14b railway:track_ref=14b";
+	assertNoMatch: "way railway=rail name=\"Gleis 14b\"";
+	assertNoMatch: "way railway=rail name=\"Gleis 14b\" railway:track_ref=14b";
+	assertNoMatch: "way railway=rail name=3";
+}
+way[railway][railway!=platform][name=~/^[0-9]+[a-z]*.*/][!"railway:track_ref"]
+{
+	throwError: "track numbers inside a station should be railway:track_ref, not name";
+	fixChangeKey: "name=>railway:track_ref";
+	suggestAlternative: "railway:track_ref";
+	assertMatch: "way railway=rail name=4";
+	assertMatch: "way railway=rail name=4a";
+	assertMatch: "way railway=light_rail name=14";
+	assertMatch: "way railway=rail name=14b";
+	assertNoMatch: "way railway=rail name=\"Gleis 14b\"";
+	assertNoMatch: "way railway=rail name=\"track 4b\"";
+	assertNoMatch: "way railway=platform name=3";
+}
+way[railway=platform]["railway:track_ref"][!ref],
+way[railway=platform]["railway:track_ref"]["railway:track_ref"=*ref]
+{
+	throwError: "platforms should have the numbers in ref, not railway:track_ref";
+	fixChangeKey: "railway:track_ref=>ref";
+	suggestAlternative: "ref";
+	assertMatch: "way railway=platform railway:track_ref=3";
+	assertMatch: "way railway=platform railway:track_ref=3 ref=3";
+	assertNoMatch: "way railway=rail railway:track_ref=3";
+	assertNoMatch: "way railway=platform railway:track_ref=3 ref=4";
+}
+way[railway=platform]["railway:track_ref"]["ref"]["railway:track_ref"!=*ref]
+{
+	throwError: "platforms should have the numbers in ref, not railway:track_ref";
+	assertMatch: "way railway=platform railway:track_ref=3 ref=4";
+	assertNoMatch: "way railway=platform railway:track_ref=3";
+	assertNoMatch: "way railway=platform railway:track_ref=3 ref=3";
+	assertNoMatch: "way railway=rail railway:track_ref=3";
+}
+
+/* track names or ref should not include the word 'track' */
+way[railway][railway!=platform][name=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway][railway!=platform]["name:de"=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway][railway!=platform][name=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway][railway!=platform][name=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway][railway!=platform]["name:fr"=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway][railway!=platform][ref=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway][railway!=platform][ref=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway][railway!=platform][ref=~/^[Vv]oie [0-9]+[a-z]*.*/]
+{
+	throwError: "track names or refs should not include the word 'track', tag those numbers as railway:track_ref";
+	assertMatch: "way railway=rail name=\"Gleis 14b\"";
+	assertMatch: "way railway=rail ref=\"track 4b\"";
+	assertNoMatch: "way railway=rail name=14b";
+}
+
+way[railway=platform][!description][name=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][!description]["name:de"=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][!description][name=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][!description][name=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][!description]["name:fr"=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][!description][ref=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][!description][ref=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][!description][ref=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][description=*name][name=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description=*"name:de"]["name:de"=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description=*name][name=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][description=*name][name=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][description=*"name:fr"]["name:fr"=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][description=*ref][ref=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description=*ref][ref=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][description=*ref][ref=~/^[Vv]oie [0-9]+[a-z]*.*/]
+{
+	throwError: "platform names or refs should not include the word 'track', write that as 'description', put the bare numbers in 'ref', separated by ';'";
+	fixChangeKey: "{2.key}=>description";
+	suggestAlternative: "description";
+	assertMatch: "way railway=platform name=\"Gleis 14b\"";
+	assertMatch: "way railway=platform name=\"Gleis 14b\" description=\"Gleis 14b\"";
+	assertMatch: "way railway=platform ref=\"track 4b\"";
+	assertMatch: "way railway=platform ref=\"track 4b\" ref=\"track 4b\"";
+	assertNoMatch: "way railway=platform name=14b";
+	assertNoMatch: "way railway=rail name=14b";
+	assertNoMatch: "way railway=platform name=14b description=other";
+}
+
+way[railway=platform][description][description!=*name][name=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*"name:de"]["name:de"=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*name][name=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*name][name=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*"name:fr"]["name:fr"=~/^[Vv]oie [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*ref][ref=~/^[Gg]leis [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*ref][ref=~/^[Tt]rack [0-9]+[a-z]*.*/],
+way[railway=platform][description][description!=*ref][ref=~/^[Vv]oie [0-9]+[a-z]*.*/]
+{
+	throwError: "platform names or refs should not include the word 'track', write that as 'description', put the bare numbers in 'ref', separated by ';'";
+	assertMatch: "way railway=platform name=\"Gleis 14b\" description=other";
+	assertMatch: "way railway=platform ref=\"track 4b\" description=other";
+	assertNoMatch: "way railway=platform name=14b";
+	assertNoMatch: "way railway=platform name=14b description=14b";
+}
+
+/* power:type=overhead is deprecated, electrified=contact_line is sufficent */
+way[railway]["power:type"=overhead][electrified=contact_line]
+{
+	throwError: "power:type=overhead is deprecated";
+	fixRemove: "power:type";
+	suggestAlternative: "electrified=contact_line";
+	assertMatch: "way railway=rail power:type=overhead electrified=contact_line";
+	assertNoMatch: "way railway=rail power:type=overhead electrified=something";
+}
+
+/* power:type=overhead is deprecated, change to electrified=contact_line */
+way[railway]["power:type"=overhead][electrified=yes],
+way[railway]["power:type"=overhead][!electrified]
+{
+	throwError: "power:type=overhead is deprecated";
+	fixRemove: "power:type";
+	fixAdd: "electrified=contact_line";
+	suggestAlternative: "electrified=contact_line";
+	assertMatch: "way railway=rail power:type=overhead";
+	assertMatch: "way railway=rail power:type=overhead electrified=yes";
+	assertNoMatch: "way railway=rail power:type=overhead electrified=something";
+}
+
+/* power:type=overhead is deprecated, conflict with existing electrified=* */
+way[railway]["power:type"=overhead][electrified][electrified!=yes][electrified!=contact_line]
+{
+	throwError: tr("power:type=overhead is deprecated, conflict between {0} and {1}", "power:type=overhead", "electrified=*");
+	assertMatch: "way railway=rail power:type=overhead electrified=other";
+	assertNoMatch: "way railway=rail power:type=overhead electrified=yes";
+}
+
+/* power:type=* is deprecated, change to proper electrified=* value */
+/* This covers all objects which have power:type!=overhead and already have electrified=* */
+way[railway]["power:type"]["power:type"!=overhead][electrified]
+{
+	throwError: "power:type is deprecated, change to proper electrified value";
+	assertMatch: "way railway=rail power:type=something electrified=yes";
+	assertNoMatch: "way railway=rail power:type=overhead electrified=yes";
+}
+
+/* power:type=overhead is deprecated, change to electrified=contact_line */
+/* This covers all objects which have power:type!=overhead and do not have electrified=* */
+way[railway]["power:type"]["power:type"!=overhead][!electrified]
+{
+	throwError: "power:type is deprecated, change to proper electrified value";
+	assertMatch: "way railway=rail power:type=something";
+	assertNoMatch: "way railway=rail power:type=overhead electrified=yes";
+}
+
+/* priority on railway lines is deprecated, remove it */
+way[railway][priority],
+node[railway][priority]
+{
+	throwError: "priority on railway objects is deprecated, remove it";
+	fixRemove: "priority";
+	assertMatch: "way railway=rail priority=primary service=siding";
+	assertMatch: "way railway=rail priority=primary usage=main";
+	assertMatch: "way railway=rail priority=primary";
+	assertMatch: "node railway=buffer_stop priority=yard";
+	assertNoMatch: "way highway=primary priority=primary";
+}
+
+/* tracks with tracks=1 and detail=track */
+way[railway][tracks=1][detail=track]
+{
+	throwWarning: "tracks=1 not necessary if detail=track is tagged.";
+	fixRemove: "tracks";
+	suggestAlternative: "detail=track";
+	assertMatch: "way railway=rail tracks=1 detail=track";
+	assertNoMatch: "way railway=rail tracks=2 detail=track";
+	assertNoMatch: "way railway=rail tracks=1 detail!=track";
+}
+
+/* tracks with tracks>1 and service=* */
+way[railway][tracks!=1][tracks][service]
+{
+	throwWarning: "If tracks are tagged with service=*, they should be mapped as one way per track.";
+	assertMatch: "way railway=rail tracks=2 service=foo";
+	assertNoMatch: "way railway=rail tracks=2 usage=bar";
+	assertNoMatch: "way railway=rail tracks=1";
+}
+
+/* crossings and level crossings should be mapped as nodes */
+way[railway=crossing],
+way[railway=level_crossing],
+area[railway=crossing],
+area[railway=level_crossing]
+{
+	throwError: "Crossings and level crossings should be mapped as nodes";
+	assertMatch: "way railway=level_crossing railway:position:exact=2.4";
+	assertMatch: "way railway=crossing railway:position:exact=2.4";
+	assertMatch: "area railway=crossing railway:position:exact=2.4";
+	assertNoMatch: "node railway=level_crossing";
+	assertNoMatch: "node railway=crossing";
+}
+
+/* railway=flat_crossing is deprecated, use railway=railway_crossing instead. */
+node[railway=flat_crossing]
+{
+	throwError: "railway=flat_crossing is deprecated";
+	fixAdd: "railway=railway_crossing";
+	suggestAlternative: "railway=railway_crossing";
+	assertMatch: "node railway=flat_crossing" ;
+	assertNoMatch: "node railway=crossing";
+	assertNoMatch: "node railway=railway_crossing";
+}
+
+/* railway:signal:stop:description is deprecated */
+node[railway:signal:stop:description][!railway:signal:stop:caption]
+{
+	throwWarning: "railway:signal:stop:description is deprecated and has been replaced by railway:signal:stop:caption";
+	fixChangeKey: "railway:signal:stop:description=>railway:signal:stop:caption";
+	suggestAlternative: "railway:signal:stop:caption";
+	assertMatch: "node railway=signal railway:signal:stop:description=70";
+	assertNoMatch: "node railway=signal railway:signal:stop:caption=70";
+	assertNoMatch: "node railway=signal railway:signal:stop:description=70 railway:signal:stop:caption=70";
+}
+node[railway:signal:stop:description][railway:signal:stop:caption]
+{
+	throwWarning: "railway:signal:stop:description is deprecated, replace by appropiate railway:signal:stop:caption value";
+	assertMatch: "node railway=signal railway:signal:stop:description=70 railway:signal:stop:caption=70";
+	assertNoMatch: "node railway=signal railway:signal:stop:description=70";
+	assertNoMatch: "node railway=signal railway:signal:stop:caption=70";
+}
+
+/* combined signals include main signal functions, so separate main signals do not make sense */
+node["railway:signal:combined"]["railway:signal:main"]
+{
+	throwError: "main and combined signal at the same place";
+	assertMatch: "node railway=signal railway:signal:combined=DE-ESO:ks railway:signal:main=DE-ESO:hp";
+	assertNoMatch: "node railway=signal railway:signal:distant=DE-ESO:vr railway:signal:main=DE-ESO:hp";
+	assertNoMatch: "node railway=signal railway:signal:combined=DE-ESO:ks railway:signal:minor=DE-ESO:sh1";
+}
+
+/* combined signals include distant signal functions, so separate distant signals do not make sense */
+node["railway:signal:combined"]["railway:signal:distant"]
+{
+	throwError: "main and combined signal at the same place";
+	assertMatch: "node railway=signal railway:signal:combined=DE-ESO:ks railway:signal:distant=DE-ESO:vr";
+	assertNoMatch: "node railway=signal railway:signal:distant=DE-ESO:vr railway:signal:main=DE-ESO:hp";
+	assertNoMatch: "node railway=signal railway:signal:combined=DE-ESO:ks railway:signal:minor=DE-ESO:sh1";
+}
+
+/* signals should have ref, and not railway:ref */
+node[railway=signal]["railway:ref"][!ref]
+{
+	throwError: "signals should be tagged with ref, not railway:ref";
+	fixChangeKey: "railway:ref=>ref";
+	suggestAlternative: "ref";
+	assertMatch: "node railway=signal railway:ref=N1";
+	assertNoMatch: "node railway=signal railway:ref=N1 ref=N1";
+	assertNoMatch: "node railway=signal ref=N1";
+}
+node[railway=signal]["railway:ref"][ref]
+{
+	throwError: "signals should be tagged with ref, not railway:ref";
+	fixChangeKey: "railway:ref=>ref";
+	suggestAlternative: "ref";
+	assertMatch: "node railway=signal railway:ref=N1 ref=N1";
+	assertNoMatch: "node railway=signal railway:ref=N1";
+	assertNoMatch: "node railway=signal ref=N1";
+}
+
+/* signals should have a railway:signal:direction=* tag */
+node[railway=signal][!"railway:signal:direction"]
+{
+	throwError: "signals should have a railway:signal:direction=* tag";
+	assertMatch: "node railway=signal";
+	assertNoMatch: "node railway=signal railway:signal:direction=forward";
+}
+
+/* railway radio should be tagged as railway:radio=*, not radio=* */
+way[railway][radio="GSM-R"][!"railway:radio"],
+way[railway][radio="GSM-R"]["railway:radio"="gsm-r"]
+{
+	throwWarning: "radio=GSM-R is deprecated";
+	fixAdd: "railway:radio=gsm-r";
+	fixRemove: "radio";
+	suggestAlternative: "railway:radio=gsm-r";
+	assertMatch: "way railway=rail radio=\"GSM-R\"";
+	assertMatch: "way railway=rail radio=\"GSM-R\" \"railway:radio\"=\"gsm-r\"";
+	assertNoMatch: "way railway=rail radio=\"GSM\"";
+	assertNoMatch: "way railway=rail radio=\"GSM-R\" \"railway:radio\"=\"gsm\"";
+}
+way[railway][radio="GSM-R"]["railway:radio"]["railway:radio"!="gsm-r"],
+way[railway][radio][radio!="GSM-R"]
+{
+	throwWarning: "radio=* is deprecated, change to proper railway:radio value";
+	assertMatch: "way railway=rail radio=\"GSM\"";
+	assertMatch: "way railway=rail radio=\"GSM-R\" \"railway:radio\"=\"gsm\"";
+	assertNoMatch: "way railway=rail radio=\"GSM-R\"";
+	assertNoMatch: "way railway=rail radio=\"GSM-R\" \"railway:radio\"=\"gsm-r\"";
+}
+
+/* signals should have a name that is prefixed (e.g. with DE-ESO:) */
+node[railway=signal]["railway:signal:main"]["railway:signal:main"!~/.+:.+/],
+node[railway=signal]["railway:signal:combined"]["railway:signal:combined"!~/.+:.+/],
+node[railway=signal]["railway:signal:distant"]["railway:signal:distant"!~/.+:.+/],
+node[railway=signal]["railway:signal:shunting"]["railway:signal:shunting"!~/.+:.+/],
+node[railway=signal]["railway:signal:main_repeated"]["railway:signal:main_repeated"!~/.+:.+/],
+node[railway=signal]["railway:signal:minor"]["railway:signal:minor"!~/.+:.+/],
+node[railway=signal]["railway:signal:minor_distant"]["railway:signal:minor_distant"!~/.+:.+/],
+node[railway=signal]["railway:signal:crossing"]["railway:signal:crossing"!~/.+:.+/],
+node[railway=signal]["railway:signal:crossing_distant"]["railway:signal:crossing_distant"!~/.+:.+/],
+node[railway=signal]["railway:signal:humping"]["railway:signal:humping"!~/.+:.+/],
+node[railway=signal]["railway:signal:speed_limit"]["railway:signal:speed_limit"!~/.+:.+/],
+node[railway=signal]["railway:signal:speed_limit_distant"]["railway:signal:speed_limit_distant"!~/.+:.+/],
+node[railway=signal]["railway:signal:route"]["railway:signal:route"!~/.+:.+/],
+node[railway=signal]["railway:signal:route_distant"]["railway:signal:route_distant"!~/.+:.+/],
+node[railway=signal]["railway:signal:wrong_road"]["railway:signal:wrong_road"!~/.+:.+/],
+node[railway=signal]["railway:signal:stop_demand"]["railway:signal:stop_demand"!~/.+:.+/],
+node[railway=signal]["railway:signal:departure"]["railway:signal:departure"!~/.+:.+/],
+node[railway=signal]["railway:signal:resetting_switch"]["railway:signal:resetting_switch"!~/.+:.+/],
+node[railway=signal]["railway:signal:short_route"]["railway:signal:short_route"!~/.+:.+/],
+node[railway=signal]["railway:signal:brake_test"]["railway:signal:brake_test"!~/.+:.+/]
+{
+	throwWarning: "signal names should be prefixed with an operator or country prefix";
+	assertMatch: "node railway=signal railway:signal:combined=ks";
+	assertMatch: "node railway=signal railway:signal:main=ks";
+	assertMatch: "node railway=signal railway:signal:distant=vr";
+	assertMatch: "node railway=signal railway:signal:route=zs2";
+	assertNoMatch: "node railway=signal railway:signal:combined=DE-ESO:ks";
+	assertNoMatch: "node railway=signal railway:signal:main=DE-ESO:ks";
+	assertNoMatch: "node railway=signal railway:signal:distant=DE-ESO:ks";
+	assertNoMatch: "node railway=signal railway:signal:route=DE-ESO:zs2";
+}
+
+/* signal and switch identification should be tagged as ref, not as name */
+node[railway=signal][name][!ref],
+node[railway=signal][name][ref=*name],
+node[railway=switch][name][!ref],
+node[railway=switch][name][ref=*name]
+{
+	throwWarning: tr("{0} identification should be tagged as ref, not as name", "{0.value}");
+	fixChangeKey: "name=>ref";
+	suggestAlternative: "ref";
+	assertMatch: "node railway=signal name=FF";
+	assertMatch: "node railway=signal name=FF ref=FF";
+	assertMatch: "node railway=switch name=12";
+	assertMatch: "node railway=switch name=12 ref=12";
+	assertNoMatch: "node railway=signal ref=FF";
+	assertNoMatch: "node railway=signal ref=FF name=GG";
+	assertNoMatch: "node railway=switch ref=12";
+	assertNoMatch: "node railway=switch ref=12 name=13";
+}
+
+relation[railway=controlled_area]
+{
+	throwWarning: "controlled_area relations are deprecated";
+	fixAdd: "railway=interlocking";
+	suggestAlternative: "railway=interlocking";
+	assertMatch: "relation railway=controlled_area";
+	assertNoMatch: "relation railway=interlocking";
+	assertNoMatch: "way railway=controlled_area";
+}
+
+relation[railway=interlocking][!type]
+{
+	throwError: "interlocking relation without type=railway";
+	fixAdd: "type=railway";
+	suggestAlternative: "type=railway";
+	assertMatch: "relation railway=interlocking";
+	assertNoMatch: "relation railway=interlocking type=railway";
+}
+relation[railway=interlocking][type][type!=railway]
+{
+	throwError: "interlocking relation with type other than railway";
+	assertMatch: "relation railway=interlocking type=public_transport";
+	assertNoMatch: "relation railway=interlocking type=railway";
+}
+
+/* deprecated tagging for resetting switches */
+node[railway=switch]["railway:switch"=resetting]
+{
+	throwError: "Tagging for resetting switch is deprecated, change railway:switch=* to proper value";
+	fixAdd: "railway:switch:resetting=yes";
+	suggestAlternative: "railway:switch + railway:switch:resetting=yes";
+	assertMatch: "node railway=switch railway:switch=resetting ref=2";
+	assertNoMatch: "node railway=switch";
+	assertNoMatch: "node railway=switch railway:switch=default";
+	assertNoMatch: "node railway=switch railway:switch=default railway:switch:resetting=yes";
+}
+
+way[railway][railway!=platform][name=~/[Tt]unnel/][!"tunnel:name"],
+way[railway][railway!=platform][name=~/[Tt]unnel/]["tunnel:name"=*name]
+{
+	throwWarning: "track tagged with 'tunnel' in name, consider using tunnel:name instead and put the track name into name";
+	fixChangeKey: "name=>tunnel:name";
+	suggestAlternative: "tunnel:name";
+	assertMatch: "way railway=rail name=Footunnel";
+	assertMatch: "way railway=light_rail name=Bartunnel tunnel:name=Bartunnel";
+	assertNoMatch: "way railway=rail tunnel:name=Baztunnel";
+	assertNoMatch: "way railway=platform name=Footunnel";
+}
+
+way[railway][railway!=platform][wikipedia=~/[Tt]unnel/][!"tunnel:wikipedia"],
+way[railway][railway!=platform][wikipedia=~/[Tt]unnel/]["tunnel:wikipedia"=*wikipedia]
+{
+	throwWarning: "track tagged with 'tunnel' in wikipedia, consider using tunnel:wikipedia instead and put the track wikipedia entry into wikipedia";
+	fixChangeKey: "wikipedia=>tunnel:wikipedia";
+	suggestAlternative: "tunnel:wikipedia";
+	assertMatch: "way railway=rail wikipedia=Footunnel";
+	assertMatch: "way railway=light_rail wikipedia=Bartunnel tunnel:wikipedia=Bartunnel";
+	assertNoMatch: "way railway=rail tunnel:wikipedia=Baztunnel";
+	assertNoMatch: "way railway=platform wikipedia=Footunnel";
+}
+
+way[railway][railway!=platform][name=~/[Bb]ridge/][!"bridge:name"],
+way[railway][railway!=platform][name=~/[Bb]ridge/]["bridge:name"=*name],
+way[railway][railway!=platform][name=~/[Vv]iadu[ck]t/][!"bridge:name"],
+way[railway][railway!=platform][name=~/[Vv]iadu[ck]t/]["bridge:name"=*name],
+way[railway][railway!=platform][name=~/[Bb]rücke/][!"bridge:name"],
+way[railway][railway!=platform][name=~/[Bb]rücke/]["bridge:name"=*name]
+{
+	throwWarning: "track tagged with 'bridge' in name, consider using bridge:name instead and put the track name into name";
+	fixChangeKey: "name=>bridge:name";
+	suggestAlternative: "bridge:name";
+	assertMatch: "way railway=rail name=Foobrücke";
+	assertMatch: "way railway=rail name=\"Bay bridge\"";
+	assertMatch: "way railway=rail name=\"Baz viaduct\"";
+	assertMatch: "way railway=light_rail name=\"Bar bridge\" bridge:name=\"Bar bridge\"";
+	assertNoMatch: "way railway=rail bridge:name=Foo-Viadukt";
+	assertNoMatch: "way railway=platform name=Noltemeyerbrücke";
+}
+
+way[railway][railway!=platform][wikipedia=~/[Bb]ridge/][!"bridge:wikipedia"],
+way[railway][railway!=platform][wikipedia=~/[Bb]ridge/]["bridge:wikipedia"=*wikipedia],
+way[railway][railway!=platform][wikipedia=~/[Vv]iadu[ck]t/][!"bridge:wikipedia"],
+way[railway][railway!=platform][wikipedia=~/[Vv]iadu[ck]t/]["bridge:wikipedia"=*wikipedia],
+way[railway][railway!=platform][wikipedia=~/[Bb]rücke/][!"bridge:wikipedia"],
+way[railway][railway!=platform][wikipedia=~/[Bb]rücke/]["bridge:wikipedia"=*wikipedia]
+{
+	throwWarning: "track tagged with 'bridge' in wikipedia, consider using bridge:wikipedia instead and put track wikipedia entry into wikipedia";
+	fixChangeKey: "wikipedia=>bridge:wikipedia";
+	suggestAlternative: "bridge:wikipedia";
+	assertMatch: "way railway=rail wikipedia=Foobrücke";
+	assertMatch: "way railway=rail wikipedia=\"Bay bridge\"";
+	assertMatch: "way railway=rail wikipedia=\"Baz viaduct\"";
+	assertMatch: "way railway=light_rail wikipedia=\"Bar bridge\" bridge:wikipedia=\"Bar bridge\"";
+	assertNoMatch: "way railway=rail bridge:wikipedia=Foo-Viadukt";
+	assertNoMatch: "way railway=platform wikipedia=Foobrücke";
+}
+
+node:unconnected[railway=signal],
+node:unconnected[railway=milestone]
+{
+	throwError: "{1.value}s should be tagged on the track, move the node to the track the {1.value} affects";
+}
+
+way[railway][!highway][lanes]
+{
+	throwWarning: "lanes=* is used for highways, not railways";
+	fixChangeKey: "lanes=>tracks";
+	suggestAlternative: "tracks";
+	assertMatch: "way railway=rail lanes=2";
+	assertMatch: "way railway=subway lanes=2 tracks=2";
+	assertNoMatch: "way railway=rail tracks=1";
+	assertNoMatch: "way railway=abandoned highway=tertiary lanes=3";
+	assertNoMatch: "way railway=razed highway=tertiary lanes=3";
+}
+
+way[railway][maxspeed=signals]
+{
+	throwWarning: "maxspeed=signals is deprecated, tag the highest possible speed instead";
+	assertMatch: "way railway=rail maxspeed=signals";
+	assertNoMatch: "way railway=subway maxspeed=100";
+}
+
+way[railway]["mph:maxspeed"=~/^[0-9]+$/]["maxspeed"]
+{
+	throwWarning: "maxspeed should contain the value as it is shown on the line with mph as unit";
+	/* fixAdd: "maxspeed={1.value} mph"; */
+	suggestAlternative: "maxspeed";
+	assertMatch: "way railway=rail \"mph:maxspeed\"=100 maxspeed=161";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=\"50 mph\" maxspeed=161";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=\"50\"";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=\"50 mph\"";
+}
+
+way[railway]["mph:maxspeed"=~/^[0-9]+ mph$/]["maxspeed"]
+{
+	throwWarning: "maxspeed should contain the value as it is shown on the line with mph as unit";
+	fixChangeKey: "mph:maxspeed=>maxspeed";
+	suggestAlternative: "maxspeed";
+	assertMatch: "way railway=rail \"mph:maxspeed\"=\"50 mph\" maxspeed=161";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=100 maxspeed=161";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=\"50\"";
+	assertNoMatch: "way railway=rail \"mph:maxspeed\"=\"50 mph\"";
+}
+
+area[building=station],
+area[building=railway_station]
+{
+	throwWarning: "Wrong tag for railway station building";
+	fixAdd: "building=train_station";
+	suggestAlternative: "building=train_station";
+	assertMatch: "area building=station name=Bahnhof";
+	assertMatch: "area building=railway_station name=Bahnhof";
+	assertNoMatch: "area building=train_station name=Bahnhof";
+}
+
+way|z9-[railway=disused][!"disused:railway"],
+way|z9-[railway=abandoned][!"abandoned:railway"],
+way|z9-[railway=razed][!"razed:railway"],
+way|z9-[railway=proposed][!"proposed:railway"],
+way|z9-[railway=construction][!"construction:railway"]
+{
+	throwWarning: tr("{0}={1} without {2}:railway", "{0.key}", "{0.value}", "{0.value}");
+	assertMatch: "way railway=disused";
+	assertNoMatch: "way railway=disused disused:railway=rail";
+	assertMatch: "way railway=abandoned";
+	assertNoMatch: "way railway=abandoned abandoned:railway=rail";
+	assertMatch: "way railway=razed";
+	assertNoMatch: "way railway=razed razed:railway=rail";
+	assertMatch: "way railway=proposed";
+	assertNoMatch: "way railway=proposed proposed:railway=rail";
+	assertMatch: "way railway=construction";
+	assertNoMatch: "way railway=construction construction:railway=rail";
+}
+
+/* operating sites needs a name */
+node[railway=station][station!=funicular][!name],
+node[railway=halt][!name],
+node[railway=junction][!name],
+node[railway=spur_junction][!name],
+node[railway=service_station][!name],
+node[railway=site][!name],
+node[railway=tram_stop][!name],
+node[railway=yard][!name],
+node[railway=crossover][!name]
+{
+	throwWarning: tr("{0}={1} without name", "{0.key}", "{0.value}");
+	assertMatch: "node railway=station";
+	assertNoMatch: "node railway=station name=foo";
+	assertMatch: "node railway=halt";
+	assertNoMatch: "node railway=halt name=foo";
+	assertMatch: "node railway=junction";
+	assertNoMatch: "node railway=junction name=foo";
+	assertMatch: "node railway=spur_junction";
+	assertNoMatch: "node railway=spur_junction name=foo";
+	assertMatch: "node railway=service_station";
+	assertNoMatch: "node railway=service_station name=foo";
+	assertMatch: "node railway=site";
+	assertNoMatch: "node railway=site name=foo";
+	assertMatch: "node railway=tram_stop";
+	assertNoMatch: "node railway=tram_stop name=foo";
+	assertMatch: "node railway=yard";
+	assertNoMatch: "node railway=yard name=foo";
+	assertMatch: "node railway=crossover";
+	assertNoMatch: "node railway=crossover name=foo";
+}

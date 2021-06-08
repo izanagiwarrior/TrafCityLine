@@ -1,0 +1,162 @@
+{
+	"name": "electrified",
+	"mapfeatures":
+	[
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail"
+				}
+			}],
+			"caption": "No information"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"electrified":"no"
+				}
+			}],
+			"caption": "Not electrified"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"electrified":"no",
+					"deelectrified":"contact_line"
+				}
+			}],
+			"caption": "Deelectrified"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"proposed:voltage":"25000",
+					"proposed:frequency":"50",
+					"proposed:electrified":"contact_line"
+				}
+			}],
+			"caption": "Electrification proposed"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"construction:voltage":"25000",
+					"construction:frequency":"50",
+					"construction:electrified":"contact_line"
+				}
+			}],
+			"caption": "Electrification under construction"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"voltage":"25000",
+					"frequency":"50",
+					"electrified":"contact_line"
+				}
+			}],
+			"caption": "contact line"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"voltage":"25000",
+					"frequency":"50",
+					"electrified":"rail"
+				}
+			}],
+			"caption": "3rd rail"
+		},
+		{
+			"minzoom": 2,
+			"heading": "Voltage"
+		},
+		{
+			"minzoom": 2,
+			"replace": [
+				{ "%VOLTAGE%":  600,"%FREQUENCY%":0,"%CAPTION%":"Less than 750V =" },
+				{ "%VOLTAGE%":  750,"%FREQUENCY%":0,"%CAPTION%":"750V =" },
+				{ "%VOLTAGE%":  800,"%FREQUENCY%":0,"%CAPTION%":"750 – 1000V =" },
+				{ "%VOLTAGE%": 1000,"%FREQUENCY%":0,"%CAPTION%":"1kV =" },
+				{ "%VOLTAGE%": 1200,"%FREQUENCY%":0,"%CAPTION%":"1 – 1.5kV =" },
+				{ "%VOLTAGE%": 1500,"%FREQUENCY%":0,"%CAPTION%":"1.5kV =" },
+				{ "%VOLTAGE%": 2000,"%FREQUENCY%":0,"%CAPTION%":"1.5 – 3kV =" },
+				{ "%VOLTAGE%": 3000,"%FREQUENCY%":0,"%CAPTION%":"3kV =" },
+				{ "%VOLTAGE%": 5000,"%FREQUENCY%":0,"%CAPTION%":"More than 3kV =" },
+				{ "%VOLTAGE%":10000,"%FREQUENCY%":25,"%CAPTION%":"Less than 15kV ~" },
+				{ "%VOLTAGE%":15000,"%FREQUENCY%":"16.67","%CAPTION%":"15kV 16⅔Hz ~" },
+				{ "%VOLTAGE%":15000,"%FREQUENCY%":"16.7","%CAPTION%":"15kV 16.7Hz ~" },
+				{ "%VOLTAGE%":20000,"%FREQUENCY%":25,"%CAPTION%":"15 – 25kV ~" },
+				{ "%VOLTAGE%":26000,"%FREQUENCY%":25,"%CAPTION%":"At least 25kV ~" },
+				{ "%VOLTAGE%":25000,"%FREQUENCY%":50,"%CAPTION%":"25kV 50Hz ~" },
+				{ "%VOLTAGE%":25000,"%FREQUENCY%":60,"%CAPTION%":"25kV 60Hz ~" }
+			],
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[80,50]],
+				"properties": {
+					"railway":"rail",
+					"voltage":"%VOLTAGE%",
+					"frequency":"%FREQUENCY%",
+					"electrified":"contact_line"
+				}
+			}],
+			"caption": "%CAPTION%"
+		},
+		{
+			"minzoom": 17,
+			"heading": "signals"
+		},
+		{
+			"minzoom": 17,
+			"replace": [
+				{ "%SIGNAL%":"el1v", "%TYPE%":"power_off_advance", "%CAPTION%":"El 1v Ausschaltsignal erwarten" },
+				{ "%SIGNAL%":"el1", "%TYPE%":"power_off", "%CAPTION%":"El 1 Ausschaltsignal" },
+				{ "%SIGNAL%":"el2", "%TYPE%":"power_on", "%CAPTION%":"El 2 Einschaltsignal" },
+				{ "%SIGNAL%":"el3", "%TYPE%":"pantograph_down_advance", "%CAPTION%":"El 3 \"Bügel ab\"-Ankündigungssignal" },
+				{ "%SIGNAL%":"el4", "%TYPE%":"pantograph_down", "%CAPTION%":"El 4 \"Bügel ab\"-Signal" },
+				{ "%SIGNAL%":"el5", "%TYPE%":"pantograph_up", "%CAPTION%":"El 5 \"Bügel an\"-Signal" },
+				{ "%SIGNAL%":"el6", "%TYPE%":"end_of_catenary", "%CAPTION%":"El 6 Halt für Fahrzeuge mit gehobenem Stromabnehmer" }
+			],
+			"features": [{
+				"type": "Point",
+				"coordinates": [50,60],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:electricity":"DE-ESO:%SIGNAL%",
+					"railway:signal:electricity:type":"%TYPE%",
+					"railway:signal:electricity:form":"sign"
+				}
+			}],
+			"caption": "%CAPTION%"
+		}
+	]
+}

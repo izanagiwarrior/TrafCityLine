@@ -1,0 +1,459 @@
+{
+	"name": "standard",
+	"mapfeatures":
+	[
+		{
+			"minzoom": 2,
+			"heading": "Track type"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[20,50]],
+				"properties": {
+					"railway":"rail"
+				}},
+				{"type": "LineString",
+				"coordinates": [[20,50],[50,50]],
+				"properties": {
+					"bridge":"yes",
+					"railway":"rail"
+				}},
+				{"type": "LineString",
+				"coordinates": [[50,50],[60,50]],
+				"properties": {
+					"railway":"rail"
+				}}
+			],
+			"caption": "Bridge"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[20,50]],
+				"properties": {
+					"railway":"rail"
+				}},
+				{"type": "LineString",
+				"coordinates": [[20,50],[50,50]],
+				"properties": {
+					"railway":"rail",
+					"tunnel":"yes"
+				}},
+				{"type": "LineString",
+				"coordinates": [[50,50],[60,50]],
+				"properties": {
+					"railway":"rail"
+				}}
+			],
+			"caption": "Tunnel"
+		},
+		{
+			"minzoom": 2,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"usage":"main",
+					"ref":1761
+				}}
+			],
+			"caption": "Line ref"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail"
+				}}
+			],
+			"caption": "Railroad line"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"narrow_gauge"
+				}
+			}],
+			"caption": "Narrow gauge track"
+		},
+		{
+			"minzoom": 2,
+			"heading": "Track usage"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"railway:track_ref":7,
+					"service":"siding"
+				}}
+			],
+			"caption": "Siding"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"railway:track_ref":7,
+					"service":"yard"
+				}}
+			],
+			"caption": "Yard track"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"service":"spur"
+				}
+			}],
+			"caption": "Spur"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"service":"crossover"
+				}
+			}],
+			"caption": "Crossover track"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"usage":"branch"
+				}
+			}],
+			"caption": "Branch line"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"usage":"main"
+				}
+			}],
+			"caption": "Main line"
+		},
+		{
+			"minzoom": 2,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"highspeed":"yes",
+					"railway":"rail",
+					"usage":"main"
+				}
+			}],
+			"caption": "Highspeed line"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"usage":"industrial"
+				}
+			}],
+			"caption": "Industrial line"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"rail",
+					"service":"yard",
+					"usage":"industrial"
+				}
+			}],
+			"caption": "Industrial service track"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"preserved"
+				}
+			}],
+			"caption": "Preserved track"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"construction:railway":"rail",
+					"railway":"construction"
+				}
+			}],
+			"caption": "Track under construction"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"proposed:railway":"rail",
+					"railway":"proposed"
+				}
+			}],
+			"caption": "Proposed track"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"disused:railway":"rail",
+					"railway":"disused"
+				}
+			}],
+			"caption": "Disused track"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"abandoned:railway":"rail",
+					"railway":"abandoned"
+				}
+			}],
+			"caption": "Abandoned track"
+		},
+		{
+			"minzoom": 9,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"razed:railway":"rail",
+					"railway":"razed"
+				}
+			}],
+			"caption": "Razed track"
+		},
+		{
+			"minzoom": 11,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"tram"
+				}
+			}],
+			"caption": "Tram"
+		},
+		{
+			"minzoom": 10,
+			"features": [
+				{"type": "LineString",
+				"coordinates": [[10,50],[20,50]],
+				"properties": {
+					"railway":"subway"
+				}},
+				{"type": "LineString",
+				"coordinates": [[20,50],[60,50]],
+				"properties": {
+					"railway":"subway",
+					"tunnel":"yes"
+				}}
+			],
+			"caption": "Subway"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "LineString",
+				"coordinates": [[10,50],[60,50]],
+				"properties": {
+					"railway":"light_rail"
+				}
+			}],
+			"caption": "Light rail"
+		},
+		{
+			"minzoom": 16,
+			"features": [{
+				"type": "Point",
+				"coordinates": [30,50],
+				"properties": {
+					"railway":"switch",
+					"ref":"W23"
+				}
+			}],
+			"caption": "Switch (remote-controlled)"
+		},
+		{
+			"minzoom": 16,
+			"features": [{
+				"type": "Point",
+				"coordinates": [30,50],
+				"properties": {
+					"railway":"switch",
+					"railway:local_operated":"yes",
+					"ref":"W23"
+				}
+			}],
+			"caption": "Switch (local operated)"
+		},
+		{
+			"minzoom": 16,
+			"features": [{
+				"type": "Point",
+				"coordinates": [30,50],
+				"properties": {
+					"railway":"switch",
+					"railway:switch:resetting":"yes",
+					"ref":"W23"
+				}
+			}],
+			"caption": "Resetting switch"
+		},
+		{
+			"minzoom": 11,
+			"features": [{
+				"type": "Point",
+				"coordinates": [30,50],
+				"properties": {
+					"railway":"milestone",
+					"railway:position":26.4
+				}
+			}],
+			"caption": "Milestone"
+		},
+		{
+			"minzoom": 8,
+			"heading": "Operating Sites"
+		},
+		{
+			"minzoom": 8,
+			"lineheight": 20,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"station",
+					"railway:ref":"KB",
+					"name":"Bonn Hbf"
+				}
+			}],
+			"caption": "Station"
+		},
+		{
+			"minzoom": 8,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"yard",
+					"railway:ref":"KNG",
+					"name":"Neuss Gbf"
+				}
+			}],
+			"caption": "Yard"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"halt",
+					"railway:ref":"HLEM",
+					"name":"Lemmie"
+				}
+			}],
+			"caption": "Halt"
+		},
+		{
+			"minzoom": 8,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"service_station",
+					"railway:ref":"KWEB",
+					"name":"Lohbruch"
+				}
+			}],
+			"caption": "Junction, Crossover, Service Station, Site"
+		},
+		{
+			"minzoom": 10,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"station",
+					"station":"subway",
+					"name":"Rathaus"
+				}
+			}],
+			"caption": "Subway/Light rail station"
+		},
+		{
+			"minzoom": 13,
+			"features": [{
+				"type": "Point",
+				"coordinates": [40,50],
+				"properties": {
+					"railway":"tram_stop",
+					"name":"Grundend"
+				}
+			}],
+			"caption": "Tram stop"
+		},
+		{
+			"minzoom": 11,
+			"lineheight": 20,
+			"features": [{
+				"type": "Point",
+				"coordinates": [50,50],
+				"properties": {
+					"railway":"border"
+				}
+			}],
+			"caption": "Owner change"
+		}
+	]
+}

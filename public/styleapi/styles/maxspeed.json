@@ -1,0 +1,209 @@
+{
+	"name": "maxspeed",
+	"mapfeatures":
+	[
+		{
+			"minzoom": 2,
+			"features": [
+				{"type": "LineString", "coordinates": [[10,50],[80,50]], "properties": { "railway":"rail", "usage":"main" }}
+			],
+			"caption": "No information"
+		},
+		{
+			"minzoom": 12,
+			"features": [
+				{"type": "LineString", "coordinates": [[10,50],[80,50]], "properties": { "railway":"rail", "usage":"main", "maxspeed:forward": 1 }}
+			],
+			"caption": "speed only given for one direction"
+		},
+		{
+			"minzoom": 2,
+			"maxzoom": 8,
+			"replace": [
+				{"%SPDMIN%":  1,"%SPDMAX%": 10},
+				{"%SPDMIN%": 11,"%SPDMAX%": 20},
+				{"%SPDMIN%": 21,"%SPDMAX%": 30},
+				{"%SPDMIN%": 31,"%SPDMAX%": 40},
+				{"%SPDMIN%": 41,"%SPDMAX%": 50},
+				{"%SPDMIN%": 51,"%SPDMAX%": 60},
+				{"%SPDMIN%": 61,"%SPDMAX%": 70},
+				{"%SPDMIN%": 71,"%SPDMAX%": 80},
+				{"%SPDMIN%": 81,"%SPDMAX%": 90},
+				{"%SPDMIN%": 91,"%SPDMAX%":100},
+				{"%SPDMIN%":101,"%SPDMAX%":110},
+				{"%SPDMIN%":111,"%SPDMAX%":120},
+				{"%SPDMIN%":121,"%SPDMAX%":130},
+				{"%SPDMIN%":131,"%SPDMAX%":140},
+				{"%SPDMIN%":141,"%SPDMAX%":150},
+				{"%SPDMIN%":151,"%SPDMAX%":160},
+				{"%SPDMIN%":161,"%SPDMAX%":170},
+				{"%SPDMIN%":171,"%SPDMAX%":180},
+				{"%SPDMIN%":181,"%SPDMAX%":190},
+				{"%SPDMIN%":191,"%SPDMAX%":200},
+				{"%SPDMIN%":201,"%SPDMAX%":210},
+				{"%SPDMIN%":211,"%SPDMAX%":220},
+				{"%SPDMIN%":221,"%SPDMAX%":230},
+				{"%SPDMIN%":231,"%SPDMAX%":240},
+				{"%SPDMIN%":241,"%SPDMAX%":250},
+				{"%SPDMIN%":251,"%SPDMAX%":260},
+				{"%SPDMIN%":261,"%SPDMAX%":270},
+				{"%SPDMIN%":271,"%SPDMAX%":280},
+				{"%SPDMIN%":281,"%SPDMAX%":290},
+				{"%SPDMIN%":291,"%SPDMAX%":300},
+				{"%SPDMIN%":301,"%SPDMAX%":320},
+				{"%SPDMIN%":321,"%SPDMAX%":340},
+				{"%SPDMIN%":341,"%SPDMAX%":360},
+				{"%SPDMIN%":361,"%SPDMAX%":380},
+				{"%SPDMIN%":381,"%SPDMAX%":400}
+			],
+			"features": [
+				{"type": "LineString", "coordinates": [[10,50],[45,50]], "properties": { "maxspeed":"%SPDMIN%", "railway":"rail", "usage":"main" }}
+			],
+			"caption": "%SPDMIN%-%SPDMAX% km/h"
+		},
+		{
+			"minzoom": 9,
+			"replace": [
+				{"%SPDMIN%":  1,"%SPDMAX%": 10},
+				{"%SPDMIN%": 11,"%SPDMAX%": 20},
+				{"%SPDMIN%": 21,"%SPDMAX%": 30},
+				{"%SPDMIN%": 31,"%SPDMAX%": 40},
+				{"%SPDMIN%": 41,"%SPDMAX%": 50},
+				{"%SPDMIN%": 51,"%SPDMAX%": 60},
+				{"%SPDMIN%": 61,"%SPDMAX%": 70},
+				{"%SPDMIN%": 71,"%SPDMAX%": 80},
+				{"%SPDMIN%": 81,"%SPDMAX%": 90},
+				{"%SPDMIN%": 91,"%SPDMAX%":100},
+				{"%SPDMIN%":101,"%SPDMAX%":110},
+				{"%SPDMIN%":111,"%SPDMAX%":120},
+				{"%SPDMIN%":121,"%SPDMAX%":130},
+				{"%SPDMIN%":131,"%SPDMAX%":140},
+				{"%SPDMIN%":141,"%SPDMAX%":150},
+				{"%SPDMIN%":151,"%SPDMAX%":160},
+				{"%SPDMIN%":161,"%SPDMAX%":170},
+				{"%SPDMIN%":171,"%SPDMAX%":180},
+				{"%SPDMIN%":181,"%SPDMAX%":190},
+				{"%SPDMIN%":191,"%SPDMAX%":200},
+				{"%SPDMIN%":201,"%SPDMAX%":210},
+				{"%SPDMIN%":211,"%SPDMAX%":220},
+				{"%SPDMIN%":221,"%SPDMAX%":230},
+				{"%SPDMIN%":231,"%SPDMAX%":240},
+				{"%SPDMIN%":241,"%SPDMAX%":250},
+				{"%SPDMIN%":251,"%SPDMAX%":260},
+				{"%SPDMIN%":261,"%SPDMAX%":270},
+				{"%SPDMIN%":271,"%SPDMAX%":280},
+				{"%SPDMIN%":281,"%SPDMAX%":290},
+				{"%SPDMIN%":291,"%SPDMAX%":300},
+				{"%SPDMIN%":301,"%SPDMAX%":320},
+				{"%SPDMIN%":321,"%SPDMAX%":340},
+				{"%SPDMIN%":341,"%SPDMAX%":360},
+				{"%SPDMIN%":361,"%SPDMAX%":380},
+				{"%SPDMIN%":381,"%SPDMAX%":400}
+			],
+			"features": [
+				{"type": "LineString", "coordinates": [[10,50],[45,50]], "properties": { "maxspeed":"%SPDMIN%", "railway":"rail", "usage":"main" }},
+				{"type": "LineString", "coordinates": [[45,50],[80,50]], "properties": { "maxspeed":"%SPDMAX%", "construction:railway":"rail", "railway":"construction" }}
+			],
+			"caption": "%SPDMIN%-%SPDMAX% km/h (disused/under construction)"
+		},
+		{
+			"minzoom": 17,
+			"lineheight": 20,
+			"features": [{
+				"type": "Point",
+				"coordinates": [35,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit_distant":"DE-ESO:zs3v",
+					"railway:signal:speed_limit_distant:form":"sign",
+					"railway:signal:speed_limit_distant:speed":"30"
+				}},
+				{
+				"type": "Point",
+				"coordinates": [65,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit_distant":"DE-ESO:zs3v",
+					"railway:signal:speed_limit_distant:form":"light",
+					"railway:signal:speed_limit_distant:speed":"30"
+				}
+			}],
+			"caption": "Zs 3v Geschwindigkeits­voranzeiger (Tafel, Lichtsignal)"
+		},
+		{
+			"minzoom": 17,
+			"lineheight": 20,
+			"features": [{
+				"type": "Point",
+				"coordinates": [35,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit":"DE-ESO:zs3",
+					"railway:signal:speed_limit:form":"sign",
+					"railway:signal:speed_limit:speed":"30"
+				}},
+				{
+				"type": "Point",
+				"coordinates": [65,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit":"DE-ESO:zs3",
+					"railway:signal:speed_limit:form":"light",
+					"railway:signal:speed_limit:speed":"30"
+				}
+			}],
+			"caption": "Zs 3 Geschwindigkeits­anzeiger (Tafel, Lichtsignal)"
+		},
+		{
+			"minzoom": 14,
+			"lineheight": 20,
+			"features": [{
+				"type": "Point",
+				"coordinates": [50,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit_distant":"DE-ESO:lf6",
+					"railway:signal:speed_limit_distant:form":"sign",
+					"railway:signal:speed_limit_distant:speed":"60"
+				}
+			}],
+			"caption": "Lf 6 Geschwindigkeits­ankündesignal"
+		},
+		{
+			"minzoom": 14,
+			"features": [{
+				"type": "Point",
+				"coordinates": [50,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit":"DE-ESO:lf7",
+					"railway:signal:speed_limit:form":"sign",
+					"railway:signal:speed_limit:speed":"70"
+				}
+			}],
+			"caption": "Lf 7 Geschwindigkeitssignal"
+		},
+		{
+			"minzoom": 16,
+			"lineheight": 24,
+			"features": [{
+				"type": "Point",
+				"coordinates": [50,50],
+				"properties": {
+					"railway":"signal",
+					"railway:signal:direction":"forward",
+					"railway:signal:speed_limit":"DE-ESO:db:zs10",
+					"railway:signal:speed_limit:form":"sign",
+					"railway:signal:speed_limit:speed":"none"
+				}
+			}],
+			"caption": "Zs 10 Endesignal (Tafel)"
+		}
+	]
+}

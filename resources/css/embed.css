@@ -1,0 +1,56 @@
+/*
+OpenRailwayMap Copyright (C) 2012 Alexander Matheisen
+This program comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to redistribute it under certain conditions.
+See https://wiki.openstreetmap.org/wiki/OpenRailwayMap for details.
+*/
+
+@charset "utf-8";
+
+html,body
+{
+	background-color: #ffffff;
+	color: #000000;
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma,sans-serif;
+	overflow-y: hidden;
+}
+
+/* map widget */
+#mapFrame
+{
+	background-color: #f1eee8;
+	color: #000000;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+/* text which is shown when javascript is not activated */
+noscript p
+{
+	font-size: 15px;
+	color: #000000;
+	margin-left: 80px;
+	margin-top: 100px;
+}
+
+/* loading image */
+.loading
+{
+	text-align: center;
+	width: 16px;
+	height: 16px;
+}
+
+/* hidden frame to which josm remote plugin messages are echoed */
+#josmFrame
+{
+	display: none;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
